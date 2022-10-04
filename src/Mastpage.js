@@ -7,6 +7,7 @@ import './App.css';
 import Button from '@mui/material/Button';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import './pages/Results';
+//import getName from './pages/VendiaTest'
 
 const styles = {
     "&:hover":{
@@ -51,7 +52,7 @@ function Mastpage(){
             <h1 id="h1"  > SS# Background Check</h1>
             <p1>Enter SSN here:   </p1>
             <TextField id="filled-basic" label="Social Security #" variant="filled" />
-            <Button sx={styles} onClick = "createVendia();" href="Results" endIcon={<ArrowForwardIcon/>}>
+            <Button sx={styles} href="Results" endIcon={<ArrowForwardIcon/>}>
                 Enter
             </Button>
             </Typography>
@@ -60,11 +61,4 @@ function Mastpage(){
     )
 }
 
-function createVendia(){
-    console.log("Creating vendia client");
-    var cClient = new VendiaClient();
-    cClient.createSSList();
-    var searchedName = cClient.getName(document.getElementById("filled-basic"));
-    console.log("The name of the client is "+searchedName);
-}
 export default Mastpage;

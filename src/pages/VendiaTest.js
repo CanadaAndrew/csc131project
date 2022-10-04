@@ -1,27 +1,29 @@
 import { createVendiaClient } from "@vendia/client";
 
-function getName(){
+async function getName(searchedSSN){
+    alert("Creating client");
     const client = createVendiaClient({
-        apiUrl: '<https://6p0uz46bt4.execute-api.us-west-1.amazonaws.com/graphql/>',
-        websocketUrl: '<wss://q2mucbaqn1.execute-api.us-west-1.amazonaws.com/graphql>',
-        apiKey: process.env.VENDIA_API_KEY,
+        apiUrl: 'https://6p0uz46bt4.execute-api.us-west-1.amazonaws.com/graphql/',
+        websocketUrl: 'wss://q2mucbaqn1.execute-api.us-west-1.amazonaws.com/graphql',
+        apiKey: process.env.recycle,
     });
-    ssTable = client.entities.SS.list();
-        for(var i = 0; i < ssTable.length(); i++){
-            if(this.ssTable[i].SSN == searchedSSN){
-                alert(ssTable[i].FName);
-            }
-        }
+    const {entities} = client;
+    alert("Client created, getting list of entities");
+    const ssList = await entities.SS.list();
+    alert("Finished getting list, first name of the second person:" + ssList[1].FName);
+    alert("Getting a person:");
+    const person = await client.entities.SS.get("0183637e-4873-f336-b916-85a25d0c820a");
+    alert("Finished getting the person, getting name");
+    alert(person.FName);
+    const addPerson = await entities.SS.add({
+        SSN: 12345678,
+        FName: "Jack",
+        MName: "And",
+        LName: "Jill",
+        BirthDay: 13,
+        BirthMonth: 4,
+        BirthYear: 2,
+    });
 }
 
-
-return client.entities.SS.list();
-    //Generating the information(Temporary)
-    
-
-    /*
-
-
-
-export{VendiaClient};
-*/
+export{getName};

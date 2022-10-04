@@ -1,6 +1,7 @@
 import React from 'react'; //placeHolder for results page
 //import { useNavigate } from "react-router-dom";\
 import Button from '@mui/material/Button';
+//import { getName } from './VendiaTest';
 
 // <button onClick={()=>{navigate("/Mastpage");}}>return</button> {/*button to link master and results page*/}
 //const navigate = useNavigate();
@@ -22,9 +23,11 @@ const styles = {
 }
 
 function Results() {
+    
     return(
         <div>
-            <h1>PlaceHolder for results page with temporary button, Name of the person searched: <var>searchedName</var></h1>
+            <script>getName(12731273);</script>
+            <h1>PlaceHolder for results page with temporary button, Name of the person searched:</h1>
             <Button sx={styles} href="Mastpage">
                 Return
             </Button>
