@@ -1,0 +1,46 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Social Security Table",
+  "description": "Table containing the information for social security on a person, given the SSN",
+  "type": "object",
+  "properties": {
+    "SS": {
+      "description": "The social security information for a person",
+      "type": "array",
+      "items": {
+        "description": "A person's data",
+        "type": "object",
+        "properties": {
+          "SSN": {
+            "description": "The social security number of a person",
+            "type": "integer"
+          },
+          "FName": {
+            "description": "First name of the person",
+            "type": "string"
+          },
+          "MName": {
+            "description": "Middle name of the person",
+            "type": "string"
+          },
+          "LName": {
+            "description": "Last name of the person",
+            "type": "string"
+          },
+          "BirthDay": {
+            "description": "The day the person was born.",
+            "type": "integer"
+          },
+          "BirthMonth": {
+            "description": "The month the person was born.",
+            "type": "integer"
+          },
+          "BirthYear": {
+            "description": "The year the person was born.",
+            "type": "integer"
+          }
+        }
+      }
+    }
+  }
+}
