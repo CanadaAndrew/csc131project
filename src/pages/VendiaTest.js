@@ -5,12 +5,12 @@ async function getName(searchedSSN){
     const client = createVendiaClient({
         apiUrl: 'https://6p0uz46bt4.execute-api.us-west-1.amazonaws.com/graphql/',
         websocketUrl: 'wss://q2mucbaqn1.execute-api.us-west-1.amazonaws.com/graphql',
-        apiKey: process.env.recycle,
+        apiKey: 'FHhVsV2Gm1L2yxGyfCev1q1j5mRhyUAcLNfF3XBKfMTK',
     });
     const {entities} = client;
-    alert("Client created, getting list of entities");
+    alert("Client created, getting list of entities"); 
     const ssList = await entities.SS.list();
-    alert("Finished getting list, first name of the second person:" + ssList[1].FName);
+    alert("Finished getting list, first name of the second person:" + ssList.items[0].FName);
     alert("Getting a person:");
     const person = await client.entities.SS.get("0183637e-4873-f336-b916-85a25d0c820a");
     alert("Finished getting the person, getting name");
