@@ -7,8 +7,7 @@ import './App.css';
 import Button from '@mui/material/Button';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import './pages/Results';
-//import getName from './pages/VendiaTest'
-
+var SSN;
 const styles = {
     "&:hover":{
         background: "Green",
@@ -42,6 +41,9 @@ const theme1 = createTheme({
       },
   });
 
+  function textBoxUpdate(event){
+    SSN = event.target.value;
+  }
 function Mastpage(){
     return(
         <div>
@@ -51,8 +53,8 @@ function Mastpage(){
             <img src="/images/IMG_1183.JPG" alt=""/> {/*USA image for home page*/}
             <h1 id="h1"  > SS# Background Check</h1>
             <p1>Enter SSN here:   </p1>
-            <TextField id="filled-basic" label="Social Security #" variant="filled" />
-            <Button sx={styles} href="Results" endIcon={<ArrowForwardIcon/>}>
+            <TextField id="filled-basic" label="Social Security #" variant="filled" onChange = {textBoxUpdate} />
+            <Button sx={styles} onClick = { () =>{alert("The SSN Entered: " + SSN);}}href="Results" endIcon={<ArrowForwardIcon/>}>
                 Enter
             </Button>
             </Typography>
@@ -60,5 +62,6 @@ function Mastpage(){
         </div>
     )
 }
+
 
 export default Mastpage;

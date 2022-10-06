@@ -1,5 +1,6 @@
 import React from 'react'; //placeHolder for results page
 import Button from '@mui/material/Button';
+import {getFName, getInfo} from './SSVendia'
 
 const styles = {
     "&:hover":{
@@ -17,39 +18,21 @@ const styles = {
     elevation: 3,
 }
 
-function ssnDummy(){
-    var ssn1 = "SSN: 123-12-123";
-    //var ssn2 = "SSN: 000-00-000";
-    //var ssn3 = "SSN: 567-98-235";
-    return ssn1;
-}
-
-function fNameDummy(){
-    var fName1 = "Bob";
-    //var fName2 = "Sam";
-    //var fName3 = "Jane";
-    return fName1;
-}
-
-function lNameDummy(){
-    var lName1 = "Smith";
-    //var lName2 = "Doe";
-    //var lName3 = "Philips";
-    return lName1;
-}
-
 function dobDummy(){
-    var dob1 = "DOB: 9/2/99";
+    var dob1 = "DOB: 1/12/1983";
     //var dob2 = "DOB: 12/20/00";
     //var dob3 = "DOB: 5/19/87";
     return dob1;
 }
 
 function Results() {
-    const fName = fNameDummy(); 
-    const lName = lNameDummy();
+    getInfo();
+    var mastVar = require('./../Mastpage');
+    var SSN = mastVar.SSN;
+    const fName = 'Bob'; 
+    const lName = 'Nick'//getLName(SSN);
     const dob = dobDummy();
-    const ssn = ssnDummy();
+    const ssn = 24459102//SSN;
     return(
         <div>
             <h1>PlaceHolder for results page with temporary button</h1>
