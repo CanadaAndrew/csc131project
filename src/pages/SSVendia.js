@@ -12,8 +12,4 @@ async function getInfo(){
     alert("Sample Query from Vendia. Taking the first person from the table of SS. \nName: "+ ssList.items[0].FName +" " + ssList.items[0].LName + "\nSSN: "+ ssList.items[0].SSN +"\nDOB: " +ssList.items[0].BirthMonth+"/"+ssList.items[0].BirthDay+"/"+ssList.items[0].BirthYear);
 }
 
-async function useSSList(i){
-
-
-}
 export{getInfo};
