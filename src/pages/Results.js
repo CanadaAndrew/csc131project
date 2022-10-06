@@ -27,8 +27,6 @@ function dobDummy(){
 
 function Results() {
     getInfo();
-    var mastVar = require('./../Mastpage');
-    var SSN = mastVar.SSN;
     const fName = 'Bob'; 
     const lName = 'Nick'//getLName(SSN);
     const dob = dobDummy();
