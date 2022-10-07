@@ -1,5 +1,5 @@
 Please install NPM first
-<br/>Before downloading and extracting, create a new folder and cd into it with VCS
+<br/>Before downloading and extracting, create a new folder and cd into it with VSC
  <br />Use terminal in VSC for all following steps(If first time installation):
  <br />npx create-react–app ./                                                               (to install react)
  <br />npm install @mui/material @emotion/react @emotion/styled  (install material.ui can also copy directly from material.ui website homepage)
