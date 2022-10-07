@@ -11,5 +11,5 @@ async function getInfo(){
     const ssList = await entities.SS.list();
     alert("Sample Query from Vendia. Taking the first person from the table of SS. \nName: "+ ssList.items[0].FName +" " + ssList.items[0].LName + "\nSSN: "+ ssList.items[0].SSN +"\nDOB: " +ssList.items[0].BirthMonth+"/"+ssList.items[0].BirthDay+"/"+ssList.items[0].BirthYear);
 }
-//hi
+//hello
 export{getInfo};
