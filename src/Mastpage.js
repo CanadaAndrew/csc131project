@@ -8,6 +8,7 @@ import Button from '@mui/material/Button';
 import { IMaskInput } from 'react-imask';
 import Box from '@mui/material/Box';
 
+
 const theme1 = createTheme({
   typography: {
     fontFamily: ['"Segoe UI Symbol"'].join(","),
@@ -66,7 +67,7 @@ const Maspage = () => {
 
           <TextField
         InputProps={{
-          inputComponent: TextMaskCustom //textmaskcustom breaks onChange below, need to fix
+          //inputComponent: TextMaskCustom //TODO: textmaskcustom breaks onChange below, need to fix
         }}
         onChange={(e) => setValue(e.target.value) } 
 
