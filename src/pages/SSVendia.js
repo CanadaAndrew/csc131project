@@ -3,9 +3,9 @@ import React, {usestate} from 'react';
 
 async function getInfo(){
     const client = createVendiaClient({
-        apiUrl: 'https://6p0uz46bt4.execute-api.us-west-1.amazonaws.com/graphql/',
-        websocketUrl: 'wss://q2mucbaqn1.execute-api.us-west-1.amazonaws.com/graphql',
-        apiKey: 'FHhVsV2Gm1L2yxGyfCev1q1j5mRhyUAcLNfF3XBKfMTK',
+        apiUrl: 'https://u37dhzkua2.execute-api.us-west-1.amazonaws.com/graphql/',
+        websocketUrl: 'wss://jrwjk1n6i5.execute-api.us-west-1.amazonaws.com/graphql',
+        apiKey: 'FfY2UP32dDLUDwi59txHsP2grdvv9LzoBgBa3tncperw',
     });
     const {entities} = client;
     const ssList = await entities.SS.list();
