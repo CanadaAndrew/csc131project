@@ -6,6 +6,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import { useState } from "react";
 import Button from '@mui/material/Button';
 import { IMaskInput } from 'react-imask';
+import Box from '@mui/material/Box';
 
 const theme1 = createTheme({
   typography: {
@@ -105,12 +106,26 @@ const Maspage = () => {
            
           />
    <br /> 
-    <Button sx={buttonStyle} variant="contained" disabled={btnDisabled} size = "large">Enter</Button> {/*button size warped, fix later*/}
+
+   <Box sx={{
+        
+        height: 1000, //just a quick fix for now, TODO: find a way to set it to the height of the page
+        backgroundColor: '#66ccff', //placeholder, TODO: discuss nice colors w/ group
+        margin: 'auto', //this pushes the width to the page size and centers the text
+      
+      }
+    } >
+   <Button sx={buttonStyle} variant="contained" disabled={btnDisabled} size = "large">Enter</Button> {/*button size warped, fix later*/}
         <h6>Note: Alphabetical and Special Characters are not allowed. Ex. A-Z !@#$%</h6>
         <h6>Glory to Arstotzka.</h6>
+
+   </Box>
+
+    
         </Typography>
       </div>
     </ThemeProvider>
+    
     
     
   );
