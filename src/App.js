@@ -17,5 +17,5 @@ const App = () => {
         </div>
     )
 }
-//iugiu
+
 export default App;
