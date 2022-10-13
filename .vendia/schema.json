@@ -1,42 +1,135 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "Social Security Table",
-  "description": "Table containing the information for social security on a person, given the SSN",
+  "title": "Uni Schema",
+  "description": "Uni schema",
   "type": "object",
   "properties": {
     "SS": {
-      "description": "The social security information for a person",
+      "description": "The social security information in an array format.",
       "type": "array",
       "items": {
-        "description": "A person's data",
         "type": "object",
         "properties": {
           "SSN": {
-            "description": "The social security number of a person",
-            "type": "integer"
+            "description": "The SSN of the person",
+            "type": "string"
           },
-          "FName": {
-            "description": "First name of the person",
+          "Fname": {
+            "description": "The first name of the person",
             "type": "string"
           },
           "MName": {
-            "description": "Middle name of the person",
+            "description": "The middle name of the person",
             "type": "string"
           },
           "LName": {
-            "description": "Last name of the person",
+            "description": "The last name of the person",
             "type": "string"
           },
           "BirthDay": {
-            "description": "The day the person was born.",
-            "type": "integer"
+            "description": "the birth day of the person",
+            "type": "string"
           },
           "BirthMonth": {
-            "description": "The month the person was born.",
-            "type": "integer"
+            "description": "The birth month of the person",
+            "type": "string"
           },
           "BirthYear": {
-            "description": "The year the person was born.",
+            "description": "the birth year of the person",
+            "type": "string"
+          }
+        }
+      }
+    },
+    "DMV": {
+      "description": "The DMV information in an array format.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "SSN": {
+            "description": "The SSN of the person",
+            "type": "string"
+          },
+          "Fname": {
+            "description": "The first name of the person",
+            "type": "string"
+          },
+          "MName": {
+            "description": "The middle name of the person",
+            "type": "string"
+          },
+          "LName": {
+            "description": "The last name of the person",
+            "type": "string"
+          },
+          "BirthDay": {
+            "description": "the birth day of the person",
+            "type": "string"
+          },
+          "BirthMonth": {
+            "description": "The birth month of the person",
+            "type": "string"
+          },
+          "BirthYear": {
+            "description": "the birth year of the person",
+            "type": "string"
+          },
+          "LicenseNumber": {
+            "description": "The driver license number of the person",
+            "type": "string"
+          }
+        }
+      }
+    },
+    "SD": {
+      "description": "The State Department in an array format.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "SSN": {
+            "description": "The SSN of the person",
+            "type": "string"
+          },
+          "Fname": {
+            "description": "The first name of the person",
+            "type": "string"
+          },
+          "MName": {
+            "description": "The middle name of the person",
+            "type": "string"
+          },
+          "LName": {
+            "description": "The last name of the person",
+            "type": "string"
+          },
+          "BirthDay": {
+            "description": "the birth day of the person",
+            "type": "string"
+          },
+          "BirthMonth": {
+            "description": "The birth month of the person",
+            "type": "string"
+          },
+          "BirthYear": {
+            "description": "the birth year of the person",
+            "type": "string"
+          },
+          "PassportNumber": {
+            "description": "Passport number of the person.",
+            "type": "string"
+          },
+          "PassportExpirationDay": {
+            "description": "The expiration day of the passport for the person",
+            "type": "integer"
+          },
+          "PassportExpirationMonth": {
+            "description": "The expiration month of the passport for the person",
+            "type": "integer"
+          },
+          "PassportExpirationYear": {
+            "description": "The expiration year of the passport for the person",
             "type": "integer"
           }
         }

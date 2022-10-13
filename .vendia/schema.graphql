@@ -196,27 +196,272 @@ enum Vendia_SyncMode {
   ASYNC
 }
 
-input Self_SS_ConditionInput_ {
-  BirthDay: Vendia_ModelIntInput_
-  BirthMonth: Vendia_ModelIntInput_
-  BirthYear: Vendia_ModelIntInput_
-  FName: Vendia_ModelStringInput_
+input Self_DMV_ConditionInput_ {
+  BirthDay: Vendia_ModelStringInput_
+  BirthMonth: Vendia_ModelStringInput_
+  BirthYear: Vendia_ModelStringInput_
+  Fname: Vendia_ModelStringInput_
+  LName: Vendia_ModelStringInput_
+  LicenseNumber: Vendia_ModelStringInput_
+  MName: Vendia_ModelStringInput_
+  SSN: Vendia_ModelStringInput_
+  _and: [Self_DMV_ConditionInput_]
+  _or: [Self_DMV_ConditionInput_]
+  _not: Self_DMV_ConditionInput_
+}
+
+input Self_DMV_FilterInput_ {
+  BirthDay: Vendia_ModelStringInput_
+  BirthMonth: Vendia_ModelStringInput_
+  BirthYear: Vendia_ModelStringInput_
+  Fname: Vendia_ModelStringInput_
+  LName: Vendia_ModelStringInput_
+  LicenseNumber: Vendia_ModelStringInput_
+  MName: Vendia_ModelStringInput_
+  SSN: Vendia_ModelStringInput_
+  _and: [Self_DMV_FilterInput_]
+  _or: [Self_DMV_FilterInput_]
+  _not: Self_DMV_FilterInput_
+}
+
+input Self_DMV_OrderInput_ {
+  _id: Vendia_ModelSortDirection
+}
+
+type Self_DMV {
+  _id: ID!
+  BirthDay: String
+  BirthMonth: String
+  BirthYear: String
+  Fname: String
+  LName: String
+  LicenseNumber: String
+  MName: String
+  SSN: String
+  _owner: String
+}
+
+type Self_DMV_Partial_ {
+  _id: ID!
+  BirthDay: String
+  BirthMonth: String
+  BirthYear: String
+  Fname: String
+  LName: String
+  LicenseNumber: String
+  MName: String
+  SSN: String
+  _owner: String
+}
+
+union Self_DMV_PartialUnion_ = Self_DMV | Self_DMV_Partial_
+
+type Self_DMV_Result_ {
+  error: String
+  result: Self_DMV
+}
+
+type Self_DMV_Transaction_Result_ {
+  transaction: Vendia_Transaction!
+  result: Self_DMV
+}
+
+type Self_DMV_Delete_Transaction_Result_ {
+  transaction: Vendia_Transaction!
+}
+
+type Self_DMV_Connection_ {
+  _DMVItems: [Self_DMV]
+  nextToken: String
+}
+
+input Self_DMV_Input_ {
+  BirthDay: String
+  BirthMonth: String
+  BirthYear: String
+  Fname: String
+  LName: String
+  LicenseNumber: String
+  MName: String
+  SSN: String
+}
+
+input Self_DMV_UpdateInput_ {
+  BirthDay: String
+  BirthMonth: String
+  BirthYear: String
+  Fname: String
+  LName: String
+  LicenseNumber: String
+  MName: String
+  SSN: String
+}
+
+input Self_DMV_PartialInput_ {
+  BirthDay: String
+  BirthMonth: String
+  BirthYear: String
+  Fname: String
+  LName: String
+  LicenseNumber: String
+  MName: String
+  SSN: String
+}
+
+input Self_SD_ConditionInput_ {
+  BirthDay: Vendia_ModelStringInput_
+  BirthMonth: Vendia_ModelStringInput_
+  BirthYear: Vendia_ModelStringInput_
+  Fname: Vendia_ModelStringInput_
   LName: Vendia_ModelStringInput_
   MName: Vendia_ModelStringInput_
-  SSN: Vendia_ModelIntInput_
+  PassportExpirationDay: Vendia_ModelIntInput_
+  PassportExpirationMonth: Vendia_ModelIntInput_
+  PassportExpirationYear: Vendia_ModelIntInput_
+  PassportNumber: Vendia_ModelStringInput_
+  SSN: Vendia_ModelStringInput_
+  _and: [Self_SD_ConditionInput_]
+  _or: [Self_SD_ConditionInput_]
+  _not: Self_SD_ConditionInput_
+}
+
+input Self_SD_FilterInput_ {
+  BirthDay: Vendia_ModelStringInput_
+  BirthMonth: Vendia_ModelStringInput_
+  BirthYear: Vendia_ModelStringInput_
+  Fname: Vendia_ModelStringInput_
+  LName: Vendia_ModelStringInput_
+  MName: Vendia_ModelStringInput_
+  PassportExpirationDay: Vendia_ModelIntInput_
+  PassportExpirationMonth: Vendia_ModelIntInput_
+  PassportExpirationYear: Vendia_ModelIntInput_
+  PassportNumber: Vendia_ModelStringInput_
+  SSN: Vendia_ModelStringInput_
+  _and: [Self_SD_FilterInput_]
+  _or: [Self_SD_FilterInput_]
+  _not: Self_SD_FilterInput_
+}
+
+input Self_SD_OrderInput_ {
+  _id: Vendia_ModelSortDirection
+}
+
+type Self_SD {
+  _id: ID!
+  BirthDay: String
+  BirthMonth: String
+  BirthYear: String
+  Fname: String
+  LName: String
+  MName: String
+  PassportExpirationDay: Int
+  PassportExpirationMonth: Int
+  PassportExpirationYear: Int
+  PassportNumber: String
+  SSN: String
+  _owner: String
+}
+
+type Self_SD_Partial_ {
+  _id: ID!
+  BirthDay: String
+  BirthMonth: String
+  BirthYear: String
+  Fname: String
+  LName: String
+  MName: String
+  PassportExpirationDay: Int
+  PassportExpirationMonth: Int
+  PassportExpirationYear: Int
+  PassportNumber: String
+  SSN: String
+  _owner: String
+}
+
+union Self_SD_PartialUnion_ = Self_SD | Self_SD_Partial_
+
+type Self_SD_Result_ {
+  error: String
+  result: Self_SD
+}
+
+type Self_SD_Transaction_Result_ {
+  transaction: Vendia_Transaction!
+  result: Self_SD
+}
+
+type Self_SD_Delete_Transaction_Result_ {
+  transaction: Vendia_Transaction!
+}
+
+type Self_SD_Connection_ {
+  _SDItems: [Self_SD]
+  nextToken: String
+}
+
+input Self_SD_Input_ {
+  BirthDay: String
+  BirthMonth: String
+  BirthYear: String
+  Fname: String
+  LName: String
+  MName: String
+  PassportExpirationDay: Int
+  PassportExpirationMonth: Int
+  PassportExpirationYear: Int
+  PassportNumber: String
+  SSN: String
+}
+
+input Self_SD_UpdateInput_ {
+  BirthDay: String
+  BirthMonth: String
+  BirthYear: String
+  Fname: String
+  LName: String
+  MName: String
+  PassportExpirationDay: Int
+  PassportExpirationMonth: Int
+  PassportExpirationYear: Int
+  PassportNumber: String
+  SSN: String
+}
+
+input Self_SD_PartialInput_ {
+  BirthDay: String
+  BirthMonth: String
+  BirthYear: String
+  Fname: String
+  LName: String
+  MName: String
+  PassportExpirationDay: Int
+  PassportExpirationMonth: Int
+  PassportExpirationYear: Int
+  PassportNumber: String
+  SSN: String
+}
+
+input Self_SS_ConditionInput_ {
+  BirthDay: Vendia_ModelStringInput_
+  BirthMonth: Vendia_ModelStringInput_
+  BirthYear: Vendia_ModelStringInput_
+  Fname: Vendia_ModelStringInput_
+  LName: Vendia_ModelStringInput_
+  MName: Vendia_ModelStringInput_
+  SSN: Vendia_ModelStringInput_
   _and: [Self_SS_ConditionInput_]
   _or: [Self_SS_ConditionInput_]
   _not: Self_SS_ConditionInput_
 }
 
 input Self_SS_FilterInput_ {
-  BirthDay: Vendia_ModelIntInput_
-  BirthMonth: Vendia_ModelIntInput_
-  BirthYear: Vendia_ModelIntInput_
-  FName: Vendia_ModelStringInput_
+  BirthDay: Vendia_ModelStringInput_
+  BirthMonth: Vendia_ModelStringInput_
+  BirthYear: Vendia_ModelStringInput_
+  Fname: Vendia_ModelStringInput_
   LName: Vendia_ModelStringInput_
   MName: Vendia_ModelStringInput_
-  SSN: Vendia_ModelIntInput_
+  SSN: Vendia_ModelStringInput_
   _and: [Self_SS_FilterInput_]
   _or: [Self_SS_FilterInput_]
   _not: Self_SS_FilterInput_
@@ -228,25 +473,25 @@ input Self_SS_OrderInput_ {
 
 type Self_SS {
   _id: ID!
-  BirthDay: Int
-  BirthMonth: Int
-  BirthYear: Int
-  FName: String
+  BirthDay: String
+  BirthMonth: String
+  BirthYear: String
+  Fname: String
   LName: String
   MName: String
-  SSN: Int
+  SSN: String
   _owner: String
 }
 
 type Self_SS_Partial_ {
   _id: ID!
-  BirthDay: Int
-  BirthMonth: Int
-  BirthYear: Int
-  FName: String
+  BirthDay: String
+  BirthMonth: String
+  BirthYear: String
+  Fname: String
   LName: String
   MName: String
-  SSN: Int
+  SSN: String
   _owner: String
 }
 
@@ -272,33 +517,33 @@ type Self_SS_Connection_ {
 }
 
 input Self_SS_Input_ {
-  BirthDay: Int
-  BirthMonth: Int
-  BirthYear: Int
-  FName: String
+  BirthDay: String
+  BirthMonth: String
+  BirthYear: String
+  Fname: String
   LName: String
   MName: String
-  SSN: Int
+  SSN: String
 }
 
 input Self_SS_UpdateInput_ {
-  BirthDay: Int
-  BirthMonth: Int
-  BirthYear: Int
-  FName: String
+  BirthDay: String
+  BirthMonth: String
+  BirthYear: String
+  Fname: String
   LName: String
   MName: String
-  SSN: Int
+  SSN: String
 }
 
 input Self_SS_PartialInput_ {
-  BirthDay: Int
-  BirthMonth: Int
-  BirthYear: Int
-  FName: String
+  BirthDay: String
+  BirthMonth: String
+  BirthYear: String
+  Fname: String
   LName: String
   MName: String
-  SSN: Int
+  SSN: String
 }
 
 input Vendia_Block_transactions_transactionsItem_ConditionInput_ {
@@ -2634,6 +2879,12 @@ input Vendia_Contract_InvokeInput_ {
 }
 
 type Query {
+  get_DMV(id: ID!, version: Int, readMode: Vendia_ReadMode = NODE_COMMITTED): Self_DMV
+  list_DMVItems(filter: Self_DMV_FilterInput_, readMode: Vendia_ReadMode = NODE_COMMITTED, order: [Self_DMV_OrderInput_!], limit: Int, nextToken: String): Self_DMV_Connection_
+  list_DMVVersions(id: ID!, limit: Int, nextToken: String): Vendia_Version_Connection_
+  get_SD(id: ID!, version: Int, readMode: Vendia_ReadMode = NODE_COMMITTED): Self_SD
+  list_SDItems(filter: Self_SD_FilterInput_, readMode: Vendia_ReadMode = NODE_COMMITTED, order: [Self_SD_OrderInput_!], limit: Int, nextToken: String): Self_SD_Connection_
+  list_SDVersions(id: ID!, limit: Int, nextToken: String): Vendia_Version_Connection_
   get_SS(id: ID!, version: Int, readMode: Vendia_ReadMode = NODE_COMMITTED): Self_SS
   list_SSItems(filter: Self_SS_FilterInput_, readMode: Vendia_ReadMode = NODE_COMMITTED, order: [Self_SS_OrderInput_!], limit: Int, nextToken: String): Self_SS_Connection_
   list_SSVersions(id: ID!, limit: Int, nextToken: String): Vendia_Version_Connection_
@@ -2663,6 +2914,22 @@ type Query {
 }
 
 type Mutation {
+  add_DMV_async(input: Self_DMV_Input_!): Vendia_Transaction_Result_
+  add_DMV(input: Self_DMV_Input_!, syncMode: Vendia_SyncMode = NODE_COMMITTED): Self_DMV_Transaction_Result_
+  put_DMV_async(id: ID!, input: Self_DMV_Input_!, condition: Self_DMV_ConditionInput_): Vendia_Transaction_Result_
+  put_DMV(id: ID!, input: Self_DMV_Input_!, condition: Self_DMV_ConditionInput_, syncMode: Vendia_SyncMode = NODE_COMMITTED): Self_DMV_Transaction_Result_
+  update_DMV_async(id: ID!, input: Self_DMV_UpdateInput_!, condition: Self_DMV_ConditionInput_): Vendia_Transaction_Result_
+  update_DMV(id: ID!, input: Self_DMV_UpdateInput_!, condition: Self_DMV_ConditionInput_, syncMode: Vendia_SyncMode = NODE_COMMITTED): Self_DMV_Transaction_Result_
+  remove_DMV_async(id: ID!, condition: Self_DMV_ConditionInput_): Vendia_Transaction_Result_
+  remove_DMV(id: ID!, condition: Self_DMV_ConditionInput_, syncMode: Vendia_SyncMode = NODE_COMMITTED): Self_DMV_Delete_Transaction_Result_
+  add_SD_async(input: Self_SD_Input_!): Vendia_Transaction_Result_
+  add_SD(input: Self_SD_Input_!, syncMode: Vendia_SyncMode = NODE_COMMITTED): Self_SD_Transaction_Result_
+  put_SD_async(id: ID!, input: Self_SD_Input_!, condition: Self_SD_ConditionInput_): Vendia_Transaction_Result_
+  put_SD(id: ID!, input: Self_SD_Input_!, condition: Self_SD_ConditionInput_, syncMode: Vendia_SyncMode = NODE_COMMITTED): Self_SD_Transaction_Result_
+  update_SD_async(id: ID!, input: Self_SD_UpdateInput_!, condition: Self_SD_ConditionInput_): Vendia_Transaction_Result_
+  update_SD(id: ID!, input: Self_SD_UpdateInput_!, condition: Self_SD_ConditionInput_, syncMode: Vendia_SyncMode = NODE_COMMITTED): Self_SD_Transaction_Result_
+  remove_SD_async(id: ID!, condition: Self_SD_ConditionInput_): Vendia_Transaction_Result_
+  remove_SD(id: ID!, condition: Self_SD_ConditionInput_, syncMode: Vendia_SyncMode = NODE_COMMITTED): Self_SD_Delete_Transaction_Result_
   add_SS_async(input: Self_SS_Input_!): Vendia_Transaction_Result_
   add_SS(input: Self_SS_Input_!, syncMode: Vendia_SyncMode = NODE_COMMITTED): Self_SS_Transaction_Result_
   put_SS_async(id: ID!, input: Self_SS_Input_!, condition: Self_SS_ConditionInput_): Vendia_Transaction_Result_
@@ -2708,6 +2975,14 @@ type Mutation {
 }
 
 type Subscription {
+  onAdd_DMV: Self_DMV_Result_
+  onUpdate_DMV: Self_DMV_Result_
+  onPut_DMV: Self_DMV_Result_
+  onRemove_DMV: Self_DMV_Result_
+  onAdd_SD: Self_SD_Result_
+  onUpdate_SD: Self_SD_Result_
+  onPut_SD: Self_SD_Result_
+  onRemove_SD: Self_SD_Result_
   onAdd_SS: Self_SS_Result_
   onUpdate_SS: Self_SS_Result_
   onPut_SS: Self_SS_Result_
