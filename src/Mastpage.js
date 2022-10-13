@@ -7,6 +7,7 @@ import { useState } from "react";
 import Button from '@mui/material/Button';
 import { IMaskInput } from 'react-imask';
 import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
 
 
 const theme1 = createTheme({
@@ -18,7 +19,7 @@ const theme1 = createTheme({
     primary: { main: "#ffffff" }, // this changes the textbox to white
 
     background: {
-      default: "#13265C", //changes whole page background to dark blue
+      default: "#000b4f", //changes whole page background to dark blue "#13265C"
     },
   },
 });
@@ -30,9 +31,8 @@ const buttonStyle =
       border: "1px solid black",
       color: "White",
   },
-  background: "Green",
+ 
   width: 150,
-  hight: 190,
   fontSize: 20,
 }
 
@@ -63,9 +63,16 @@ const Maspage = () => {
           {" "}
           {/*Typography enables text editing*/}
           <h1 id="h1"> SS# Background Check</h1>
-     
+    
+          <Box sx={{
         
-
+        height: 1000, //just a quick fix for now, TODO: find a way to set it to the height of the page
+        backgroundColor: '#829cd0', //placeholder, TODO: discuss nice colors w/ group
+        margin: 'auto', //this pushes the width to the page size and centers the text
+      
+      }
+    } >
+       <br />
           <TextField
         InputProps={{
           //inputComponent: TextMaskCustom //TODO: textmaskcustom breaks onChange below, need to fix
@@ -109,24 +116,26 @@ const Maspage = () => {
           />
    <br /> 
 
-   <Box sx={{
-        
-        height: 1000, //just a quick fix for now, TODO: find a way to set it to the height of the page
-        backgroundColor: '#66ccff', //placeholder, TODO: discuss nice colors w/ group
-        margin: 'auto', //this pushes the width to the page size and centers the text
-      
-      }
-    } >
-   <Button sx={buttonStyle} href="Results" variant="contained" disabled={btnDisabled} size = "large">Enter</Button> {/*button size warped, fix later*/}
+   
+   
+   <Grid container spacing={0} justifyContent= "center" >
+    
+    <Grid item xs={4}>{/*TODO: figure out how to change width in buttonStyle*/}
+     <Button href="Ssn" sx={buttonStyle } variant="outlined" disabled={btnDisabled} size = "large">SSN</Button> {/*button size warped, fix later*/}
+     </Grid>  
+  
+     <Grid item xs={0}>  
+      <Button href="StateDep" size = "large"   sx={ buttonStyle} disabled={btnDisabled} variant="outlined">DMV</Button>
+      </Grid>   
+      <Grid item xs={4}>  
+      <Button href="Dmv" size = "large"  sx={ buttonStyle } disabled={btnDisabled} variant="outlined">State</Button>
+      </Grid>   
+       
+        </Grid>
+
         <h6>Note: Alphabetical and Special Characters are not allowed. Ex. A-Z !@#$%</h6>
-        <h6>Glory to Arstotzka.</h6>
-    <Button sx={buttonStyle} href="Ssn">Enter ssn </Button>
-    <br/>
-    <br/>
-    <Button sx={buttonStyle} href="StateDep">Enter State dep </Button>
-    <br/>
-    <br/>
-    <Button sx={buttonStyle} href="Dmv">Enter DMV </Button>
+
+
    </Box>
 
     
