@@ -20,10 +20,7 @@ const theme1 = createTheme({
     background: {
       default: "#13265C", //changes whole page background to dark blue
     },
-    
   },
-
-  
 });
 
 const buttonStyle = 
@@ -31,8 +28,12 @@ const buttonStyle =
   "&:hover":{
       background: "Green",
       border: "1px solid black",
-      color: "White"
-  }
+      color: "White",
+  },
+  background: "Green",
+  width: 150,
+  hight: 190,
+  fontSize: 20,
 }
 
 const TextMaskCustom = React.forwardRef(function TextMaskCustom(props) {
@@ -116,10 +117,16 @@ const Maspage = () => {
       
       }
     } >
-   <Button sx={buttonStyle} variant="contained" disabled={btnDisabled} size = "large">Enter</Button> {/*button size warped, fix later*/}
+   <Button sx={buttonStyle} href="Results" variant="contained" disabled={btnDisabled} size = "large">Enter</Button> {/*button size warped, fix later*/}
         <h6>Note: Alphabetical and Special Characters are not allowed. Ex. A-Z !@#$%</h6>
         <h6>Glory to Arstotzka.</h6>
-
+    <Button sx={buttonStyle} href="Ssn">Enter ssn </Button>
+    <br/>
+    <br/>
+    <Button sx={buttonStyle} href="StateDep">Enter State dep </Button>
+    <br/>
+    <br/>
+    <Button sx={buttonStyle} href="Dmv">Enter DMV </Button>
    </Box>
 
     

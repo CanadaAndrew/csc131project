@@ -44,7 +44,22 @@ function Results() {
             <br/>
             <br/>
             <Button sx={styles} href="Mastpage">
-                Return
+                Return to Mastpage
+            </Button>
+            <br/>
+            <br/>
+            <Button sx={styles} href="Dmv">
+                to Dmv
+            </Button>
+            <br/>
+            <br/>
+            <Button sx={styles} href="StateDep">
+                to StateDep
+            </Button>
+            <br/>
+            <br/>
+            <Button sx={styles} href="Ssn">
+                to Ssn
             </Button>
        </div>
     )
