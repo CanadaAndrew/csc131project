@@ -5,10 +5,9 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import { useState } from "react";
 import Button from '@mui/material/Button';
-import { IMaskInput } from 'react-imask';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
-
+import { PatternFormat } from 'react-number-format';
 
 const theme1 = createTheme({
   typography: {
@@ -36,16 +35,28 @@ const buttonStyle =
   fontSize: 20,
 }
 
-const TextMaskCustom = React.forwardRef(function TextMaskCustom(props) {
-  const { onChange, ...other } = props;
+function NumberFormatCustom(props) {
+  const { inputRef, onChange, ...other } = props;
+
   return (
-    <IMaskInput
+    <PatternFormat
       {...other}
-      mask="000-00-0000"
-     
+      getInputRef={inputRef}
+      onValueChange={(values) => {
+        onChange({
+          target: {
+            name: props.name,
+            value: values.value
+          }
+        });
+      }}
+      thousandSeparator
+      // isNumericString
     />
   );
-});
+}
+
+
 
 
 const Maspage = () => {
@@ -74,7 +85,9 @@ const Maspage = () => {
     } >
        <br />
           <TextField
+          inputProps={{ format: "###-##-####" }}
         InputProps={{
+          inputComponent: NumberFormatCustom
           //inputComponent: TextMaskCustom //TODO: textmaskcustom breaks onChange below, need to fix
         }}
         onChange={(e) => setValue(e.target.value) } 
@@ -92,19 +105,7 @@ const Maspage = () => {
               ? btnDisabled = true
               : btnDisabled = false
             }
-            onKeyDown={(event) => {
-              if (!ALPHA_NUMERIC_DASH_REGEX.test(event.key) && event.key !== "Backspace") 
-              {
-                
-                  /* regex code above wont work with backspace*/
-                event.preventDefault();
-              } else if (value.length === 9 && event.key !== "Backspace") {
-                event.preventDefault();
-              }
-
-            }}
-            
-          
+        
             error={value.length < 9 && value.length !== 0}
             id="filled-basic"
             label="Social Security #"
