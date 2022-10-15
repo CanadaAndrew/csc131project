@@ -42,6 +42,7 @@ const TextMaskCustom = React.forwardRef(function TextMaskCustom(props) {
     <IMaskInput
       {...other}
       mask="000-00-0000"
+     
     />
   );
 });
@@ -76,7 +77,7 @@ const Maspage = () => {
         InputProps={{
           //inputComponent: TextMaskCustom //TODO: textmaskcustom breaks onChange below, need to fix
         }}
-        onChange={(e) => setValue(e.target.value)} 
+        onChange={(e) => setValue(e.target.value) } 
 
            
             helperText={
