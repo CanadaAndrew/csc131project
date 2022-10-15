@@ -9,32 +9,35 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import { PatternFormat } from 'react-number-format';
 
-const theme1 = createTheme({
+//the main bg color and font
+const mainTheme = createTheme({
   typography: {
-    fontFamily: ['"Segoe UI Symbol"'].join(","),
+    fontFamily: ["Segoe UI Symbol"].join(","),
     fontSize: 24,
   },
   palette: {
     primary: { main: "#ffffff" }, // this changes the textbox to white
 
     background: {
-      default: "#000b4f", //changes whole page background to dark blue "#13265C"
+      default: "#000b4f", //changes whole page background to dark blue 
     },
   },
 });
 
-const buttonStyle = 
+//changes properties of buttons
+const buttonStyle =
 {
-  "&:hover":{
-      background: "Green",
-      border: "1px solid black",
-      color: "White",
+  "&:hover": {
+    background: "Green",
+    border: "1px solid black",
+    color: "White",
   },
- 
+
   width: 150,
   fontSize: 20,
 }
 
+//###-##-#### format
 function NumberFormatCustom(props) {
   const { inputRef, onChange, ...other } = props;
 
@@ -51,101 +54,95 @@ function NumberFormatCustom(props) {
         });
       }}
       thousandSeparator
-      // isNumericString
+    // isNumericString
     />
   );
 }
 
 
-
-
 const Maspage = () => {
   const [value, setValue] = useState("");
-  const ALPHA_NUMERIC_DASH_REGEX = /^[0-9\b]+$/;
   var btnDisabled = useState(true)
-  var count = 1
+
   return (
-    <ThemeProvider theme={theme1}>
-      {" "}
-      {/* ThemeProvider uses the theme function above*/}
-      <div>
-        <CssBaseline /> {/* This enables changing background color*/}
-        <Typography align="center" color="common.white">
-          {" "}
-          {/*Typography enables text editing*/}
-          <h1 id="h1"> SS# Background Check</h1>
-    
-          <Box sx={{
-        
-        height: 1000, //just a quick fix for now, TODO: find a way to set it to the height of the page
-        backgroundColor: '#829cd0', //placeholder, TODO: discuss nice colors w/ group
-        margin: 'auto', //this pushes the width to the page size and centers the text
+    <ThemeProvider theme={mainTheme}>
+      {/* ThemeProvider enables mainTheme*/}
       
-      }
-    } >
-       <br />
-          <TextField
-          inputProps={{ format: "###-##-####" }}
-        InputProps={{
-          inputComponent: NumberFormatCustom
-          //inputComponent: TextMaskCustom //TODO: textmaskcustom breaks onChange below, need to fix
-        }}
-        onChange={(e) => setValue(e.target.value) } 
+      <div>
+        <CssBaseline /> {/*CssBaseline enables changing background color*/}
+        <Typography align="center" color="common.white">
+         
+          {/*Typography formats text*/}
+          <h1 id="h1"> SS# Background Check</h1>
 
-           
-            helperText={
-              value.length !== 9 && value.length !== 0
-                ? "SS# length is invalid"
-                : " "
-                
-            }
-            
-            btnDisabled={
-              value.length !== 9
-              ? btnDisabled = true
-              : btnDisabled = false
-            }
-        
-            error={value.length < 9 && value.length !== 0}
-            id="filled-basic"
-            label="Social Security #"
-            variant="outlined"
-            sx={{ input: { color: "white" } }}
+          <Box sx={{
+            //secondary background color
+            height: 1000, //just a quick fix for now, TODO: find a way to set it to the height of the page
+            backgroundColor: '#829cd0', //placeholder, TODO: discuss nice colors w/ group
+            margin: 'auto', //this pushes the width to the page size and centers the text
 
-            
-           
-          />
-   <br /> 
+          }}>
 
-   
-   
-   <Grid container spacing={0} justifyContent= "center" >
-    
-    <Grid item xs={4}>{/*TODO: figure out how to change width in buttonStyle*/}
-     <Button href="Ssn" sx={buttonStyle } variant="outlined" disabled={btnDisabled} size = "large">SSN</Button> {/*button size warped, fix later*/}
-     </Grid>  
-  
-     <Grid item xs={0}>  
-      <Button href="StateDep" size = "large"   sx={ buttonStyle} disabled={btnDisabled} variant="outlined">DMV</Button>
-      </Grid>   
-      <Grid item xs={4}>  
-      <Button href="Dmv" size = "large"  sx={ buttonStyle } disabled={btnDisabled} variant="outlined">State</Button>
-      </Grid>   
-       
-        </Grid>
+            <br />
 
-        <h6>Note: Alphabetical and Special Characters are not allowed. Ex. A-Z !@#$%</h6>
+            <TextField
+              inputProps={{ format: "###-##-####" }} //don't ask me why there are 2 versions
+              InputProps={{ inputComponent: NumberFormatCustom }}
+              onChange={(e) => setValue(e.target.value)} //keeps track of textfield length
+
+              //if length is invalid, show an error message
+              helperText={
+                value.length !== 9 && value.length !== 0
+                  ? "SS# length is invalid"
+                  : " "
+              }
+
+              //search buttons will enable when length is 9
+              btnDisabled={
+                value.length === 9
+                  ? btnDisabled = false
+                  : btnDisabled = true
+              }
+
+              error={value.length < 9 && value.length !== 0} //makes text red
+              id="filled-basic"
+              label="Social Security #"
+              variant="outlined"
+              sx={{ input: { color: "white" } }} //makes input text white
 
 
-   </Box>
 
-    
+            />
+            <br />
+
+              {/*aligns the buttons to be on the same row*/}
+            <Grid container spacing={0} justifyContent="center" >
+
+              <Grid item xs={4}>{/*TODO: figure out how to change width in buttonStyle*/}
+                <Button href="Ssn" sx={buttonStyle} variant="outlined" disabled={btnDisabled} size="large">SSN</Button> {/*button size warped, fix later*/}
+              </Grid>
+
+              <Grid item xs={0}>
+                <Button href="Dmv" size="large" sx={buttonStyle} disabled={btnDisabled} variant="outlined">DMV</Button>
+              </Grid>
+                <Grid item xs={4}>
+              <Button href="StateDep" size="large" sx={buttonStyle} disabled={btnDisabled} variant="outlined">State</Button>
+              </Grid>
+
+            </Grid>
+
+            <h6>Note: Alphabetical and Special Characters are not allowed. Ex. A-Z !@#$%</h6>
+
+
+          </Box>
+
+
         </Typography>
       </div>
     </ThemeProvider>
-    
-    
-    
+
+
+
   );
 };
 
