@@ -1,6 +1,6 @@
 import React from 'react'; //placeHolder for results page
 import Button from '@mui/material/Button';
-import {getFName, getInfo} from './SSVendia'
+import {getFullName, getDOB, getInfo} from '../Backend/SSVendia'
 
 const styles = {
     "&:hover":{
@@ -18,27 +18,18 @@ const styles = {
     elevation: 3,
 }
 
-function dobDummy(){
-    var dob1 = "DOB: 1/12/1983";
-    //var dob2 = "DOB: 12/20/00";
-    //var dob3 = "DOB: 5/19/87";
-    return dob1;
-}
-
 function Results() {
+    //alert(SSN);
     getInfo();
-    const fName = 'Bob'; 
-    const lName = 'Nick'//getLName(SSN);
-    const dob = dobDummy();
+    const fullName = "a"//getFullName(SSN);
+    const DOB = "ab" //getDOB(SSN);
     const ssn = 24459102//SSN;
     return(
         <div>
             <h1>PlaceHolder for results page with temporary button</h1>
-            {fName}
+            {fullName}
             <br/>
-            {lName}
-            <br/>
-            {dob}
+            {DOB}
             <br/>
             {ssn}
             <br/>
