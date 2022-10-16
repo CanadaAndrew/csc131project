@@ -60,7 +60,7 @@ function NumberFormatCustom(props) {
 }
 
 
-const Maspage = () => {
+const Mastpage = () => {
   const [value, setValue] = useState("");
   var btnDisabled = useState(true)
 
@@ -146,4 +146,4 @@ const Maspage = () => {
   );
 };
 
-export default Maspage;
+export default Mastpage;
