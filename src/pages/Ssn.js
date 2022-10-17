@@ -20,7 +20,13 @@ const styles = {
 function Ssn(){
     return(
         <div>
-            <h1>Placeholder for Ssn page</h1>
+            <h1><center>Social Security Results</center></h1>
+            <br />
+            <center>Name: </center>
+            <br />
+            <center>Date of birth: </center>
+            <br />
+
             <Button sx={styles} href="Mastpage">
                 Return Mastpage
             </Button>

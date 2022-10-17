@@ -26,12 +26,12 @@ function Results() {
     const ssn = 24459102//SSN;
     return(
         <div>
-            <h1>PlaceHolder for results page with temporary button</h1>
-            {fullName}
+            <h1><center>PlaceHolder for results page with temporary button</center></h1>
+            <center>{fullName}</center>
             <br/>
-            {DOB}
+            <center>{DOB}</center>
             <br/>
-            {ssn}
+            <center>{ssn}</center>
             <br/>
             <br/>
             <Button sx={styles} href="Mastpage">

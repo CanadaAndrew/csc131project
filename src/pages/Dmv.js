@@ -20,7 +20,15 @@ const styles = {
 function Dmv(){
     return(
         <div>
-            <h1>Placeholder for Dmv page</h1>
+            <h1><center>DMV Results</center></h1>
+            <br />
+            <center>Name: </center>
+            <br />
+            <center>Date of birth: </center>
+            <br />
+            <center>Driver's license number: </center>
+            <br />
+            <br />
             <Button sx={styles} href="Mastpage">
                 Return Mastpage
             </Button>

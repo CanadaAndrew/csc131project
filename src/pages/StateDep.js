@@ -20,7 +20,17 @@ const styles = {
 function StateDep(){
     return(
         <div>
-            <h1>Placeholder for StateDep page</h1>
+            <h1><center>State Department Results</center></h1>
+            <br />
+            <center>Name: </center>
+            <br />
+            <center>Date of birth: </center>
+            <br />
+            <center>Passport number: </center>
+            <br />
+            <center>Passport expires on: </center>
+            <br />
+            <br />
             <Button sx={styles} href="Mastpage">
                 Return Mastpage
             </Button>
