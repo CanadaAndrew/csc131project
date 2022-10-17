@@ -1,5 +1,6 @@
 import React from 'react'; //placeHolder for Dmv page
 import Button from '@mui/material/Button';
+import {getFullName, getDOB, getInfo} from '../Backend/SSVendia'
 
 const styles = {
     "&:hover":{
@@ -17,14 +18,16 @@ const styles = {
     elevation: 3,
 }
 
-function Dmv(){
+function Dmv() {
+    const fullName = "a"//getFullName(SSN);
+    const DOB = "ab" //getDOB(SSN);
     return(
         <div>
             <h1><center>DMV Results</center></h1>
             <br />
-            <center>Name: </center>
+            <center>Name: {fullName}</center>
             <br />
-            <center>Date of birth: </center>
+            <center>Date of birth: {DOB}</center>
             <br />
             <center>Driver's license number: </center>
             <br />
