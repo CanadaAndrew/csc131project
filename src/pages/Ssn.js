@@ -1,6 +1,7 @@
 import React from 'react'; //placeHolder for Ssn page
 import Button from '@mui/material/Button';
-import {getFullName, getDOB, getInfo} from '../Backend/SSVendia'
+import {getFullName, getDOB} from '../Backend/SSVendia'
+import {SSN} from '../Mastpage'
 
 const styles = {
     "&:hover":{
@@ -19,9 +20,10 @@ const styles = {
 }
 
 function Ssn(){
-    const fullName = "a"//getFullName(SSN);
-    const DOB = "ab" //getDOB(SSN);
-    const ssn = 24459102//SSN;
+    getFullName(123456789);
+    const fullName ='a';
+    const DOB = 'b' //getDOB(SSN);
+    const ssn = SSN;
     return(
         <div>
             <h1><center>Social Security Results</center></h1>

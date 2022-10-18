@@ -8,6 +8,7 @@ import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import { PatternFormat } from 'react-number-format';
+export var SSN = -1;
 
 //the main bg color and font
 const mainTheme = createTheme({
@@ -88,7 +89,7 @@ const Mastpage = () => {
             <TextField
               inputProps={{ format: "###-##-####" }} //don't ask me why there are 2 versions
               InputProps={{ inputComponent: NumberFormatCustom }}
-              onChange={(e) => setValue(e.target.value)} //keeps track of textfield length
+              onChange={(e) => {setValue(e.target.value); SSN = e.target.value}} //keeps track of textfield length
 
               //if length is invalid, show an error message
               helperText={

@@ -19,7 +19,11 @@ async function getFullName(targetSSN){
             },
         },
     });
-    return dmvInfo.items[0].Fname + " " + dmvInfo.items[0].MName + " " + dmvInfo.items[0].LName;
+    if(targetSSN === 0 || dmvInfo.items[0] === null){
+        return "Not Found."
+    }else{
+        return dmvInfo.items[0].Fname + " " + dmvInfo.items[0].MName + " " + dmvInfo.items[0].LName;
+    }
 }
 
 async function getDOB(targetSSN){
@@ -31,7 +35,11 @@ async function getDOB(targetSSN){
             },
         },
     });
-    return dmvInfo.items[0].BirthMonth+ "/" + dmvInfo.items[0].BirthDay + "/" + dmvInfo.items[0].BirthYear;
+    if(targetSSN === 0 || dmvInfo.items[0] === null){
+        return "Not Found."
+    } else{
+        return dmvInfo.items[0].BirthMonth+ "/" + dmvInfo.items[0].BirthDay + "/" + dmvInfo.items[0].BirthYear;
+    }
 }
 
 async function getLicenseNumber(targetSSN){
@@ -43,5 +51,9 @@ async function getLicenseNumber(targetSSN){
             },
         },
     });
-    return dmvInfo.items[0].LicenseNumber;
+    if(targetSSN === 0 || dmvInfo.items[0] === null){
+        return "Not Found."
+    }else{
+        return dmvInfo.items[0].LicenseNumber;
+    }
 }

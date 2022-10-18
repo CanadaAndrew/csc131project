@@ -19,8 +19,6 @@ const styles = {
 }
 
 function Results() {
-    //alert(SSN);
-    getInfo();
     const fullName = "a"//getFullName(SSN);
     const DOB = "ab" //getDOB(SSN);
     const ssn = 24459102//SSN;

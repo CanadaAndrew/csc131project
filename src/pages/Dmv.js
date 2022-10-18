@@ -1,6 +1,6 @@
 import React from 'react'; //placeHolder for Dmv page
 import Button from '@mui/material/Button';
-import {getFullName, getDOB, getInfo} from '../Backend/SSVendia'
+import {getFullName, getDOB} from '../Backend/DMVVendia'
 
 const styles = {
     "&:hover":{

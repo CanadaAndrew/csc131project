@@ -10,12 +10,6 @@ function getEntities(){
     return entities;
 }
 
-async function getInfo(){
-    const entities = getEntities();
-    const ssList = await entities.SS.list();
-    alert("Sample Query from Vendia. Taking a person with the SSN of 123456789. \nName: "+ await getFullName("123456789") +"\nDOB: " + await getDOB("123456789"));
-}
-
 async function getFName(targetSSN){
     const entities = getEntities();
     const SSInfo = await entities.SS.list({
@@ -25,7 +19,12 @@ async function getFName(targetSSN){
             }
         },
     });
-    return SSInfo.items[0].Fname;
+    if(targetSSN === 0 || SSInfo.items[0] === null){
+        return "Not Found."
+    }else{
+        alert(SSInfo.items[0].Fname);
+        return SSInfo.items[0].Fname;
+    }
 }
 
 async function getMName(targetSSN){
@@ -37,7 +36,11 @@ async function getMName(targetSSN){
             },
         },
     });
-    return SSInfo.items[0].MName;
+    if(targetSSN === 0 || SSInfo.items[0] === null){
+        return "Not Found."
+    }else{
+        return SSInfo.items[0].MName;
+    }
 }
 
 async function getLName(targetSSN){
@@ -49,7 +52,11 @@ async function getLName(targetSSN){
             },
         },
     });
-    return SSInfo.items[0].LName;
+    if(targetSSN === 0 || SSInfo.items[0] === null){
+        return "Not Found."
+    }else{
+        return SSInfo.items[0].LName;
+    }
 }
 
 async function getFullName(targetSSN){
@@ -64,8 +71,12 @@ async function getDOB(targetSSN){
                 eq: targetSSN,
             },
         },
-    });
-    return SSInfo.items[0].BirthMonth+ "/" + SSInfo.items[0].BirthDay + "/" + SSInfo.items[0].BirthYear;
+    })
+    if(targetSSN === 0 || SSInfo.items[0] === null){
+        return "Not Found."
+    }else{
+        return SSInfo.items[0].BirthMonth+ "/" + SSInfo.items[0].BirthDay + "/" + SSInfo.items[0].BirthYear;
+    }
 }
 
-export{getInfo, getFullName, getDOB};
+export{getFullName, getDOB};
