@@ -1,6 +1,7 @@
 import React from 'react'; //placeHolder for results page
 import Button from '@mui/material/Button';
 import {getFullName, getDOB, getInfo} from '../Backend/SSVendia'
+import Grid from '@mui/material/Grid';
 
 const styles = {
     "&:hover":{
@@ -32,24 +33,33 @@ function Results() {
             <center>{ssn}</center>
             <br/>
             <br/>
-            <Button sx={styles} href="Mastpage">
-                Return to Mastpage
-            </Button>
-            <br/>
-            <br/>
-            <Button sx={styles} href="Dmv">
-                to Dmv
-            </Button>
-            <br/>
-            <br/>
-            <Button sx={styles} href="StateDep">
-                to StateDep
-            </Button>
-            <br/>
-            <br/>
-            <Button sx={styles} href="Ssn">
-                to Ssn
-            </Button>
+            <Grid container spacing={0} justifyContent = "center">
+
+              <Grid item xs = {1}>
+                <Button sx={styles} href="Mastpage">
+                 Return to Mastpage
+                </Button>
+              </Grid>
+
+              <Grid item xs = {1}>
+                <Button sx={styles} href="Dmv">
+                  to Dmv
+                </Button>
+              </Grid>
+
+              <Grid item xs = {1}>
+                <Button sx={styles} href="StateDep">
+                  to StateDep
+                </Button>
+              </Grid>
+
+              <Grid item xs = {1}>
+                <Button sx={styles} href="Ssn">
+                  to Ssn
+                </Button>
+               </Grid>
+
+            </Grid>
        </div>
     )
 }

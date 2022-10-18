@@ -1,6 +1,7 @@
 import React from 'react'; //placeHolder for Dmv page
 import Button from '@mui/material/Button';
 import {getFullName, getDOB} from '../Backend/DMVVendia'
+import Grid from '@mui/material/Grid';
 
 const styles = {
     "&:hover":{
@@ -32,24 +33,34 @@ function Dmv() {
             <center>Driver's license number: </center>
             <br />
             <br />
-            <Button sx={styles} href="Mastpage">
-                Return Mastpage
-            </Button>
-            <br/>
-            <br/>
-            <Button sx={styles} href="StateDep">
-                to StateDep
-            </Button>
-            <br/>
-            <br/>
-            <Button sx={styles} href="Ssn">
-                to Ssn
-            </Button>
-            <br/>
-            <br/>
-            <Button sx={styles} href="Results">
-                to Results
-            </Button>
+
+         <Grid container spacing={0} justifyContent = "center">
+
+            <Grid item xs = {1}>
+               <Button sx={styles} href="Mastpage">
+                   Return Mastpage
+               </Button>
+            </Grid>
+
+            <Grid item xs = {1}>
+               <Button sx={styles} href="StateDep">
+                   to StateDep
+               </Button>
+            </Grid>
+            
+            <Grid item xs = {1}>
+               <Button sx={styles} href="Ssn">
+                   to Ssn
+               </Button>
+            </Grid>
+            
+            <Grid item xs = {1}>
+               <Button sx={styles} href="Results">
+                   to Results
+               </Button>
+            </Grid>
+
+         </Grid>
         </div>
     )
 }

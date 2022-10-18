@@ -1,6 +1,7 @@
 import React from 'react'; //placeHolder for StateDep page
 import Button from '@mui/material/Button';
 import {getFullName, getDOB, getInfo} from '../Backend/SSVendia'
+import Grid from '@mui/material/Grid';
 
 const styles = {
     "&:hover":{
@@ -35,24 +36,34 @@ function StateDep(){
             <center>Passport expires on: </center>
             <br />
             <br />
-            <Button sx={styles} href="Mastpage">
-                Return Mastpage
-            </Button>
-            <br/>
-            <br/>
-            <Button sx={styles} href="Dmv">
-                to Dmv
-            </Button>
-            <br/>
-            <br/>
-            <Button sx={styles} href="Ssn">
-                to Ssn
-            </Button>
-            <br/>
-            <br/>
-            <Button sx={styles} href="Results">
-                to Results
-            </Button>
+
+         <Grid container spacing={0} justifyContent = "center">
+
+            <Grid item xs = {1}>
+               <Button sx={styles} href="Mastpage">
+                   Return Mastpage
+               </Button>
+            </Grid>
+           
+            <Grid item xs = {1}>
+               <Button sx={styles} href="Dmv">
+                   to Dmv
+               </Button>
+            </Grid>
+            
+            <Grid item xs = {1}>
+               <Button sx={styles} href="Ssn">
+                   to Ssn
+               </Button>
+            </Grid>
+            
+            <Grid item xs = {1}>
+               <Button sx={styles} href="Results">
+                   to Results
+               </Button>
+            </Grid>
+
+         </Grid>   
         </div>
     )
 }
