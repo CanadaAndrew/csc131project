@@ -20,7 +20,7 @@ const mainTheme = createTheme({
     primary: { main: "#ffffff" }, // this changes the textbox to white
 
     background: {
-      default: "#000b4f", //changes whole page background to dark blue 
+      default: "#c49e06", //changes whole page background to dark blue 
     },
   },
 });
@@ -79,7 +79,7 @@ const Mastpage = () => {
           <Box sx={{
             //secondary background color
             height: 1000, //just a quick fix for now, TODO: find a way to set it to the height of the page
-            backgroundColor: '#829cd0', //placeholder, TODO: discuss nice colors w/ group
+            backgroundColor: '#05540a', //placeholder, TODO: discuss nice colors w/ group
             margin: 'auto', //this pushes the width to the page size and centers the text
 
           }}>
