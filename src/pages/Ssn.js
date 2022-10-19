@@ -20,9 +20,9 @@ const styles = {
     elevation: 3,
 }
 
+
 function Ssn(){
-    getFullName(123456789);
-    const fullName ='a';
+    const fullName =1//getFullName(123456789).Wait();
     const DOB = 'b' //getDOB(SSN);
     const ssn = SSN;
     return(

@@ -10,19 +10,21 @@ function getEntities(){
     return entities;
 }
 
+async function getInfo(targetSSN){
+    alert(await getFName(targetSSN));
+}
 async function getFName(targetSSN){
     const entities = getEntities();
     const SSInfo = await entities.SS.list({
         filter:{
             SSN: {
-                eq: targetSSN,
+                contains: ''+targetSSN,
             }
         },
     });
     if(targetSSN === 0 || SSInfo.items[0] === null){
         return "Not Found."
     }else{
-        alert(SSInfo.items[0].Fname);
         return SSInfo.items[0].Fname;
     }
 }
@@ -32,7 +34,7 @@ async function getMName(targetSSN){
     const SSInfo = await entities.SS.list({
         filter:{
             SSN: {
-                eq: targetSSN,
+                contains: ''+targetSSN,
             },
         },
     });
@@ -48,7 +50,7 @@ async function getLName(targetSSN){
     const SSInfo = await entities.SS.list({
         filter:{
             SSN: {
-                eq: targetSSN,
+                contains: ''+targetSSN,
             },
         },
     });
@@ -60,7 +62,19 @@ async function getLName(targetSSN){
 }
 
 async function getFullName(targetSSN){
-    return await getFName(targetSSN) + " " + await getMName(targetSSN) + " " + await getLName(targetSSN);
+    const entities = getEntities();
+    const SSInfo = await entities.SS.list({
+        filter:{
+            SSN: {
+                contains: ''+targetSSN,
+            },
+        },
+    });
+    if(targetSSN === 0 || SSInfo.items[0] === null){
+        return "Not Found."
+    }else{
+        return SSInfo.items[0].Fname + " " + SSInfo.items[0].MName + " " + SSInfo.items[0].LName;
+    }
 }
 
 async function getDOB(targetSSN){
@@ -68,7 +82,7 @@ async function getDOB(targetSSN){
     const SSInfo = await entities.SS.list({
         filter:{
             SSN: {
-                eq: targetSSN,
+                contains: ''+targetSSN,
             },
         },
     })

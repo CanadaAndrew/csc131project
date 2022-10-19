@@ -1,8 +1,8 @@
 import React from 'react'; //placeHolder for results page
 import Button from '@mui/material/Button';
-import {getFullName, getDOB, getInfo} from '../Backend/SSVendia'
+import {getFullName, getDOB} from '../Backend/SSVendia'
 import Grid from '@mui/material/Grid';
-
+import {SSN} from '../Mastpage';
 const styles = {
     "&:hover":{
         background: "Green",
@@ -20,7 +20,12 @@ const styles = {
 }
 
 function Results() {
-    const fullName = "a"//getFullName(SSN);
+  alert(SSN);
+    var placeHolder = getFullName(SSN);
+    if(typeof placeHolder === 'object' && typeof placeHolder.then === 'function'){
+      placeHolder = setTimeout(getFullName(SSN), 5000);
+    }
+    var fullName = placeHolder;
     const DOB = "ab" //getDOB(SSN);
     const ssn = 24459102//SSN;
     return(

@@ -8,8 +8,8 @@ import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import { PatternFormat } from 'react-number-format';
-export var SSN = -1;
-
+export var SSN;
+SSN = 0;
 //the main bg color and font
 const mainTheme = createTheme({
   typography: {
@@ -60,7 +60,9 @@ function NumberFormatCustom(props) {
   );
 }
 
-
+function getSSN(){
+  return SSN;
+}
 const Mastpage = () => {
   const [value, setValue] = useState("");
   var btnDisabled = useState(true)

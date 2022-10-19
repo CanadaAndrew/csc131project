@@ -15,7 +15,7 @@ async function getFullName(targetSSN){
     const dmvInfo = await entities.DMV.list({
         filter:{
             SSN: {
-                eq: targetSSN,
+                contains: ''+targetSSN,
             },
         },
     });
@@ -31,7 +31,7 @@ async function getDOB(targetSSN){
     const dmvInfo = await entities.DMV.list({
         filter:{
             SSN: {
-                eq: targetSSN,
+                contains: ''+targetSSN,
             },
         },
     });
@@ -47,7 +47,7 @@ async function getLicenseNumber(targetSSN){
     const dmvInfo = await entities.DMV.list({
         filter:{
             SSN: {
-                eq: targetSSN,
+                contains: ''+targetSSN,
             },
         },
     });
