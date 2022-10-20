@@ -1,8 +1,8 @@
 import React from 'react'; //placeHolder for Dmv page
 import Button from '@mui/material/Button';
-import {getFullName, getDOB} from '../Backend/DMVVendia'
+import {getFullName, getDOB, getLicenseNumber} from '../Backend/DMVVendia'
 import Grid from '@mui/material/Grid';
-
+import {useState} from 'react'
 const styles = {
     "&:hover":{
         background: "Green",
@@ -20,8 +20,13 @@ const styles = {
 }
 
 function Dmv() {
-    const fullName = "a"//getFullName(SSN);
-    const DOB = "ab" //getDOB(SSN);
+    const SSNNum = sessionStorage.getItem('SSN');
+    const [fullName, setFullName] = useState('');
+    const [DOB, setDOB] = useState('');
+    const [DL, setDL] = useState('');
+    getFullName(SSNNum).then((dataName) => {setFullName(dataName)});
+    getDOB(SSNNum).then((dataDOB) => {setDOB(dataDOB)});
+    getLicenseNumber(SSNNum).then((dataLN) => {setDL(dataLN)});
     return(
         <div>
             <h1><center>DMV Results</center></h1>
@@ -30,7 +35,7 @@ function Dmv() {
             <br />
             <center>Date of birth: {DOB}</center>
             <br />
-            <center>Driver's license number: </center>
+            <center>Driver's license number: {DL}</center>
             <br />
             <br />
 
@@ -38,7 +43,7 @@ function Dmv() {
 
             <Grid item xs = {1}>
                <Button sx={styles} href="Mastpage">
-                   Return Mastpage
+                    Return to searchbar
                </Button>
             </Grid>
 
@@ -50,7 +55,7 @@ function Dmv() {
             
             <Grid item xs = {1}>
                <Button sx={styles} href="Ssn">
-                   to Ssn
+                   to SS
                </Button>
             </Grid>
             

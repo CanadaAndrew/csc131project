@@ -1,8 +1,9 @@
 import React from 'react'; //placeHolder for results page
 import Button from '@mui/material/Button';
-import {getFullName, getDOB} from '../Backend/SSVendia'
+import {getFullName} from '../Backend/SSVendia'
 import Grid from '@mui/material/Grid';
-import {SSN} from '../Mastpage';
+import {useState} from 'react';
+var SSNNum;
 const styles = {
     "&:hover":{
         background: "Green",
@@ -18,25 +19,31 @@ const styles = {
     boxShadow: 3,
     elevation: 3,
 }
+/*function ResultText(){
+  const [result, setResult] = useState('');
+
+  function updateText(textUpdate){
+    setResult(textUpdate);
+    alert(result);
+  }
+
+  return(
+    <center>{result}</center>
+  )
+} Later use
+*/
 
 function Results() {
-  alert(SSN);
-    var placeHolder = getFullName(SSN);
-    if(typeof placeHolder === 'object' && typeof placeHolder.then === 'function'){
-      placeHolder = setTimeout(getFullName(SSN), 5000);
-    }
-    var fullName = placeHolder;
-    const DOB = "ab" //getDOB(SSN);
-    const ssn = 24459102//SSN;
+  const [result, setResult] = useState('');
+  function updateText(textUpdate){
+    setResult(textUpdate);
+  }
+  SSNNum = sessionStorage.getItem('SSN');
+  getFullName(SSNNum).then((dataName) => {updateText(dataName)});
     return(
         <div>
             <h1><center>PlaceHolder for results page with temporary button</center></h1>
-            <center>{fullName}</center>
-            <br/>
-            <center>{DOB}</center>
-            <br/>
-            <center>{ssn}</center>
-            <br/>
+            <center>{result}</center>
             <br/>
             <Grid container spacing={0} justifyContent = "center">
 

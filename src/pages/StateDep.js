@@ -41,7 +41,7 @@ function StateDep(){
 
             <Grid item xs = {1}>
                <Button sx={styles} href="Mastpage">
-                   Return Mastpage
+                    Return to searchbar
                </Button>
             </Grid>
            
@@ -53,7 +53,7 @@ function StateDep(){
             
             <Grid item xs = {1}>
                <Button sx={styles} href="Ssn">
-                   to Ssn
+                   to SS
                </Button>
             </Grid>
             

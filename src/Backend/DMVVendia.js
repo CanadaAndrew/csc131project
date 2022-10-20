@@ -57,3 +57,5 @@ async function getLicenseNumber(targetSSN){
         return dmvInfo.items[0].LicenseNumber;
     }
 }
+
+export{getFullName, getDOB, getLicenseNumber};

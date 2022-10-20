@@ -8,8 +8,8 @@ import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import { PatternFormat } from 'react-number-format';
-export var SSN;
-SSN = 0;
+
+var SSNNum = 0;
 //the main bg color and font
 const mainTheme = createTheme({
   typography: {
@@ -60,9 +60,6 @@ function NumberFormatCustom(props) {
   );
 }
 
-function getSSN(){
-  return SSN;
-}
 const Mastpage = () => {
   const [value, setValue] = useState("");
   var btnDisabled = useState(true)
@@ -91,7 +88,7 @@ const Mastpage = () => {
             <TextField
               inputProps={{ format: "###-##-####" }} //don't ask me why there are 2 versions
               InputProps={{ inputComponent: NumberFormatCustom }}
-              onChange={(e) => {setValue(e.target.value); SSN = e.target.value}} //keeps track of textfield length
+              onChange={(e) => {setValue(e.target.value); SSNNum = e.target.value}} //keeps track of textfield length
 
               //if length is invalid, show an error message
               helperText={
@@ -122,14 +119,14 @@ const Mastpage = () => {
             <Grid container spacing={0} justifyContent="center" >
 
               <Grid item xs={4}>{/*TODO: figure out how to change width in buttonStyle*/}
-                <Button href="Ssn" sx={buttonStyle} variant="outlined" disabled={btnDisabled} size="large">SSN</Button> {/*button size warped, fix later*/}
+                <Button href="Ssn" onClick = {() => {sessionStorage.setItem("SSN", SSNNum)}} sx={buttonStyle} variant="outlined" disabled={btnDisabled} size="large">SS</Button> {/*button size warped, fix later*/}
               </Grid>
 
               <Grid item xs={0}>
-                <Button href="Dmv" size="large" sx={buttonStyle} disabled={btnDisabled} variant="outlined">DMV</Button>
+                <Button href="Dmv" onClick = {() => {sessionStorage.setItem("SSN", SSNNum)}} size="large" sx={buttonStyle} disabled={btnDisabled} variant="outlined">DMV</Button>
               </Grid>
                 <Grid item xs={4}>
-              <Button href="StateDep" size="large" sx={buttonStyle} disabled={btnDisabled} variant="outlined">State</Button>
+              <Button href="StateDep" onClick = {() => {sessionStorage.setItem("SSN", SSNNum)}} size="large" sx={buttonStyle} disabled={btnDisabled} variant="outlined">State</Button>
               </Grid>
 
             </Grid>

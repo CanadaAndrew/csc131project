@@ -1,9 +1,8 @@
 import React from 'react'; //placeHolder for Ssn page
 import Button from '@mui/material/Button';
 import {getFullName, getDOB} from '../Backend/SSVendia'
-import {SSN} from '../Mastpage'
 import Grid from '@mui/material/Grid';
-
+import {useState} from 'react';
 const styles = {
     "&:hover":{
         background: "Green",
@@ -22,9 +21,11 @@ const styles = {
 
 
 function Ssn(){
-    const fullName =1//getFullName(123456789).Wait();
-    const DOB = 'b' //getDOB(SSN);
-    const ssn = SSN;
+    const SSNNum = sessionStorage.getItem('SSN');
+    const [fullName, setFullName] = useState('');
+    const [DOB, setDOB] = useState('');
+    getFullName(SSNNum).then((dataName) => {setFullName(dataName)});
+    getDOB(SSNNum).then((dataDOB) => {setDOB(dataDOB)});
     return(
         <div>
             <h1><center>Social Security Results</center></h1>
@@ -38,7 +39,7 @@ function Ssn(){
               
             <Grid item xs = {1}>
                <Button sx={styles} href="Mastpage">
-                   Return Mastpage
+                   Return to searchbar
                </Button>
             </Grid>
             
