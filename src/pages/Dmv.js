@@ -3,6 +3,23 @@ import Button from '@mui/material/Button';
 import {getFullName, getDOB, getLicenseNumber} from '../Backend/DMVVendia'
 import Grid from '@mui/material/Grid';
 import {useState} from 'react'
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import CssBaseline from "@mui/material/CssBaseline";
+
+const mainTheme = createTheme({
+    typography: {
+      fontFamily: ["Segoe UI Symbol"].join(","),
+      fontSize: 24,
+    },
+    palette: {
+      primary: { main: "#ffffff" }, // this changes the textbox to white
+  
+      background: {
+        default: "#c49e06", //changes whole page background to dark blue 
+      },
+    },
+  });
+  
 const styles = {
     "&:hover":{
         background: "Green",
@@ -19,7 +36,11 @@ const styles = {
     elevation: 3,
 }
 
+
+
 function Dmv() {
+
+   
     const SSNNum = sessionStorage.getItem('SSN');
     const [fullName, setFullName] = useState('');
     const [DOB, setDOB] = useState('');
@@ -28,7 +49,9 @@ function Dmv() {
     getDOB(SSNNum).then((dataDOB) => {setDOB(dataDOB)});
     getLicenseNumber(SSNNum).then((dataLN) => {setDL(dataLN)});
     return(
+        <ThemeProvider theme={mainTheme} >
         <div>
+        <CssBaseline /> {/*CssBaseline enables changing background color*/}
             <h1><center>DMV Results</center></h1>
             <br />
             <center>Name: {fullName}</center>
@@ -66,8 +89,11 @@ function Dmv() {
             </Grid>
 
          </Grid>
+        
         </div>
+        </ThemeProvider>  
     )
+   
 }
 
 export default Dmv;

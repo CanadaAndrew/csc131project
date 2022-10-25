@@ -2,6 +2,22 @@ import React from 'react'; //placeHolder for StateDep page
 import Button from '@mui/material/Button';
 import {getFullName, getDOB, getInfo} from '../Backend/SSVendia'
 import Grid from '@mui/material/Grid';
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import CssBaseline from "@mui/material/CssBaseline";
+
+const mainTheme = createTheme({
+    typography: {
+      fontFamily: ["Segoe UI Symbol"].join(","),
+      fontSize: 24,
+    },
+    palette: {
+      primary: { main: "#ffffff" }, // this changes the textbox to white
+  
+      background: {
+        default: "#c49e06", //changes whole page background to dark blue 
+      },
+    },
+  });
 
 const styles = {
     "&:hover":{
@@ -24,6 +40,8 @@ function StateDep(){
     const DOB = "ab" //getDOB(SSN);
     const ssn = 24459102//SSN;
     return(
+        <ThemeProvider theme={mainTheme} >
+         <CssBaseline /> {/*CssBaseline enables changing background color*/}
         <div>
             <h1><center>State Department Results</center></h1>
             <br />
@@ -65,6 +83,7 @@ function StateDep(){
 
          </Grid>   
         </div>
+        </ThemeProvider>  
     )
 }
 

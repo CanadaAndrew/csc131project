@@ -3,6 +3,23 @@ import Button from '@mui/material/Button';
 import {getFullName} from '../Backend/SSVendia'
 import Grid from '@mui/material/Grid';
 import {useState} from 'react';
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import CssBaseline from "@mui/material/CssBaseline";
+
+const mainTheme = createTheme({
+    typography: {
+      fontFamily: ["Segoe UI Symbol"].join(","),
+      fontSize: 24,
+    },
+    palette: {
+      primary: { main: "#ffffff" }, // this changes the textbox to white
+  
+      background: {
+        default: "#c49e06", //changes whole page background to dark blue 
+      },
+    },
+  });
+
 var SSNNum;
 const styles = {
     "&:hover":{
@@ -41,6 +58,8 @@ function Results() {
   SSNNum = sessionStorage.getItem('SSN');
   getFullName(SSNNum).then((dataName) => {updateText(dataName)});
     return(
+      <ThemeProvider theme={mainTheme} >
+         <CssBaseline /> {/*CssBaseline enables changing background color*/}
         <div>
             <h1><center>PlaceHolder for results page with temporary button</center></h1>
             <center>{result}</center>
@@ -73,6 +92,7 @@ function Results() {
 
             </Grid>
        </div>
+       </ThemeProvider>  
     )
 }
 

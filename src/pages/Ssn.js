@@ -3,6 +3,23 @@ import Button from '@mui/material/Button';
 import {getFullName, getDOB} from '../Backend/SSVendia'
 import Grid from '@mui/material/Grid';
 import {useState} from 'react';
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import CssBaseline from "@mui/material/CssBaseline";
+
+const mainTheme = createTheme({
+    typography: {
+      fontFamily: ["Segoe UI Symbol"].join(","),
+      fontSize: 24,
+    },
+    palette: {
+      primary: { main: "#ffffff" }, // this changes the textbox to white
+  
+      background: {
+        default: "#c49e06", //changes whole page background to dark blue 
+      },
+    },
+  });
+
 const styles = {
     "&:hover":{
         background: "Green",
@@ -27,6 +44,8 @@ function Ssn(){
     getFullName(SSNNum).then((dataName) => {setFullName(dataName)});
     getDOB(SSNNum).then((dataDOB) => {setDOB(dataDOB)});
     return(
+        <ThemeProvider theme={mainTheme} >
+         <CssBaseline /> {/*CssBaseline enables changing background color*/}
         <div>
             <h1><center>Social Security Results</center></h1>
             <br />
@@ -63,6 +82,7 @@ function Ssn(){
 
          </Grid>
         </div>
+        </ThemeProvider>  
     )
 }
 
