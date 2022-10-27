@@ -4,6 +4,7 @@ import {getFullName, getDOB, getInfo} from '../Backend/SSVendia'
 import Grid from '@mui/material/Grid';
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
+import Box from '@mui/material/Box';
 
 const mainTheme = createTheme({
     typography: {
@@ -45,6 +46,17 @@ function StateDep(){
         <div>
             <h1><center>State Department Results</center></h1>
             <br />
+
+            <Box sx={{
+             
+             //secondary background color
+             borderRadius: '16px',
+             height: 300,
+             width: 500,
+             margin: 'auto',
+             backgroundColor: '#05540a', 
+ 
+           }}>
             <center>Name: {fullName}</center>
             <br />
             <center>Date of birth: {DOB}</center>
@@ -53,6 +65,8 @@ function StateDep(){
             <br />
             <center>Passport expires on: </center>
             <br />
+            <br />
+            </Box>
             <br />
 
          <Grid container spacing={0} justifyContent = "center">

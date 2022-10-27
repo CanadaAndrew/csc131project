@@ -5,6 +5,7 @@ import Grid from '@mui/material/Grid';
 import {useState} from 'react';
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
+import Box from '@mui/material/Box';
 
 const mainTheme = createTheme({
     typography: {
@@ -59,6 +60,7 @@ function Results() {
   getFullName(SSNNum).then((dataName) => {updateText(dataName)});
     return(
       <ThemeProvider theme={mainTheme} >
+        
          <CssBaseline /> {/*CssBaseline enables changing background color*/}
         <div>
             <h1><center>PlaceHolder for results page with temporary button</center></h1>

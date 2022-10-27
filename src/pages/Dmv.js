@@ -5,6 +5,7 @@ import Grid from '@mui/material/Grid';
 import {useState} from 'react'
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
+import Box from '@mui/material/Box';
 
 const mainTheme = createTheme({
     typography: {
@@ -52,8 +53,22 @@ function Dmv() {
         <ThemeProvider theme={mainTheme} >
         <div>
         <CssBaseline /> {/*CssBaseline enables changing background color*/}
+
+       
+
             <h1><center>DMV Results</center></h1>
             <br />
+            <Box sx={{
+             
+            //secondary background color
+            borderRadius: '16px',
+            height: 300,
+            width: 500,
+            margin: 'auto',
+            backgroundColor: '#05540a', 
+
+          }}>
+              <br />
             <center>Name: {fullName}</center>
             <br />
             <center>Date of birth: {DOB}</center>
@@ -61,7 +76,8 @@ function Dmv() {
             <center>Driver's license number: {DL}</center>
             <br />
             <br />
-
+          </Box>
+          <br />
          <Grid container spacing={0} justifyContent = "center">
 
             <Grid item xs = {1}>
