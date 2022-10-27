@@ -24,18 +24,12 @@ const mainTheme = createTheme({
 var SSNNum;
 const styles = {
     "&:hover":{
-        background: "Green",
+        background: "green",
         border: "1px solid black",
         color: "White"
     },
-    background:"LimeGreen", 
-    color:"Black",
-    width: 72,
-    height: 76,
-    fontSize: 12,
-    borderRadius: 5,
-    boxShadow: 3,
-    elevation: 3,
+    width: 150,
+  fontSize: 20,
 }
 /*function ResultText(){
   const [result, setResult] = useState('');
@@ -63,32 +57,26 @@ function Results() {
         
          <CssBaseline /> {/*CssBaseline enables changing background color*/}
         <div>
-            <h1><center>PlaceHolder for results page with temporary button</center></h1>
+            <h1><center>User Results</center></h1>
             <center>{result}</center>
             <br/>
             <Grid container spacing={0} justifyContent = "center">
 
-              <Grid item xs = {1}>
-                <Button sx={styles} href="Mastpage">
-                 Return to Mastpage
+              <Grid item xs = {2}>
+                <Button sx={styles} size="large" variant="outlined" href="Dmv">
+                  Dmv
                 </Button>
               </Grid>
 
-              <Grid item xs = {1}>
-                <Button sx={styles} href="Dmv">
-                  to Dmv
+              <Grid item xs = {2}>
+                <Button sx={styles} size="large" variant="outlined" href="StateDep">
+                  StateDep
                 </Button>
               </Grid>
 
-              <Grid item xs = {1}>
-                <Button sx={styles} href="StateDep">
-                  to StateDep
-                </Button>
-              </Grid>
-
-              <Grid item xs = {1}>
-                <Button sx={styles} href="Ssn">
-                  to Ssn
+              <Grid item xs = {2}>
+                <Button sx={styles} size="large" variant="outlined" href="Ssn">
+                  SSN
                 </Button>
                </Grid>
 

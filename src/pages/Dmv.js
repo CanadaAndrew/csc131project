@@ -27,14 +27,10 @@ const styles = {
         border: "1px solid black",
         color: "White"
     },
-    background:"LimeGreen", 
-    color:"Black",
-    width: 72,
-    height: 76,
-    fontSize: 12,
-    borderRadius: 5,
-    boxShadow: 3,
-    elevation: 3,
+    width: 150,
+    fontSize: 20,
+    //color: "black",
+    //border: "1px solid white"
 }
 
 
@@ -80,27 +76,21 @@ function Dmv() {
           <br />
          <Grid container spacing={0} justifyContent = "center">
 
-            <Grid item xs = {1}>
-               <Button sx={styles} href="Mastpage">
+            <Grid item xs = {2}>
+               <Button sx={styles} size="large" variant="outlined" href="Mastpage">
                     Return to searchbar
                </Button>
             </Grid>
 
-            <Grid item xs = {1}>
-               <Button sx={styles} href="StateDep">
-                   to StateDep
+            <Grid item xs = {2}>
+               <Button sx={styles} size="large" variant="outlined" href="StateDep">
+                   StateDep
                </Button>
             </Grid>
             
-            <Grid item xs = {1}>
-               <Button sx={styles} href="Ssn">
-                   to SS
-               </Button>
-            </Grid>
-            
-            <Grid item xs = {1}>
-               <Button sx={styles} href="Results">
-                   to Results
+            <Grid item xs = {2}>
+               <Button sx={styles} size="large" variant="outlined" href="Ssn">
+                   SSN
                </Button>
             </Grid>
 

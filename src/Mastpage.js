@@ -33,7 +33,6 @@ const buttonStyle =
     border: "1px solid black",
     color: "White",
   },
-
   width: 150,
   fontSize: 20,
 }
@@ -125,8 +124,17 @@ const Mastpage = () => {
               <Grid item xs={0}>
                 <Button href="Dmv" onClick = {() => {sessionStorage.setItem("SSN", SSNNum)}} size="large" sx={buttonStyle} disabled={btnDisabled} variant="outlined">DMV</Button>
               </Grid>
-                <Grid item xs={4}>
-              <Button href="StateDep" onClick = {() => {sessionStorage.setItem("SSN", SSNNum)}} size="large" sx={buttonStyle} disabled={btnDisabled} variant="outlined">State</Button>
+
+              <Grid item xs={4}>
+                <Button href="StateDep" onClick = {() => {sessionStorage.setItem("SSN", SSNNum)}} size="large" sx={buttonStyle} disabled={btnDisabled} variant="outlined">State</Button>
+              </Grid>
+
+              <Grid item xs ={4}>
+                <Button
+                   onClick = {() => {sessionStorage.setItem("SSN", SSNNum)}}
+                   href="Results" size="large" sx={buttonStyle} disabled={btnDisabled} variant="outlined">
+                    Search
+                </Button>
               </Grid>
 
             </Grid>
