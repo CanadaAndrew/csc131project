@@ -6,6 +6,7 @@ import {useState} from 'react';
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import Box from '@mui/material/Box';
+import {Person} from './../Backend/Person'
 
 const mainTheme = createTheme({
     typography: {
@@ -31,27 +32,18 @@ const styles = {
     width: 150,
   fontSize: 20,
 }
-/*function ResultText(){
-  const [result, setResult] = useState('');
-
-  function updateText(textUpdate){
-    setResult(textUpdate);
-    alert(result);
-  }
-
-  return(
-    <center>{result}</center>
-  )
-} Later use
-*/
 
 function Results() {
-  const [result, setResult] = useState('');
-  function updateText(textUpdate){
+  const [ready, toggleReady] = useState(false);
+  /*function updateText(textUpdate){
     setResult(textUpdate);
-  }
+  }*/
   SSNNum = sessionStorage.getItem('SSN');
+  /*
   getFullName(SSNNum).then((dataName) => {updateText(dataName)});
+  */
+ const thePerson = new Person(SSNNum);
+  var result = 0;
     return(
       <ThemeProvider theme={mainTheme} >
         

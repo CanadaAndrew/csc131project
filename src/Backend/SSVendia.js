@@ -10,58 +10,6 @@ function getEntities(){
     return entities;
 }
 
-/*
-async function getInfo(targetSSN){
-    alert(await getFName(targetSSN));
-}
-async function getFName(targetSSN){
-    const entities = getEntities();
-    const SSInfo = await entities.SS.list({
-        filter:{
-            SSN: {
-                contains: ''+targetSSN,
-            }
-        },
-    });
-    if(targetSSN === 0 || SSInfo.items[0] === null){
-        return "Not Found."
-    }else{
-        return SSInfo.items[0].Fname;
-    }
-}
-
-async function getMName(targetSSN){
-    const entities = getEntities();
-    const SSInfo = await entities.SS.list({
-        filter:{
-            SSN: {
-                contains: ''+targetSSN,
-            },
-        },
-    });
-    if(targetSSN === 0 || SSInfo.items[0] === null){
-        return "Not Found."
-    }else{
-        return SSInfo.items[0].MName;
-    }
-}
-
-async function getLName(targetSSN){
-    const entities = getEntities();
-    const SSInfo = await entities.SS.list({
-        filter:{
-            SSN: {
-                contains: ''+targetSSN,
-            },
-        },
-    });
-    if(targetSSN === 0 || SSInfo.items[0] === null){
-        return "Not Found."
-    }else{
-        return SSInfo.items[0].LName;
-    }
-}
-*/
 async function getFullName(targetSSN){
     const entities = getEntities();
     const SSInfo = await entities.SS.list({
