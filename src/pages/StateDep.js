@@ -62,9 +62,9 @@ function StateDep(){
             <br />
             <center>Date of birth: {DOB}</center>
             <br />
-            <center>Passport number:{PassportNum} </center>
+            <center>Passport number: {PassportNum} </center>
             <br />
-            <center>Passport expires on:{PassportExpiration} </center>
+            <center>Passport expires on: {PassportExpiration} </center>
             <br />
             <br />
             </Box>

@@ -44,7 +44,7 @@ async function getDOB(targetSSN){
 
 async function getPassportNumber(targetSSN){
     const entities = getEntities();
-    const SDInfo = await entities.DMV.list({
+    const SDInfo = await entities.SD.list({
         filter:{
             SSN: {
                 contains: ''+targetSSN,
