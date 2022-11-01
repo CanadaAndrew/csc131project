@@ -1,10 +1,11 @@
 import React from 'react'; //placeHolder for StateDep page
 import Button from '@mui/material/Button';
-import {getFullName, getDOB, getInfo} from '../Backend/SSVendia'
+import {getFullName, getDOB, getPassportNumber, getPassportExpiration} from '../Backend/SDVendia'
 import Grid from '@mui/material/Grid';
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import Box from '@mui/material/Box';
+import {useState} from 'react';
 
 const mainTheme = createTheme({
     typography: {
@@ -31,9 +32,15 @@ const styles = {
 }
 
 function StateDep(){
-    const fullName = "a"//getFullName(SSN);
-    const DOB = "ab" //getDOB(SSN);
-    const ssn = 24459102//SSN;
+  const SSNNum = sessionStorage.getItem('SSN');
+  const [fullName, setFullName] = useState('Loading...');
+  const [DOB, setDOB] = useState('Loading...');
+  const [PassportNum, setPassportNum] = useState('Loading...');
+  const [PassportExpiration, setPassportExpiration] = useState('Loading...');
+  getFullName(SSNNum).then((dataName) => {setFullName(dataName)});
+  getDOB(SSNNum).then((dataDOB) => {setDOB(dataDOB)});
+  getPassportNumber(SSNNum).then((passportNumber) => {setPassportNum(passportNumber)});
+  getPassportExpiration(SSNNum).then((passportExpiration) => {setPassportExpiration(passportExpiration)});
     return(
         <ThemeProvider theme={mainTheme} >
          <CssBaseline /> {/*CssBaseline enables changing background color*/}
@@ -55,9 +62,9 @@ function StateDep(){
             <br />
             <center>Date of birth: {DOB}</center>
             <br />
-            <center>Passport number: </center>
+            <center>Passport number:{PassportNum} </center>
             <br />
-            <center>Passport expires on: </center>
+            <center>Passport expires on:{PassportExpiration} </center>
             <br />
             <br />
             </Box>

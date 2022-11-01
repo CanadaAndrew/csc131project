@@ -34,8 +34,8 @@ const styles = {
 
 function Ssn(){
     const SSNNum = sessionStorage.getItem('SSN');
-    const [fullName, setFullName] = useState('');
-    const [DOB, setDOB] = useState('');
+    const [fullName, setFullName] = useState('Loading...');
+    const [DOB, setDOB] = useState('Loading...');
     getFullName(SSNNum).then((dataName) => {setFullName(dataName)});
     getDOB(SSNNum).then((dataDOB) => {setDOB(dataDOB)});
     return(
