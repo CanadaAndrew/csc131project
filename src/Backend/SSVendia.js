@@ -35,7 +35,7 @@ async function getPerson(targetSSN){
             },
         },
     });
-    return SSInfo;
+    return SSInfo.items[0];
 }
 async function getDOB(targetSSN){
     const entities = getEntities();

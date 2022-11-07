@@ -7,6 +7,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import Box from '@mui/material/Box';
 import {Person} from './../Backend/Person'
+import { wait } from '@testing-library/user-event/dist/utils';
 
 const mainTheme = createTheme({
     typography: {
@@ -34,7 +35,7 @@ const styles = {
 }
 
 function Results() {
-  const [ready, toggleReady] = useState(false);
+  var ready = false;
   /*function updateText(textUpdate){
     setResult(textUpdate);
   }*/
@@ -42,15 +43,25 @@ function Results() {
   /*
   getFullName(SSNNum).then((dataName) => {updateText(dataName)});
   */
- const thePerson = new Person(SSNNum);
-  var result = 0;
+  const ThePerson = new Person(SSNNum);
+  while(!ready){
+    try{
+      ThePerson.ssInfo.getFullName();
+      ThePerson.ssInfo.getBirthDate();
+    }catch(e){
+      alert("Not ready");
+      wait(1000);
+      continue;
+    }
+    ready = true;
+  }
     return(
       <ThemeProvider theme={mainTheme} >
         
          <CssBaseline /> {/*CssBaseline enables changing background color*/}
         <div>
             <h1><center>User Results</center></h1>
-            <center>{result}</center>
+            <center>{}</center>
             <br/>
             <Grid container spacing={0} justifyContent = "center">
 

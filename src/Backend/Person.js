@@ -1,5 +1,5 @@
 import {getPerson} from './SSVendia'
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
 
 
 class DMV {
@@ -83,7 +83,7 @@ class DMV {
     }
 }
 
-
+/*
 class SocialSecurity {
     constructor(targetPerson){
         alert("In constructor");
@@ -147,21 +147,37 @@ class SocialSecurity {
         return this.birthYear;
     }
 } 
+*/
 
+function SocialSecurity(SSN){
+    const [FName, setFName] = useState("");
+    const [MName, setMName] = useState("");
+    const [LName, setLName] = useState("");
+    const [BirthDay, setBirthDay] = useState(0);
+    const [BirthMonth, setBirthMonth] = useState(0);
+    const [BirthYear, setBirthYear] = useState(0);
+    getPerson(SSN).then((person) => {
+        setFName(person.FName);
+        setMName(person.MName);
+        setLName(person.LName);
+        setBirthDay(person.BirthDay);
+        setBirthMonth(person.BirthMonth);
+        setBirthYear(person.BirthYear);
+    })
 
+    function getFullName(){
+        return FName + " " + MName + " " + LName;
+    }
+
+    function getBirthDate(){
+        return BirthDay + "/" + BirthMonth + "/" + BirthYear;
+    }
+}
 class Person {
     ssInfo;
     constructor(ssn) {
         this.ssn = ssn;
-        //let ssInfo = new SocialSecurity("Adrian", "James", "Gonzalez", 0, "", 0);
-        //this.ssInfo = new SocialSecurity("Adrian", "James", "Gonzalez", 27, "April", 2002);
-        
-
-        //this.ssInfo(new SocialSecurity(GettingThePerson(ssn).items[0]));
-    }
-
-    set ssInfo(ssInfo){
-        this.ssInfo = ssInfo;
+        this.ssInfo = SocialSecurity(ssn);
     }
     //Methods
     get SSN() {
@@ -170,13 +186,5 @@ class Person {
 
 }
 
-function GettingThePerson(ssn){
-    const [thePerson, updatePerson] = useState(null);
-    getPerson(ssn).then((targetPerson) => {updatePerson = targetPerson;})
-    while(thePerson === null){
-
-    }
-    return thePerson;
-}
 
 export {Person};
