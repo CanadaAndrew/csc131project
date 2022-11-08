@@ -4,7 +4,7 @@ function getEntities(){
     const client = createVendiaClient({
         apiUrl: 'https://2jzhylau9j.execute-api.us-west-1.amazonaws.com/graphql/',
         websocketUrl: 'wss://mrjq3w2t6g.execute-api.us-west-1.amazonaws.com/graphql',
-        apiKey: '5sjc4LLW4n5DvbLVyg8em2XSj6TQnSeWxoHBm2sx79ge',
+        apiKey: '9rVyckXneYKt2RWDKmSCoDBCsDfn6X5czg2mwrrpBxJj',
     });
     const {entities} = client;
     return entities;
@@ -14,7 +14,7 @@ function getStorage(){
     const client = createVendiaClient({
         apiUrl: 'https://2jzhylau9j.execute-api.us-west-1.amazonaws.com/graphql/',
         websocketUrl: 'wss://mrjq3w2t6g.execute-api.us-west-1.amazonaws.com/graphql',
-        apiKey: '5sjc4LLW4n5DvbLVyg8em2XSj6TQnSeWxoHBm2sx79ge',
+        apiKey: '9rVyckXneYKt2RWDKmSCoDBCsDfn6X5czg2mwrrpBxJj',
     });
     const {storage} = client;
     return storage;
