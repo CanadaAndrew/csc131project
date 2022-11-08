@@ -10,6 +10,15 @@ function getEntities(){
     return entities;
 }
 
+function getStorage(){
+    const client = createVendiaClient({
+        apiUrl: 'https://2jzhylau9j.execute-api.us-west-1.amazonaws.com/graphql/',
+        websocketUrl: 'wss://mrjq3w2t6g.execute-api.us-west-1.amazonaws.com/graphql',
+        apiKey: '5sjc4LLW4n5DvbLVyg8em2XSj6TQnSeWxoHBm2sx79ge',
+    });
+    const {storage} = client;
+    return storage;
+}
 async function getFullName(targetSSN){
     const entities = getEntities();
     const SDInfo = await entities.SD.list({
@@ -73,4 +82,16 @@ async function getPassportExpiration(targetSSN){
         return SDInfo.items[0].PassportExpirationMonth+ "/" + SDInfo.items[0].PassportExpirationDay + "/" + SDInfo.items[0].PassportExpirationYear;
     }
 }
-export{getFullName, getDOB, getPassportNumber, getPassportExpiration};
+
+async function getPicture(targetSSN){
+    const storage = getStorage();
+    const getFile = await storage.files.list({
+        filter:{
+            destinationKey:{
+                contains: targetSSN+"SD",
+            },
+        }
+    })
+    return getFile.items[0].temporaryUrl;
+}
+export{getFullName, getDOB, getPassportNumber, getPassportExpiration, getPicture};

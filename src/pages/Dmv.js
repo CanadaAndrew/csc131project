@@ -1,11 +1,12 @@
 import React from 'react'; //placeHolder for Dmv page
 import Button from '@mui/material/Button';
-import {getFullName, getDOB, getLicenseNumber} from '../Backend/DMVVendia'
+import {getFullName, getDOB, getLicenseNumber, getPicture} from '../Backend/DMVVendia'
 import Grid from '@mui/material/Grid';
 import {useState} from 'react'
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import Box from '@mui/material/Box';
+import { wait } from '@testing-library/user-event/dist/utils';
 
 const mainTheme = createTheme({
     typography: {
@@ -36,15 +37,18 @@ const styles = {
 
 
 function Dmv() {
-
-   
     const SSNNum = sessionStorage.getItem('SSN');
     const [fullName, setFullName] = useState('Loading...');
     const [DOB, setDOB] = useState('Loading...');
     const [DL, setDL] = useState('Loading...');
+    const [Picture, setPicture] = useState();
     getFullName(SSNNum).then((dataName) => {setFullName(dataName)});
     getDOB(SSNNum).then((dataDOB) => {setDOB(dataDOB)});
     getLicenseNumber(SSNNum).then((dataLN) => {setDL(dataLN)});
+    getPicture(SSNNum).then((Picture) => {setPicture(Picture)});
+    while(Picture === null){
+      wait(1000);
+    }
     return(
         <ThemeProvider theme={mainTheme} >
         <div>
@@ -53,6 +57,7 @@ function Dmv() {
        
 
             <h1><center>DMV Results</center></h1>
+            <center>{<img src={Picture}/>}</center>
             <br />
             <Box sx={{
              

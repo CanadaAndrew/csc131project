@@ -157,7 +157,7 @@ function SocialSecurity(SSN){
     const [BirthMonth, setBirthMonth] = useState(0);
     const [BirthYear, setBirthYear] = useState(0);
     getPerson(SSN).then((person) => {
-        setFName(person.FName);
+        setFName(person.Fname);
         setMName(person.MName);
         setLName(person.LName);
         setBirthDay(person.BirthDay);
@@ -165,14 +165,23 @@ function SocialSecurity(SSN){
         setBirthYear(person.BirthYear);
     })
 
-    function getFullName(){
+    /*
+     this.getFullName = () => {
         return FName + " " + MName + " " + LName;
     }
 
-    function getBirthDate(){
+     this.getBirthDate = () => {
         return BirthDay + "/" + BirthMonth + "/" + BirthYear;
     }
+    */
 }
+
+function Person(ssn){
+    this.ssn = ssn;
+    console.log(this.ssn);
+}
+
+/*
 class Person {
     ssInfo;
     constructor(ssn) {
@@ -185,6 +194,6 @@ class Person {
     }
 
 }
-
+*/
 
 export {Person};

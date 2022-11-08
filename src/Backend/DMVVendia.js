@@ -10,6 +10,15 @@ function getEntities(){
     return entities;
 }
 
+function getStorage(){
+    const client = createVendiaClient({
+        apiUrl: 'https://a7ev0b25sf.execute-api.us-west-1.amazonaws.com/graphql/',
+        websocketUrl: 'wss://theuy9nec6.execute-api.us-west-1.amazonaws.com/graphql',
+        apiKey: '4VsmBT7rotFKV7BXyHBTEQk3QrGSEg8Qq1Z5gJxMyWEV',
+    });
+    const {storage} = client;
+    return storage;
+}
 async function getFullName(targetSSN){
     const entities = getEntities();
     const dmvInfo = await entities.DMV.list({
@@ -58,4 +67,15 @@ async function getLicenseNumber(targetSSN){
     }
 }
 
-export{getFullName, getDOB, getLicenseNumber};
+async function getPicture(targetSSN){
+    const storage = getStorage();
+    const getFile = await storage.files.list({
+        filter:{
+            destinationKey:{
+                contains: targetSSN+"DMV",
+            },
+        }
+    })
+    return getFile.items[0].temporaryUrl;
+}
+export{getFullName, getDOB, getLicenseNumber, getPicture};
