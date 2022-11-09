@@ -176,10 +176,38 @@ function SocialSecurity(SSN){
     */
 }
 
+function StateDepartment(SSN) {
+    const [FName, setFName] = useState("");
+    const [MName, setMName] = useState("");
+    const [LName, setLName] = useState("");
+    const [BirthDay, setBirthDay] = useState(0);
+    const [BirthMonth, setBirthMonth] = useState(0);
+    const [BirthYear, setBirthYear] = useState(0);
+    const [ExpirationDay, setExpirationDay] = useState(0);
+    const [ExpirationMonth, setExpirationMonth] = useState(0);
+    const [ExpirationYear, setExpirationYear] = useState(0);
+    const [PassportNumber, setPassportNumber] = useState("");
+    //const [Photo, setPhoto] = useState;
+    getPerson(SSN).then((person) => {
+        setFName(person.FName);
+        setMName(person.MName);
+        setLName(person.LName);
+        setBirthDay(person.BirthDay);
+        setBirthMonth(person.BirthMonth);
+        setBirthYear(person.BirthYear);
+        setExpirationDay(person.ExpirationDay);
+        setExpirationMonth(person.ExpirationMonth);
+        setExpirationYear(person.ExpirationYear);
+        setPassportNumber(person.PassportNumber);
+    })
+}
+
 function Person(ssn){
     this.ssn = ssn;
     console.log(this.ssn);
 }
+
+
 
 /*
 class Person {
@@ -197,3 +225,4 @@ class Person {
 */
 
 export {Person};
+
