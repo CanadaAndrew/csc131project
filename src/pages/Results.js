@@ -9,6 +9,8 @@ import Box from '@mui/material/Box';
 import {Person} from './../Backend/Person'
 import { wait } from '@testing-library/user-event/dist/utils';
 import {getPicture} from './../Backend/DMVVendia'
+import { CircularProgress } from '@mui/material';
+import CheckIcon from '@mui/icons-material/Check';
 
 const mainTheme = createTheme({
     typography: {
@@ -35,6 +37,8 @@ const styles = {
   fontSize: 20,
 }
 
+const tester = true; // primitive true false boolean to control icons 
+
 function Results() {
   const [testingVar, updatingTestingVar] = useState();
   const [testingVar2, updatingTestingVar2] = useState();
@@ -60,6 +64,11 @@ function Results() {
         <div>
             <h1><center>User Results</center></h1>
             <center>{<img src={testingVar}/>}</center>
+            {/*<center><CircularProgress color='success' /></center>*/} {/*loading Icon*/}
+            {/*<center><CheckIcon color='success'/></center>*/} {/*check Icon*/}
+            {tester 
+               ? <center><CircularProgress color='success'/></center> 
+               : <center><CheckIcon color='success'/></center>} {/*loading Icon and check Icon */}
             <br/>
             <Grid container spacing={0} justifyContent = "center">
 
