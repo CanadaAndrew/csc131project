@@ -4,13 +4,13 @@ import {getSDPerson, getSDPicture} from './SDVendia';
 import {useEffect, useState} from 'react';
 
 function DMV(SSN) {
-    const [FName, setFName] = useState("");
-    const [MName, setMName] = useState("");
-    const [LName, setLName] = useState("");
+    const [FName, setFName] = useState(" ");
+    const [MName, setMName] = useState(" ");
+    const [LName, setLName] = useState(" ");
     const [BirthDay, setBirthDay] = useState(0);
     const [BirthMonth, setBirthMonth] = useState(0);
     const [BirthYear, setBirthYear] = useState(0);
-    const [DLNum, setDLNum] = useState("");
+    const [DLNum, setDLNum] = useState(" ");
     const [Photo, setPhoto] = useState();
     const [FinishedLoading, updateFinishedLoading] = useState(0);
     getDMVPerson(SSN).then((person) => {
@@ -44,9 +44,9 @@ function DMV(SSN) {
     }, [FName, MName, LName, BirthDay, BirthMonth, BirthYear, DLNum, Photo]);
 }
 function SocialSecurity(SSN){
-    const [FName, setFName] = useState("");
-    const [MName, setMName] = useState("");
-    const [LName, setLName] = useState("");
+    const [FName, setFName] = useState(" ");
+    const [MName, setMName] = useState(" ");
+    const [LName, setLName] = useState(" ");
     const [BirthDay, setBirthDay] = useState(0);
     const [BirthMonth, setBirthMonth] = useState(0);
     const [BirthYear, setBirthYear] = useState(0);
@@ -77,9 +77,9 @@ function SocialSecurity(SSN){
 }
 
 function StateDepartment(SSN) {
-    const [FName, setFName] = useState("");
-    const [MName, setMName] = useState("");
-    const [LName, setLName] = useState("");
+    const [FName, setFName] = useState(" ");
+    const [MName, setMName] = useState(" ");
+    const [LName, setLName] = useState(" ");
     const [BirthDay, setBirthDay] = useState(0);
     const [BirthMonth, setBirthMonth] = useState(0);
     const [BirthYear, setBirthYear] = useState(0);
@@ -132,26 +132,7 @@ export function Person(ssn){
     this.SSInfo = new SocialSecurity(this.ssn);
     this.SDInfo = new StateDepartment(this.ssn);
     this.DMVInfo = new DMV(this.ssn);
-    console.log(this.ssn);
 }
 
-
-
-
-/*
-class Person {
-    ssInfo;
-    constructor(ssn) {
-        this.ssn = ssn;
-        //this.ssInfo = SocialSecurity(ssn);
-        alert("Leaving constructor");
-    }
-    //Methods
-    get SSN() {
-        return this.ssn;
-    }
-
-}
-*/
 
 

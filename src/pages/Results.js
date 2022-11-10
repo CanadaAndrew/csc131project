@@ -1,14 +1,14 @@
 import React from 'react'; //placeHolder for results page
 import Button from '@mui/material/Button';
-import {getFullName, getPerson} from '../Backend/SSVendia'
+import {getFullName as getSSFullName, getDOB as getSSDOB} from '../Backend/SSVendia'
+import {getFullName as getSDFullName, getDOB as getSDDOB} from '../Backend/SDVendia'
+import {getFullName as getDMVFullName, getDOB as getDMVDOB} from '../Backend/DMVVendia'
 import Grid from '@mui/material/Grid';
 import {useState} from 'react';
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
-import Box from '@mui/material/Box';
 import {Person} from './../Backend/Person'
-import { wait } from '@testing-library/user-event/dist/utils';
-import {getPicture} from './../Backend/DMVVendia'
+import { FiberPinRounded } from '@mui/icons-material';
 
 const mainTheme = createTheme({
     typography: {
@@ -35,16 +35,6 @@ const styles = {
     width: 150,
   fontSize: 20,
 }
-function comparisonTest() {
-  const isTrue = true;
-  var x;
-  if (isTrue) {
-    x = "This information is consistent with results from other databases."
-  } else {
-    x = "Error. This information is not consistent with results from other databases."
-  }
-  return x;
-}
 
 function Results() {
   const [testingVar, updatingTestingVar] = useState();
@@ -54,15 +44,17 @@ function Results() {
   setTimeout(() => {if(sessionStorage.getItem("SSLoad") === "true" && sessionStorage.getItem("SDLoad") === "true" && sessionStorage.getItem("DMVLoad") === "true"){
     updatingTestingVar(true);
     updatingTestingVar2("Done!");
+    if(getDMVFullName() === getSDFullName() && getDMVFullName() === getSSFullName() && getDMVDOB() === getSDDOB() && getDMVDOB() === getSSDOB()){
+      sessionStorage.setItem("Match", "true");
+      console.log("Set match to true");
+    }else{
+      sessionStorage.setItem("Match", "false");
+      console.log("Set match to false");
+    }
   }else{
     updatingTestingVar(false);
   }
   }, 1000)
-
-  /*
-  getFullName(SSNNum).then((dataName) => {updateText(dataName)});
-  */
-  //var aPerson = Person(SSNNum);
     return(
       <ThemeProvider theme={mainTheme} >
         
@@ -86,13 +78,13 @@ function Results() {
 
               <Grid item xs = {2}>
                 <Button sx={styles} size="large" variant="outlined" href="Ssn">
-                  SSN
+                  SS
                 </Button>
                </Grid>
 
             </Grid>
        </div>
-       <div><center>{comparisonTest()}</center></div>
+       <div><center>{}</center></div>
 
        </ThemeProvider>  
     )

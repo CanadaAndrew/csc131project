@@ -116,19 +116,6 @@ const Mastpage = () => {
 
               {/*aligns the buttons to be on the same row*/}
             <Grid container spacing={0} justifyContent="center" >
-
-              <Grid item xs={4}>{/*TODO: figure out how to change width in buttonStyle*/}
-                <Button href="Ssn" onClick = {() => {sessionStorage.setItem("SSN", SSNNum); }} sx={buttonStyle} variant="outlined" disabled={btnDisabled} size="large">SS</Button> {/*button size warped, fix later*/}
-              </Grid>
-
-              <Grid item xs={0}>
-                <Button href="Dmv" onClick = {() => {sessionStorage.setItem("SSN", SSNNum)}} size="large" sx={buttonStyle} disabled={btnDisabled} variant="outlined">DMV</Button>
-              </Grid>
-
-              <Grid item xs={4}>
-                <Button href="StateDep" onClick = {() => {sessionStorage.setItem("SSN", SSNNum)}} size="large" sx={buttonStyle} disabled={btnDisabled} variant="outlined">State</Button>
-              </Grid>
-
               <Grid item xs ={4}>
                 <Button
                    onClick = {() => {sessionStorage.setItem("SSN", SSNNum); sessionStorage.setItem("SSLoad", "false"); sessionStorage.setItem("SDLoad", "false"); sessionStorage.setItem("DMVLoad", "false");}}

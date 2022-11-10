@@ -35,12 +35,16 @@ const styles = {
 }
 
 function comparisonTest() {
-  const isTrue = true;
+  if (sessionStorage.getItem("Match") === "true"){
+    var isTrue = true;
+  }else{
+    var isTrue = false;
+  }
   var x;
   if (isTrue) {
     x = "This information is consistent with results from other databases."
   } else {
-    x = "Error. This information is not consistent with results from other databases."
+    x = "Alert. This information is not consistent with results from other databases."
   }
   return x;
 }
@@ -96,7 +100,7 @@ function Dmv() {
             
             <Grid item xs = {2}>
                <Button sx={styles} size="large" variant="outlined" href="Ssn">
-                   SSN
+                   SS
                </Button>
             </Grid>
 

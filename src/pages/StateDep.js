@@ -31,12 +31,16 @@ const styles = {
     fontSize: 20,
 }
 function comparisonTest() {
-  const isTrue = true;
+  if (sessionStorage.getItem("Match") === "true"){
+    var isTrue = true;
+  }else{
+    var isTrue = false;
+  }
   var x;
   if (isTrue) {
     x = "This information is consistent with results from other databases."
   } else {
-    x = "Error. This information is not consistent with results from other databases."
+    x = "Alert. This information is not consistent with results from other databases."
   }
   return x;
 }
