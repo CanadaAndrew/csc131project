@@ -47,7 +47,6 @@ function comparisonTest() {
 }
 
 function Ssn(){
-    const SSNNum = sessionStorage.getItem('SSN');
     const fullName = getFullName();
     const DOB = getDOB();
     return(
