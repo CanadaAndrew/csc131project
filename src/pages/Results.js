@@ -68,8 +68,7 @@ function Results() {
         
          <CssBaseline /> {/*CssBaseline enables changing background color*/}
         <div>
-            <h1><center>User Results</center></h1>
-            <center>{<img src={testingVar}/>}</center>
+            <h1><center>{testingVar2}</center></h1>
             <br/>
             <Grid container spacing={0} justifyContent = "center">
 
