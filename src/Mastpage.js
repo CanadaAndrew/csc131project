@@ -8,7 +8,7 @@ import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import { PatternFormat } from 'react-number-format';
-
+import {Person} from './Backend/Person'
 var SSNNum = 0;
 //the main bg color and font
 const mainTheme = createTheme({
@@ -118,7 +118,7 @@ const Mastpage = () => {
             <Grid container spacing={0} justifyContent="center" >
 
               <Grid item xs={4}>{/*TODO: figure out how to change width in buttonStyle*/}
-                <Button href="Ssn" onClick = {() => {sessionStorage.setItem("SSN", SSNNum)}} sx={buttonStyle} variant="outlined" disabled={btnDisabled} size="large">SS</Button> {/*button size warped, fix later*/}
+                <Button href="Ssn" onClick = {() => {sessionStorage.setItem("SSN", SSNNum); }} sx={buttonStyle} variant="outlined" disabled={btnDisabled} size="large">SS</Button> {/*button size warped, fix later*/}
               </Grid>
 
               <Grid item xs={0}>
@@ -131,7 +131,7 @@ const Mastpage = () => {
 
               <Grid item xs ={4}>
                 <Button
-                   onClick = {() => {sessionStorage.setItem("SSN", SSNNum)}}
+                   onClick = {() => {sessionStorage.setItem("SSN", SSNNum); sessionStorage.setItem("SSLoad", "false"); sessionStorage.setItem("SDLoad", "false"); sessionStorage.setItem("DMVLoad", "false");}}
                    href="Results" size="large" sx={buttonStyle} disabled={btnDisabled} variant="outlined">
                     Search
                 </Button>

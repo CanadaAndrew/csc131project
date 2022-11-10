@@ -34,10 +34,8 @@ const styles = {
 
 function Ssn(){
     const SSNNum = sessionStorage.getItem('SSN');
-    const [fullName, setFullName] = useState('Loading...');
-    const [DOB, setDOB] = useState('Loading...');
-    getFullName(SSNNum).then((dataName) => {setFullName(dataName)});
-    getDOB(SSNNum).then((dataDOB) => {setDOB(dataDOB)});
+    const fullName = getFullName();
+    const DOB = getDOB();
     return(
         <ThemeProvider theme={mainTheme} >
          <CssBaseline /> {/*CssBaseline enables changing background color*/}

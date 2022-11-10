@@ -25,6 +25,7 @@ const mainTheme = createTheme({
   });
 
 var SSNNum;
+var thisPerson;
 const styles = {
     "&:hover":{
         background: "green",
@@ -37,29 +38,27 @@ const styles = {
 
 function Results() {
   const [testingVar, updatingTestingVar] = useState();
-  const [testingVar2, updatingTestingVar2] = useState();
-  var ready = false;
-  /*function updateText(textUpdate){
-    setResult(textUpdate);
-  }*/
+  const [testingVar2, updatingTestingVar2] = useState("Loading...");
+  SSNNum = sessionStorage.getItem("SSN");
+  thisPerson = new Person(SSNNum);
+  setTimeout(() => {if(sessionStorage.getItem("SSLoad") === "true" && sessionStorage.getItem("SDLoad") === "true" && sessionStorage.getItem("DMVLoad") === "true"){
+    updatingTestingVar(true);
+    updatingTestingVar2("Done!");
+  }else{
+    updatingTestingVar(false);
+  }
+  }, 1000)
 
-  SSNNum = sessionStorage.getItem('SSN');
   /*
   getFullName(SSNNum).then((dataName) => {updateText(dataName)});
   */
-  getPicture(SSNNum).then((URL) =>{updatingTestingVar(URL)});
-  while(getPicture === null){
-    wait(1000)
-  }
-  console.log(SSNNum);
   //var aPerson = Person(SSNNum);
     return(
       <ThemeProvider theme={mainTheme} >
         
          <CssBaseline /> {/*CssBaseline enables changing background color*/}
         <div>
-            <h1><center>User Results</center></h1>
-            <center>{<img src={testingVar}/>}</center>
+            <h1><center>{testingVar2}</center></h1>
             <br/>
             <Grid container spacing={0} justifyContent = "center">
 
