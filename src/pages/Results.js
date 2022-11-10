@@ -70,7 +70,7 @@ function Results() {
         <div>
             <h1><center>{testingVar2}</center></h1>
             <br/>
-            {testingVar2 == "Loading..." 
+            {testingVar2 === "Loading..." 
                ? <center><CircularProgress color='success'/></center> 
                : <center><CheckIcon color='success'/></center>} {/*loading Icon and check Icon loads based on testingVar2 so should be in sync*/}
             <Grid container spacing={0} justifyContent = "center">
