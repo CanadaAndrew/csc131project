@@ -30,7 +30,16 @@ const styles = {
     width: 150,
     fontSize: 20,
 }
-
+function comparisonTest() {
+  const isTrue = true;
+  var x;
+  if (isTrue) {
+    x = "This information is consistent with results from other databases."
+  } else {
+    x = "Error. This information is not consistent with results from other databases."
+  }
+  return x;
+}
 function StateDep(){
   const fullName = getFullName();
   const DOB = getDOB();
@@ -87,6 +96,7 @@ function StateDep(){
 
          </Grid>   
         </div>
+        <div><center>{comparisonTest()}</center></div>
         </ThemeProvider>  
     )
 }
