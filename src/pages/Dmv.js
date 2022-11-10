@@ -7,6 +7,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import Box from '@mui/material/Box';
 import { wait } from '@testing-library/user-event/dist/utils';
+import { typography } from '@mui/system';
 
 const mainTheme = createTheme({
     typography: {
@@ -34,9 +35,19 @@ const styles = {
     //border: "1px solid white"
 }
 
-
+function comparisonTest() {
+  const isTrue = true;
+  var x;
+  if (isTrue) {
+    x = "This information is consistent with results from other databases."
+  } else {
+    x = "Error. This information is not consistent with results from other databases."
+  }
+  return x;
+}
 
 function Dmv() {
+  
     const SSNNum = sessionStorage.getItem('SSN');
     const [fullName, setFullName] = useState('Loading...');
     const [DOB, setDOB] = useState('Loading...');
@@ -102,9 +113,11 @@ function Dmv() {
          </Grid>
         
         </div>
+         <div><center>{comparisonTest()}</center></div>
         </ThemeProvider>  
     )
    
 }
+
 
 export default Dmv;
