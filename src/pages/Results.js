@@ -70,6 +70,9 @@ function Results() {
         <div>
             <h1><center>{testingVar2}</center></h1>
             <br/>
+            {tester 
+               ? <center><CircularProgress color='success'/></center> 
+               : <center><CheckIcon color='success'/></center>} {/*loading Icon and check Icon */}
             <Grid container spacing={0} justifyContent = "center">
 
               <Grid item xs = {2}>
