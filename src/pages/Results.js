@@ -41,6 +41,8 @@ function Results() {
   const [testingVar2, updatingTestingVar2] = useState("Loading...");
   SSNNum = sessionStorage.getItem("SSN");
   thisPerson = new Person(SSNNum);
+  var btnDisabled = testingVar;
+
   setTimeout(() => {if(sessionStorage.getItem("SSLoad") === "true" && sessionStorage.getItem("SDLoad") === "true" && sessionStorage.getItem("DMVLoad") === "true"){
     updatingTestingVar(true);
     updatingTestingVar2("Done!");
