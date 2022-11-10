@@ -40,7 +40,7 @@ const styles = {
   fontSize: 20,
 }
 
-const tester = true; // primitive true false boolean to control icons 
+//const tester = true; // primitive true false boolean to control icons 
 
 function Results() {
   const [testingVar, updatingTestingVar] = useState();
@@ -70,9 +70,9 @@ function Results() {
         <div>
             <h1><center>{testingVar2}</center></h1>
             <br/>
-            {tester 
+            {testingVar2 == "Loading..." 
                ? <center><CircularProgress color='success'/></center> 
-               : <center><CheckIcon color='success'/></center>} {/*loading Icon and check Icon */}
+               : <center><CheckIcon color='success'/></center>} {/*loading Icon and check Icon loads based on testingVar2 so should be in sync*/}
             <Grid container spacing={0} justifyContent = "center">
 
               <Grid item xs = {2}>
