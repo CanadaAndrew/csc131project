@@ -19,55 +19,31 @@ function getStorage(){
     const {storage} = client;
     return storage;
 }
-async function getFullName(targetSSN){
+
+async function getDMVPerson(targetSSN){
     const entities = getEntities();
-    const dmvInfo = await entities.DMV.list({
+    const DMVInfo = await entities.DMV.list({
         filter:{
             SSN: {
                 contains: ''+targetSSN,
             },
         },
     });
-    if(targetSSN === 0 || dmvInfo.items[0] === null){
-        return "Not Found."
-    }else{
-        return dmvInfo.items[0].Fname + " " + dmvInfo.items[0].MName + " " + dmvInfo.items[0].LName;
-    }
+    return DMVInfo.items[0];
+}
+function getFullName(){
+    return sessionStorage.getItem('DMVFName') + " " + sessionStorage.getItem('DMVMName') + " " + sessionStorage.getItem('DMVLName');
 }
 
-async function getDOB(targetSSN){
-    const entities = getEntities();
-    const dmvInfo = await entities.DMV.list({
-        filter:{
-            SSN: {
-                contains: ''+targetSSN,
-            },
-        },
-    });
-    if(targetSSN === 0 || dmvInfo.items[0] === null){
-        return "Not Found."
-    } else{
-        return dmvInfo.items[0].BirthMonth+ "/" + dmvInfo.items[0].BirthDay + "/" + dmvInfo.items[0].BirthYear;
-    }
+function getDOB(targetSSN){
+    return sessionStorage.getItem('DMVBirthMonth') + "/" + sessionStorage.getItem('DMVBirthDay') + "/" + sessionStorage.getItem('DMVBirthYear');
 }
 
-async function getLicenseNumber(targetSSN){
-    const entities = getEntities();
-    const dmvInfo = await entities.DMV.list({
-        filter:{
-            SSN: {
-                contains: ''+targetSSN,
-            },
-        },
-    });
-    if(targetSSN === 0 || dmvInfo.items[0] === null){
-        return "Not Found."
-    }else{
-        return dmvInfo.items[0].LicenseNumber;
-    }
+function getLicenseNumber(targetSSN){
+    return sessionStorage.getItem('DMVDLNum');
 }
 
-async function getPicture(targetSSN){
+async function getDMVPicture(targetSSN){
     const storage = getStorage();
     const getFile = await storage.files.list({
         filter:{
@@ -78,4 +54,8 @@ async function getPicture(targetSSN){
     })
     return getFile.items[0].temporaryUrl;
 }
-export{getFullName, getDOB, getLicenseNumber, getPicture};
+
+function getURL(){
+    return sessionStorage.getItem('DMVPhoto');
+}
+export{getFullName, getDOB, getLicenseNumber, getDMVPicture, getDMVPerson, getURL};

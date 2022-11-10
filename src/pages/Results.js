@@ -1,12 +1,14 @@
 import React from 'react'; //placeHolder for results page
 import Button from '@mui/material/Button';
-import {getFullName, getPerson} from '../Backend/SSVendia'
+import {getFullName as getSSFullName, getDOB as getSSDOB} from '../Backend/SSVendia'
+import {getFullName as getSDFullName, getDOB as getSDDOB} from '../Backend/SDVendia'
+import {getFullName as getDMVFullName, getDOB as getDMVDOB} from '../Backend/DMVVendia'
 import Grid from '@mui/material/Grid';
 import {useState} from 'react';
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
-import Box from '@mui/material/Box';
 import {Person} from './../Backend/Person'
+import { FiberPinRounded } from '@mui/icons-material';
 import { wait } from '@testing-library/user-event/dist/utils';
 import {getPicture} from './../Backend/DMVVendia'
 import { CircularProgress } from '@mui/material';
@@ -27,6 +29,7 @@ const mainTheme = createTheme({
   });
 
 var SSNNum;
+var thisPerson;
 const styles = {
     "&:hover":{
         background: "green",
@@ -41,22 +44,23 @@ const tester = true; // primitive true false boolean to control icons
 
 function Results() {
   const [testingVar, updatingTestingVar] = useState();
-  const [testingVar2, updatingTestingVar2] = useState();
-  var ready = false;
-  /*function updateText(textUpdate){
-    setResult(textUpdate);
-  }*/
-
-  SSNNum = sessionStorage.getItem('SSN');
-  /*
-  getFullName(SSNNum).then((dataName) => {updateText(dataName)});
-  */
-  getPicture(SSNNum).then((URL) =>{updatingTestingVar(URL)});
-  while(getPicture === null){
-    wait(1000)
+  const [testingVar2, updatingTestingVar2] = useState("Loading...");
+  SSNNum = sessionStorage.getItem("SSN");
+  thisPerson = new Person(SSNNum);
+  setTimeout(() => {if(sessionStorage.getItem("SSLoad") === "true" && sessionStorage.getItem("SDLoad") === "true" && sessionStorage.getItem("DMVLoad") === "true"){
+    updatingTestingVar(true);
+    updatingTestingVar2("Done!");
+    if(getDMVFullName() === getSDFullName() && getDMVFullName() === getSSFullName() && getDMVDOB() === getSDDOB() && getDMVDOB() === getSSDOB()){
+      sessionStorage.setItem("Match", "true");
+      console.log("Set match to true");
+    }else{
+      sessionStorage.setItem("Match", "false");
+      console.log("Set match to false");
+    }
+  }else{
+    updatingTestingVar(false);
   }
-  console.log(SSNNum);
-  //var aPerson = Person(SSNNum);
+  }, 1000)
     return(
       <ThemeProvider theme={mainTheme} >
         
@@ -64,11 +68,6 @@ function Results() {
         <div>
             <h1><center>User Results</center></h1>
             <center>{<img src={testingVar}/>}</center>
-            {/*<center><CircularProgress color='success' /></center>*/} {/*loading Icon*/}
-            {/*<center><CheckIcon color='success'/></center>*/} {/*check Icon*/}
-            {tester 
-               ? <center><CircularProgress color='success'/></center> 
-               : <center><CheckIcon color='success'/></center>} {/*loading Icon and check Icon */}
             <br/>
             <Grid container spacing={0} justifyContent = "center">
 
@@ -86,12 +85,14 @@ function Results() {
 
               <Grid item xs = {2}>
                 <Button sx={styles} size="large" variant="outlined" href="Ssn">
-                  SSN
+                  SS
                 </Button>
                </Grid>
 
             </Grid>
        </div>
+       <div><center>{}</center></div>
+
        </ThemeProvider>  
     )
 }

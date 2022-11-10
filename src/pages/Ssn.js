@@ -31,13 +31,24 @@ const styles = {
     fontSize: 20,
 }
 
+function comparisonTest() {
+  if (sessionStorage.getItem("Match") === "true"){
+    var isTrue = true;
+  }else{
+    var isTrue = false;
+  }
+  var x;
+  if (isTrue) {
+    x = "This information is consistent with results from other databases."
+  } else {
+    x = "Warning: This information is not consistent with results from other databases."
+  }
+  return x;
+}
 
 function Ssn(){
-    const SSNNum = sessionStorage.getItem('SSN');
-    const [fullName, setFullName] = useState('Loading...');
-    const [DOB, setDOB] = useState('Loading...');
-    getFullName(SSNNum).then((dataName) => {setFullName(dataName)});
-    getDOB(SSNNum).then((dataDOB) => {setDOB(dataDOB)});
+    const fullName = getFullName();
+    const DOB = getDOB();
     return(
         <ThemeProvider theme={mainTheme} >
          <CssBaseline /> {/*CssBaseline enables changing background color*/}
@@ -82,6 +93,7 @@ function Ssn(){
 
          </Grid>
         </div>
+        <div><center>{comparisonTest()}</center></div>
         </ThemeProvider>  
     )
 }

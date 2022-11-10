@@ -1,12 +1,12 @@
 import React from 'react'; //placeHolder for Dmv page
 import Button from '@mui/material/Button';
-import {getFullName, getDOB, getLicenseNumber, getPicture} from '../Backend/DMVVendia'
+import {getFullName, getDOB, getLicenseNumber, getDMVPicture, getURL} from '../Backend/DMVVendia'
 import Grid from '@mui/material/Grid';
 import {useState} from 'react'
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import Box from '@mui/material/Box';
-import { wait } from '@testing-library/user-event/dist/utils';
+import { typography } from '@mui/system';
 
 const mainTheme = createTheme({
     typography: {
@@ -34,21 +34,26 @@ const styles = {
     //border: "1px solid white"
 }
 
-
+function comparisonTest() {
+  if (sessionStorage.getItem("Match") === "true"){
+    var isTrue = true;
+  }else{
+    var isTrue = false;
+  }
+  var x;
+  if (isTrue) {
+    x = "This information is consistent with results from other databases."
+  } else {
+    x = "Warning: This information is not consistent with results from other databases."
+  }
+  return x;
+}
 
 function Dmv() {
-    const SSNNum = sessionStorage.getItem('SSN');
-    const [fullName, setFullName] = useState('Loading...');
-    const [DOB, setDOB] = useState('Loading...');
-    const [DL, setDL] = useState('Loading...');
-    const [Picture, setPicture] = useState();
-    getFullName(SSNNum).then((dataName) => {setFullName(dataName)});
-    getDOB(SSNNum).then((dataDOB) => {setDOB(dataDOB)});
-    getLicenseNumber(SSNNum).then((dataLN) => {setDL(dataLN)});
-    getPicture(SSNNum).then((Picture) => {setPicture(Picture)});
-    while(Picture === null){
-      wait(1000);
-    }
+    const fullName = getFullName();
+    const DOB = getDOB();
+    const DL = getLicenseNumber();
+    const Picture = getURL();
     return(
         <ThemeProvider theme={mainTheme} >
         <div>
@@ -95,16 +100,18 @@ function Dmv() {
             
             <Grid item xs = {2}>
                <Button sx={styles} size="large" variant="outlined" href="Ssn">
-                   SSN
+                   SS
                </Button>
             </Grid>
 
          </Grid>
         
         </div>
+         <div><center>{comparisonTest()}</center></div>
         </ThemeProvider>  
     )
    
 }
+
 
 export default Dmv;

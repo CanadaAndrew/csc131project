@@ -1,12 +1,11 @@
 import React from 'react'; //placeHolder for StateDep page
 import Button from '@mui/material/Button';
-import {getFullName, getDOB, getPassportNumber, getPassportExpiration, getPicture } from '../Backend/SDVendia'
+import {getFullName, getDOB, getPassportNumber, getPassportExpiration, getSDPicture, getURL } from '../Backend/SDVendia'
 import Grid from '@mui/material/Grid';
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import Box from '@mui/material/Box';
 import {useState} from 'react';
-import { wait } from '@testing-library/user-event/dist/utils';
 
 const mainTheme = createTheme({
     typography: {
@@ -31,22 +30,26 @@ const styles = {
     width: 150,
     fontSize: 20,
 }
-
-function StateDep(){
-  const SSNNum = sessionStorage.getItem('SSN');
-  const [fullName, setFullName] = useState('Loading...');
-  const [DOB, setDOB] = useState('Loading...');
-  const [PassportNum, setPassportNum] = useState('Loading...');
-  const [PassportExpiration, setPassportExpiration] = useState('Loading...');
-  const [Picture, setPicture] = useState();
-  getFullName(SSNNum).then((dataName) => {setFullName(dataName)});
-  getDOB(SSNNum).then((dataDOB) => {setDOB(dataDOB)});
-  getPassportNumber(SSNNum).then((passportNumber) => {setPassportNum(passportNumber)});
-  getPassportExpiration(SSNNum).then((passportExpiration) => {setPassportExpiration(passportExpiration)});
-  getPicture(SSNNum).then((Picture) => {setPicture(Picture)});
-  while(getPicture === null){
-    wait(1000);
+function comparisonTest() {
+  if (sessionStorage.getItem("Match") === "true"){
+    var isTrue = true;
+  }else{
+    var isTrue = false;
   }
+  var x;
+  if (isTrue) {
+    x = "This information is consistent with results from other databases."
+  } else {
+    x = "Warning: This information is not consistent with results from other databases."
+  }
+  return x;
+}
+function StateDep(){
+  const fullName = getFullName();
+  const DOB = getDOB();
+  const PassportNum = getPassportNumber();
+  const PassportExpiration = getPassportExpiration();
+  const Picture = getURL();
     return(
         <ThemeProvider theme={mainTheme} >
          <CssBaseline /> {/*CssBaseline enables changing background color*/}
@@ -91,12 +94,13 @@ function StateDep(){
             
             <Grid item xs = {2}>
                <Button sx={styles} size="large" variant="outlined" href="Ssn">
-                   SSN
+                   SS
                </Button>
             </Grid>
 
          </Grid>   
         </div>
+        <div><center>{comparisonTest()}</center></div>
         </ThemeProvider>  
     )
 }

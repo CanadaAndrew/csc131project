@@ -19,7 +19,8 @@ function getStorage(){
     const {storage} = client;
     return storage;
 }
-async function getFullName(targetSSN){
+
+async function getSDPerson(targetSSN){
     const entities = getEntities();
     const SDInfo = await entities.SD.list({
         filter:{
@@ -28,62 +29,25 @@ async function getFullName(targetSSN){
             },
         },
     });
-    if(targetSSN === 0 || SDInfo.items[0] === null){
-        return "Not Found."
-    }else{
-        return SDInfo.items[0].Fname + " " + SDInfo.items[0].MName + " " + SDInfo.items[0].LName;
-    }
+    return SDInfo.items[0];
+}
+function getFullName(){
+    return sessionStorage.getItem('SDFName') + " " + sessionStorage.getItem('SDMName') + " " + sessionStorage.getItem('SDLName');
 }
 
-async function getDOB(targetSSN){
-    const entities = getEntities();
-    const SDInfo = await entities.SD.list({
-        filter:{
-            SSN: {
-                contains: ''+targetSSN,
-            },
-        },
-    });
-    if(targetSSN === 0 || SDInfo.items[0] === null){
-        return "Not Found."
-    } else{
-        return SDInfo.items[0].BirthMonth+ "/" + SDInfo.items[0].BirthDay + "/" + SDInfo.items[0].BirthYear;
-    }
+function getDOB(){
+    return sessionStorage.getItem('SDBirthMonth') + "/" + sessionStorage.getItem('SDBirthDay') + "/" + sessionStorage.getItem('SDBirthYear');
 }
 
-async function getPassportNumber(targetSSN){
-    const entities = getEntities();
-    const SDInfo = await entities.SD.list({
-        filter:{
-            SSN: {
-                contains: ''+targetSSN,
-            },
-        },
-    });
-    if(targetSSN === 0 || SDInfo.items[0] === null){
-        return "Not Found."
-    }else{
-        return SDInfo.items[0].PassportNumber;
-    }
+function getPassportNumber(targetSSN){
+    return sessionStorage.getItem('SDPassportNumber');
 }
 
-async function getPassportExpiration(targetSSN){
-    const entities = getEntities();
-    const SDInfo = await entities.SD.list({
-        filter:{
-            SSN: {
-                contains: ''+targetSSN,
-            },
-        },
-    });
-    if(targetSSN === 0 || SDInfo.items[0] === null){
-        return "Not Found."
-    } else{
-        return SDInfo.items[0].PassportExpirationMonth+ "/" + SDInfo.items[0].PassportExpirationDay + "/" + SDInfo.items[0].PassportExpirationYear;
-    }
+function getPassportExpiration(targetSSN){
+    return sessionStorage.getItem('SDExpirationMonth') + "/" + sessionStorage.getItem('SDExpirationDay') + "/" + sessionStorage.getItem('SDExpirationYear');
 }
 
-async function getPicture(targetSSN){
+async function getSDPicture(targetSSN){
     const storage = getStorage();
     const getFile = await storage.files.list({
         filter:{
@@ -94,4 +58,8 @@ async function getPicture(targetSSN){
     })
     return getFile.items[0].temporaryUrl;
 }
-export{getFullName, getDOB, getPassportNumber, getPassportExpiration, getPicture};
+
+function getURL(){
+    return sessionStorage.getItem('SDPhoto');
+}
+export{getFullName, getDOB, getPassportNumber, getPassportExpiration, getSDPicture, getSDPerson, getURL};

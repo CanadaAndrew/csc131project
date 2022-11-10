@@ -10,23 +10,11 @@ function getEntities(){
     return entities;
 }
 
-async function getFullName(targetSSN){
-    const entities = getEntities();
-    const SSInfo = await entities.SS.list({
-        filter:{
-            SSN: {
-                contains: ''+targetSSN,
-            },
-        },
-    });
-    if(targetSSN === 0 || SSInfo.items[0] === null){
-        return "Not Found."
-    }else{
-        return SSInfo.items[0].Fname + " " + SSInfo.items[0].MName + " " + SSInfo.items[0].LName;
-    }
+function getFullName(){
+    return sessionStorage.getItem('SSFName') + " " + sessionStorage.getItem('SSMName') + " " + sessionStorage.getItem('SSLName');
 }
 
-async function getPerson(targetSSN){
+async function getSSPerson(targetSSN){
     const entities = getEntities();
     const SSInfo = await entities.SS.list({
         filter:{
@@ -37,20 +25,9 @@ async function getPerson(targetSSN){
     });
     return SSInfo.items[0];
 }
-async function getDOB(targetSSN){
-    const entities = getEntities();
-    const SSInfo = await entities.SS.list({
-        filter:{
-            SSN: {
-                contains: ''+targetSSN,
-            },
-        },
-    })
-    if(targetSSN === 0 || SSInfo.items[0] === null){
-        return "Not Found."
-    }else{
-        return SSInfo.items[0].BirthMonth+ "/" + SSInfo.items[0].BirthDay + "/" + SSInfo.items[0].BirthYear;
-    }
+
+function getDOB(){
+   return sessionStorage.getItem('SSBirthMonth') + "/" + sessionStorage.getItem('SSBirthDay') + "/" + sessionStorage.getItem('SSBirthYear');
 }
 
-export{getFullName, getDOB, getPerson};
+export{getFullName, getDOB, getSSPerson};
