@@ -44,7 +44,7 @@ function comparisonTest() {
   if (isTrue) {
     x = "This information is consistent with results from other databases."
   } else {
-    x = "Alert. This information is not consistent with results from other databases."
+    x = "Warning: This information is not consistent with results from other databases."
   }
   return x;
 }
