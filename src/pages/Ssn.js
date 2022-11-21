@@ -2,7 +2,6 @@ import React from 'react'; //placeHolder for Ssn page
 import Button from '@mui/material/Button';
 import {getFullName, getDOB} from '../Backend/SSVendia'
 import Grid from '@mui/material/Grid';
-import {useState} from 'react';
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import Box from '@mui/material/Box';

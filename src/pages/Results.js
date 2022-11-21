@@ -8,9 +8,6 @@ import {useState} from 'react';
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import {Person} from './../Backend/Person'
-import { FiberPinRounded } from '@mui/icons-material';
-import { wait } from '@testing-library/user-event/dist/utils';
-import {getPicture} from './../Backend/DMVVendia'
 import { CircularProgress } from '@mui/material';
 import CheckIcon from '@mui/icons-material/Check';
 

@@ -1,12 +1,10 @@
 import React from 'react'; //placeHolder for Dmv page
 import Button from '@mui/material/Button';
-import {getFullName, getDOB, getLicenseNumber, getDMVPicture, getURL} from '../Backend/DMVVendia'
+import {getFullName, getDOB, getLicenseNumber, getURL} from '../Backend/DMVVendia'
 import Grid from '@mui/material/Grid';
-import {useState} from 'react'
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import Box from '@mui/material/Box';
-import { typography } from '@mui/system';
 
 const mainTheme = createTheme({
     typography: {

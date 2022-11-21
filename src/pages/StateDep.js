@@ -1,11 +1,10 @@
 import React from 'react'; //placeHolder for StateDep page
 import Button from '@mui/material/Button';
-import {getFullName, getDOB, getPassportNumber, getPassportExpiration, getSDPicture, getURL } from '../Backend/SDVendia'
+import {getFullName, getDOB, getPassportNumber, getPassportExpiration, getURL } from '../Backend/SDVendia'
 import Grid from '@mui/material/Grid';
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import Box from '@mui/material/Box';
-import {useState} from 'react';
 
 const mainTheme = createTheme({
     typography: {
