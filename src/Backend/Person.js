@@ -13,16 +13,17 @@ function DMV(SSN) {
     const [DLNum, setDLNum] = useState(" ");
     const [Photo, setPhoto] = useState();
     const [FinishedLoading, updateFinishedLoading] = useState(0);
-    getDMVPerson(SSN).then((person) => {
-        setFName(person.Fname);
-        setMName(person.MName);
-        setLName(person.LName);
-        setBirthDay(person.BirthDay);
-        setBirthMonth(person.BirthMonth);
-        setBirthYear(person.BirthYear);
-        setDLNum(person.LicenseNumber);
-    })
+
     if(FinishedLoading === 0){
+        getDMVPerson(SSN).then((person) => {
+            setFName(person.Fname);
+            setMName(person.MName);
+            setLName(person.LName);
+            setBirthDay(person.BirthDay);
+            setBirthMonth(person.BirthMonth);
+            setBirthYear(person.BirthYear);
+            setDLNum(person.LicenseNumber);
+        })
         getDMVPicture(SSN).then((picture) => {
             setPhoto(picture);
         })
@@ -51,7 +52,7 @@ function SocialSecurity(SSN){
     const [BirthMonth, setBirthMonth] = useState(0);
     const [BirthYear, setBirthYear] = useState(0);
     const [FinishedLoading, updateFinishedLoading] = useState(0);
-    if (FinishedLoading < 6){
+    if (FinishedLoading === 0){
         getSSPerson(SSN).then((person) => {
             setFName(person.Fname);
             setMName(person.MName);
@@ -89,19 +90,20 @@ function StateDepartment(SSN) {
     const [PassportNumber, setPassportNumber] = useState("");
     const [Photo, setPhoto] = useState();
     const [FinishedLoading, updateFinishedLoading] = useState(0);
-    getSDPerson(SSN).then((person) => {
-        setFName(person.Fname);
-        setMName(person.MName);
-        setLName(person.LName);
-        setBirthDay(person.BirthDay);
-        setBirthMonth(person.BirthMonth);
-        setBirthYear(person.BirthYear);
-        setExpirationDay(person.PassportExpirationDay);
-        setExpirationMonth(person.PassportExpirationMonth);
-        setExpirationYear(person.PassportExpirationYear);
-        setPassportNumber(person.PassportNumber);
-    })
+
     if(FinishedLoading === 0){
+        getSDPerson(SSN).then((person) => {
+            setFName(person.Fname);
+            setMName(person.MName);
+            setLName(person.LName);
+            setBirthDay(person.BirthDay);
+            setBirthMonth(person.BirthMonth);
+            setBirthYear(person.BirthYear);
+            setExpirationDay(person.PassportExpirationDay);
+            setExpirationMonth(person.PassportExpirationMonth);
+            setExpirationYear(person.PassportExpirationYear);
+            setPassportNumber(person.PassportNumber);
+        })
         getSDPicture(SSN).then((picture) => {
             setPhoto(picture);
         })

@@ -73,19 +73,19 @@ function Results() {
             <Grid container spacing={0} justifyContent = "center">
 
               <Grid item xs = {2}>
-                <Button sx={styles} size="large" variant="outlined" href="Dmv">
+                <Button sx={styles} size="large" variant="outlined" href="Dmv" disabled = {!testingVar}>
                   Dmv
                 </Button>
               </Grid>
 
               <Grid item xs = {2}>
-                <Button sx={styles} size="large" variant="outlined" href="StateDep">
+                <Button sx={styles} size="large" variant="outlined" href="StateDep" disabled = {!testingVar}>
                   StateDep
                 </Button>
               </Grid>
 
               <Grid item xs = {2}>
-                <Button sx={styles} size="large" variant="outlined" href="Ssn">
+                <Button sx={styles} size="large" variant="outlined" href="Ssn" disabled = {!testingVar}>
                   SS
                 </Button>
                </Grid>
