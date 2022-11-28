@@ -1,6 +1,6 @@
-import {getSSPerson} from './SSVendia';
-import {getDMVPerson, getDMVPicture} from './DMVVendia';
-import {getSDPerson, getSDPicture} from './SDVendia';
+import {getSSPerson, getFullName as getSSFullName, getDOB as getSSDOB} from './SSVendia';
+import {getDMVPerson, getDMVPicture, getFullName as getSDFullName, getDOB as getSDDOB} from './DMVVendia';
+import {getSDPerson, getSDPicture, getFullName as getDMVFullName, getDOB as getDMVDOB} from './SDVendia';
 import {useEffect, useState} from 'react';
 
 function DMV(SSN) {
@@ -129,12 +129,24 @@ function StateDepartment(SSN) {
 }
 
 export function Person(ssn){
-    this.doneLoading = false;
-    this.ssn = ssn;
-    this.SSInfo = new SocialSecurity(this.ssn);
-    this.SDInfo = new StateDepartment(this.ssn);
-    this.DMVInfo = new DMV(this.ssn);
+    SocialSecurity(ssn);
+    StateDepartment(ssn);
+    DMV(ssn);
+    sessionStorage.setItem("allMatch", "true");
+    this.dataCheck = () => {
+        this.checker(getDMVFullName(), getSDFullName(), "DMV_SD_Name_Match");
+        this.checker(getDMVFullName(), getSSFullName(), "DMV_SS_Name_Match");
+        this.checker(getSSFullName(), getSDFullName(), "SS_SD_Name_Match");
+        this.checker(getDMVDOB(), getSDDOB(), "DMV_SD_DOB_Match");
+        this.checker(getDMVDOB(), getSSDOB(), "DMV_SS_DOB_Match");
+        this.checker(getSSDOB(), getSDDOB(), "SS_SD_DOB_Match");
+    }
+    this.checker = (a, b, keyString) => {
+    if(a === b){
+        sessionStorage.setItem(keyString, "true");
+    }else{
+        sessionStorage.setItem(keyString, "false");
+        sessionStorage.setItem("allMatch", "false");
+        }
+    }
 }
-
-
-

@@ -29,17 +29,33 @@ const styles = {
     width: 150,
     fontSize: 20,
 }
+
 function comparisonTest() {
-  if (sessionStorage.getItem("Match") === "true"){
+  if (sessionStorage.getItem("allMatch") === "true"){
     var isTrue = true;
   }else{
     var isTrue = false;
   }
-  var x;
+  var x = "";
   if (isTrue) {
     x = "This information is consistent with results from other databases."
-  } else {
-    x = "Warning: This information is not consistent with results from other databases."
+  }else {
+    x += "Warning:\n"
+    if(sessionStorage.getItem("DMV_SD_Name_Match") === "false" && sessionStorage.getItem("DMV_SD_DOB_Match") === "false"){
+      x += "The name and date of birth does not match with the DMV database.\n"
+    }else if(sessionStorage.getItem("DMV_SD_Name_Match") === "false"){
+      x += "The name does not match with the DMV.\n";
+    }
+    else{
+      x += "The date of birth does not match with the DMV.\n";
+    }
+    if(sessionStorage.getItem("SS_SD_Name_Match") === "false" && sessionStorage.getItem("SS_SD_DOB_Match") === "false"){
+      x += "The name and date of birth does not match with the Social Secuirty database."
+    }else if(sessionStorage.getItem("SS_SD_Name_Match") === "false"){
+      x += "The name does not match with Social Security.\n";
+    }else{
+      x += "The date of birth does not match with Social Security\n";
+    }
   }
   return x;
 }
@@ -63,7 +79,6 @@ function StateDep(){
              width: 500,
              margin: 'auto',
              backgroundColor: '#05540a', 
- 
            }}>
             <center>Name: {fullName}</center>
             <br />
@@ -99,7 +114,7 @@ function StateDep(){
 
          </Grid>   
         </div>
-        <div><center>{comparisonTest()}</center></div>
+        <pre><center>{comparisonTest()}</center></pre>
         </ThemeProvider>  
     )
 }
