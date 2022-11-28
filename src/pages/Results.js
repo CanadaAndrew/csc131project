@@ -10,6 +10,8 @@ import CssBaseline from "@mui/material/CssBaseline";
 import {Person} from './../Backend/Person'
 import { CircularProgress } from '@mui/material';
 import CheckIcon from '@mui/icons-material/Check';
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
 
 const mainTheme = createTheme({
     typography: {
@@ -20,7 +22,7 @@ const mainTheme = createTheme({
       primary: { main: "#ffffff" }, // this changes the textbox to white
   
       background: {
-        default: "#c49e06", //changes whole page background to dark blue 
+        default: "#d7d0b8", //changes whole page background to dark blue 
       },
     },
   });
@@ -58,33 +60,38 @@ function Results() {
         
          <CssBaseline /> {/*CssBaseline enables changing background color*/}
         <div>
+        <AppBar position="static" enableColorOnDark="true"  sx={{ bgcolor: "#124a37" }}>
+        <Toolbar variant="dense">
+        <h0>TravelX.</h0>
+         <Grid container spacing={0} justifyContent = "right">
+          <Grid item xs = {2}>
+            <Button sx={styles} size="large" variant="outlined" href="Dmv" disabled = {!testingVar}>
+              Dmv
+            </Button>
+          </Grid>
+
+          <Grid item xs = {2}>
+            <Button sx={styles} size="large" variant="outlined" href="StateDep" disabled = {!testingVar}>
+              StateDep
+            </Button>
+          </Grid>
+
+          <Grid item xs = {2}>
+            <Button sx={styles} size="large" variant="outlined" href="Ssn" disabled = {!testingVar}>
+              SS
+            </Button>
+          </Grid>
+         </Grid>
+        </Toolbar>
+        </AppBar>
+          <br />
             <h1><center>{testingVar2}</center></h1>
             <br/>
             {testingVar2 === "Loading..." 
                ? <center><CircularProgress color='success'/></center> 
                : <center><CheckIcon color='success'/></center>} {/*loading Icon and check Icon loads based on testingVar2 so should be in sync*/}
-            <Grid container spacing={0} justifyContent = "center">
+        </div>
 
-              <Grid item xs = {2}>
-                <Button sx={styles} size="large" variant="outlined" href="Dmv" disabled = {!testingVar}>
-                  Dmv
-                </Button>
-              </Grid>
-
-              <Grid item xs = {2}>
-                <Button sx={styles} size="large" variant="outlined" href="StateDep" disabled = {!testingVar}>
-                  StateDep
-                </Button>
-              </Grid>
-
-              <Grid item xs = {2}>
-                <Button sx={styles} size="large" variant="outlined" href="Ssn" disabled = {!testingVar}>
-                  SS
-                </Button>
-               </Grid>
-
-            </Grid>
-       </div>
        <div><center>{}</center></div>
 
        </ThemeProvider>  
