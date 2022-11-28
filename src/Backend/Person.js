@@ -1,6 +1,6 @@
 import {getSSPerson, getFullName as getSSFullName, getDOB as getSSDOB} from './SSVendia';
-import {getDMVPerson, getDMVPicture, getFullName as getSDFullName, getDOB as getSDDOB} from './DMVVendia';
-import {getSDPerson, getSDPicture, getFullName as getDMVFullName, getDOB as getDMVDOB} from './SDVendia';
+import {getDMVPerson, getDMVPicture, getFullName as getDMVFullName, getDOB as getDMVDOB} from './DMVVendia';
+import {getSDPerson, getSDPicture, getFullName as getSDFullName, getDOB as getSDDOB} from './SDVendia';
 import {useEffect, useState} from 'react';
 
 function DMV(SSN) {
@@ -30,7 +30,6 @@ function DMV(SSN) {
     }
     useEffect(() => {
         updateFinishedLoading(FinishedLoading + 1);
-        console.log("DMV"+FinishedLoading);
         if(FinishedLoading === 8){
             sessionStorage.setItem("DMVFName", FName);
             sessionStorage.setItem("DMVMName", MName);
@@ -64,7 +63,6 @@ function SocialSecurity(SSN){
     }
     useEffect(() => {
         updateFinishedLoading(FinishedLoading + 1);
-        console.log("SS"+FinishedLoading);
         if(FinishedLoading === 6){
             sessionStorage.setItem("SSFName", FName);
             sessionStorage.setItem("SSMName", MName);
@@ -110,7 +108,6 @@ function StateDepartment(SSN) {
     }
     useEffect(() => {
         updateFinishedLoading(FinishedLoading + 1);
-        console.log("SD"+FinishedLoading);
         if(FinishedLoading === 11){
             sessionStorage.setItem("SDFName", FName);
             sessionStorage.setItem("SDMName", MName);
@@ -152,5 +149,10 @@ export function Person(ssn){
 }
 
 function setAttribute(setMethod, attribute){
-    setMethod(attribute);
+    if(attribute != null){
+        setMethod(attribute);
+    }else{
+        setMethod("");
+    }
+    
 }

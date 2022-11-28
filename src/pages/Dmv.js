@@ -47,18 +47,17 @@ function comparisonTest() {
     if(sessionStorage.getItem("DMV_SD_Name_Match") === "false" && sessionStorage.getItem("DMV_SD_DOB_Match") === "false"){
       x += "The name and date of birth does not match with the State Department database.\n"
     }else if(sessionStorage.getItem("DMV_SD_Name_Match") === "false"){
-      x += "The name does not match with the State Department.\n";
+      x += "The name does not match with the State Department database.\n";
+    }else if(sessionStorage.getItem("DMV_SD_DOB_Match") === "false"){
+      x += "The date of birth does not match with the State Department database.\n";
     }
-    else{
-      x += "The date of birth does not match with the State Department.\n";
-    }
+
     if(sessionStorage.getItem("DMV_SS_Name_Match") === "false" && sessionStorage.getItem("DMV_SS_DOB_Match") === "false"){
       x += "The name and date and date of birth does not match with the Social Security database.\n"
     }else if(sessionStorage.getItem("DMV_SS_Name_Match") === "false"){
-      x += "The name does not match with Social Security.\n";
-    }
-    else{
-      x += "The date of birth does not match with Social Security\n";
+      x += "The name does not match with Social Security database.\n";
+    }else if(sessionStorage.getItem("DMV_SS_DOB_Match") === "false"){
+      x += "The date of birth does not match with Social Security database\n";
     }
   }
   return x;
