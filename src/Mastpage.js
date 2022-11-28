@@ -8,19 +8,20 @@ import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import { PatternFormat } from 'react-number-format';
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
 import {Person} from './Backend/Person'
 var SSNNum = 0;
 //the main bg color and font
 const mainTheme = createTheme({
   typography: {
-    fontFamily: ["Segoe UI Symbol"].join(","),
+    fontFamily: ["Arial"].join(","),
     fontSize: 24,
   },
   palette: {
-    primary: { main: "#ffffff" }, // this changes the textbox to white
-
+    primary: { main: "#124a37" }, // this changes the textbox to white
     background: {
-      default: "#c49e06", //changes whole page background to dark blue 
+      default: "#d7d0b8", //changes whole page background to pale
     },
   },
 });
@@ -69,20 +70,31 @@ const Mastpage = () => {
       
       <div>
         <CssBaseline /> {/*CssBaseline enables changing background color*/}
-        <Typography align="center" color="common.white">
+        <Typography align="center" color="common.black">
          
           {/*Typography formats text*/}
-          <h1 id="h1"> SS# Background Check</h1>
+          
 
+        <AppBar position="static" enableColorOnDark="true"  sx={{ bgcolor: "#124a37" }}>
+        <Toolbar variant="dense">
+        <h0>TravelX.</h0>
+        </Toolbar>
+        </AppBar>
+          <br />
+          <br />
           <Box sx={{
             //secondary background color
-            height: 1000, //just a quick fix for now, TODO: find a way to set it to the height of the page
-            backgroundColor: '#05540a', //placeholder, TODO: discuss nice colors w/ group
-            margin: 'auto', //this pushes the width to the page size and centers the text
-
+            height: 650, 
+            margin: 'auto', //centers the box and text
+            width: 500,
+            border: 2,
+            borderColor: 'black',
+            backgroundColor: 'white',
           }}>
 
             <br />
+            <h0> SSN Search</h0>
+            <br /> <br />
 
             <TextField
               inputProps={{ format: "###-##-####" }} //don't ask me why there are 2 versions
@@ -107,7 +119,7 @@ const Mastpage = () => {
               id="filled-basic"
               label="Social Security #"
               variant="outlined"
-              sx={{ input: { color: "white" } }} //makes input text white
+              
 
 
 
@@ -117,9 +129,9 @@ const Mastpage = () => {
               {/*aligns the buttons to be on the same row*/}
             <Grid container spacing={0} justifyContent="center" >
               <Grid item xs ={4}>
-                <Button
+                <Button 
                    onClick = {() => {sessionStorage.setItem("SSN", SSNNum); sessionStorage.setItem("SSLoad", "false"); sessionStorage.setItem("SDLoad", "false"); sessionStorage.setItem("DMVLoad", "false");}}
-                   href="Results" size="large" sx={buttonStyle} disabled={btnDisabled} variant="outlined">
+                   href="Results" size="large" sx={buttonStyle} disabled={btnDisabled} variant="contained">
                     Search
                 </Button>
               </Grid>
