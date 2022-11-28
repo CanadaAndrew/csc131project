@@ -16,13 +16,13 @@ function DMV(SSN) {
 
     if(FinishedLoading === 0){
         getDMVPerson(SSN).then((person) => {
-            setFName(person.Fname);
-            setMName(person.MName);
-            setLName(person.LName);
-            setBirthDay(person.BirthDay);
-            setBirthMonth(person.BirthMonth);
-            setBirthYear(person.BirthYear);
-            setDLNum(person.LicenseNumber);
+            setAttribute(setFName, person.Fname);
+            setAttribute(setMName, person.MName);
+            setAttribute(setLName, person.LName);
+            setAttribute(setBirthDay, person.BirthDay);
+            setAttribute(setBirthMonth, person.BirthMonth);
+            setAttribute(setBirthYear, person.BirthYear);
+            setAttribute(setDLNum, person.LicenseNumber);
         })
         getDMVPicture(SSN).then((picture) => {
             setPhoto(picture);
@@ -54,12 +54,12 @@ function SocialSecurity(SSN){
     const [FinishedLoading, updateFinishedLoading] = useState(0);
     if (FinishedLoading === 0){
         getSSPerson(SSN).then((person) => {
-            setFName(person.Fname);
-            setMName(person.MName);
-            setLName(person.LName);
-            setBirthDay(person.BirthDay);
-            setBirthMonth(person.BirthMonth);
-            setBirthYear(person.BirthYear);
+            setAttribute(setFName, person.Fname);
+            setAttribute(setMName, person.MName);
+            setAttribute(setLName, person.LName);
+            setAttribute(setBirthDay, person.BirthDay);
+            setAttribute(setBirthMonth, person.BirthMonth);
+            setAttribute(setBirthYear, person.BirthYear);
         })
     }
     useEffect(() => {
@@ -93,16 +93,16 @@ function StateDepartment(SSN) {
 
     if(FinishedLoading === 0){
         getSDPerson(SSN).then((person) => {
-            setFName(person.Fname);
-            setMName(person.MName);
-            setLName(person.LName);
-            setBirthDay(person.BirthDay);
-            setBirthMonth(person.BirthMonth);
-            setBirthYear(person.BirthYear);
-            setExpirationDay(person.PassportExpirationDay);
-            setExpirationMonth(person.PassportExpirationMonth);
-            setExpirationYear(person.PassportExpirationYear);
-            setPassportNumber(person.PassportNumber);
+            setAttribute(setFName, person.Fname);
+            setAttribute(setMName, person.MName);
+            setAttribute(setLName, person.LName);
+            setAttribute(setBirthDay, person.BirthDay);
+            setAttribute(setBirthMonth, person.BirthMonth);
+            setAttribute(setBirthYear, person.BirthYear);
+            setAttribute(setExpirationDay, person.PassportExpirationDay);
+            setAttribute(setExpirationMonth, person.PassportExpirationMonth);
+            setAttribute(setExpirationYear, person.PassportExpirationYear);
+            setAttribute(setPassportNumber, person.PassportNumber);
         })
         getSDPicture(SSN).then((picture) => {
             setPhoto(picture);
@@ -149,4 +149,8 @@ export function Person(ssn){
         sessionStorage.setItem("allMatch", "false");
         }
     }
+}
+
+function setAttribute(setMethod, attribute){
+    setMethod(attribute);
 }
