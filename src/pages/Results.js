@@ -46,19 +46,12 @@ function Results() {
   thisPerson = new Person(SSNNum);
   var btnDisabled = testingVar;
 
-  setTimeout(() => {if(sessionStorage.getItem("SSLoad") === "true" && sessionStorage.getItem("SDLoad") === "true" && sessionStorage.getItem("DMVLoad") === "true"){
-    updatingTestingVar(true);
-    updatingTestingVar2("Done!");
-    if(getDMVFullName() === getSDFullName() && getDMVFullName() === getSSFullName() && getDMVDOB() === getSDDOB() && getDMVDOB() === getSSDOB()){
-      sessionStorage.setItem("Match", "true");
-      console.log("Set match to true");
-    }else{
-      sessionStorage.setItem("Match", "false");
-      console.log("Set match to false");
+  setTimeout(() => {
+    if(sessionStorage.getItem("SSLoad") === "true" && sessionStorage.getItem("SDLoad") === "true" && sessionStorage.getItem("DMVLoad") === "true"){
+      updatingTestingVar(true);
+      updatingTestingVar2("Done!");
+      thisPerson.dataCheck();
     }
-  }else{
-    updatingTestingVar(false);
-  }
   }, 1000)
     return(
       <ThemeProvider theme={mainTheme} >
