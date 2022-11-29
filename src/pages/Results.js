@@ -9,6 +9,7 @@ import { CircularProgress } from '@mui/material';
 import CheckIcon from '@mui/icons-material/Check';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
+import logo from '../logo.png';
 
 const mainTheme = createTheme({
   typography: {
@@ -79,7 +80,7 @@ function Results() {
         <div>
         <AppBar position="static" enableColorOnDark="true"  sx={{ bgcolor: "#124a37" }}>
         <Toolbar variant="dense">
-        <h0>TravelX.</h0>
+        <h0><img style={{ width:200, height: 60 }} src={logo} alt="TravelX logo" /></h0>
          <Grid container spacing={0} justifyContent = "right">
           <Grid item xs = {2}>
             <Button sx={styles} size="large" href="Dmv" disabled = {!testingVar}>
