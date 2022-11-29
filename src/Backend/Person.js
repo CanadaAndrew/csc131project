@@ -33,6 +33,7 @@ function DMV(SSN){
                 setAttribute(setBirthYear, null);
                 setAttribute(setDLNum, null);
                 sessionStorage.setItem("errorDMV", "true");
+                sessionStorage.setItem("error", "true");
             }
         })
         getDMVPicture(SSN).then((picture) => {
@@ -85,6 +86,7 @@ function SocialSecurity(SSN){
                 setAttribute(setBirthMonth, null);
                 setAttribute(setBirthYear, null);
                 sessionStorage.setItem("errorSS", "true");
+                sessionStorage.setItem("error", "true");
             }
         })
     }
@@ -131,17 +133,28 @@ function StateDepartment(SSN) {
                 setAttribute(setExpirationYear, person.PassportExpirationYear);
                 setAttribute(setPassportNumber, person.PassportNumber);
             }catch(e){
-                setAttribute(setFName, null);
-                setAttribute(setMName, null);
-                setAttribute(setLName, null);
-                setAttribute(setBirthDay, null);
-                setAttribute(setBirthMonth, null);
-                setAttribute(setBirthYear, null);
-                setAttribute(setExpirationDay, null);
-                setAttribute(setExpirationMonth, null);
-                setAttribute(setExpirationYear, null);
-                setAttribute(setPassportNumber, null);
                 sessionStorage.setItem("errorSD", "true");
+                sessionStorage.setItem("error", "true");
+                setAttribute(setFName, null);
+                console.log("Name");
+                setAttribute(setMName, null);
+                console.log("Name");
+                setAttribute(setLName, null);
+                console.log("Name");
+                setAttribute(setBirthDay, null);
+                console.log("Birth");
+                setAttribute(setBirthMonth, null);
+                console.log("Birth");
+                setAttribute(setBirthYear, null);
+                console.log("Birth");
+                setAttribute(setExpirationDay, null);
+                console.log("Expir");
+                setAttribute(setExpirationMonth, null);
+                console.log("Expir");
+                setAttribute(setExpirationYear, null);
+                console.log("Expir");
+                setAttribute(setPassportNumber, null);
+                console.log("Pass");
             }
 
         })
@@ -161,7 +174,8 @@ function StateDepartment(SSN) {
     useEffect(() => {
         updateFinishedLoading(FinishedLoading + 1);
         console.log("SD"+FinishedLoading);
-        if(FinishedLoading === 10){
+        console.log(sessionStorage.getItem("errorSD"));
+        if(FinishedLoading === 11){
             sessionStorage.setItem("SDFName", FName);
             sessionStorage.setItem("SDMName", MName);
             sessionStorage.setItem("SDLName", LName);
@@ -175,17 +189,21 @@ function StateDepartment(SSN) {
             sessionStorage.setItem("SDPhoto", Photo);
             sessionStorage.setItem("SDLoad", "true");
         }
+        if(FinishedLoading === 10 && sessionStorage.getItem("errorSD") === true){
+            sessionStorage.setItem("SDLoad", "true");
+        }
     }, [FName, MName, LName, BirthDay, BirthMonth, BirthYear, ExpirationDay, ExpirationMonth, ExpirationYear, PassportNumber, Photo]);
 }
 
 export function Person(ssn){
-    SocialSecurity(ssn);
-    StateDepartment(ssn);
-    DMV(ssn);
-    sessionStorage.setItem("errorDMV", "false");
-    sessionStorage.setItem("errorSD", "false");
-    sessionStorage.setItem("errorSS", "false");
-    sessionStorage.setItem("allMatch", "true");
+        SocialSecurity(ssn);
+        StateDepartment(ssn);
+        DMV(ssn);
+        sessionStorage.setItem("errorDMV", "false");
+        sessionStorage.setItem("errorSD", "false");
+        sessionStorage.setItem("errorSS", "false");
+        sessionStorage.setItem("error", "false");
+        sessionStorage.setItem("allMatch", "true");
     this.dataCheck = () => {
         this.checker(getDMVFullName(), getSDFullName(), "DMV_SD_Name_Match");
         this.checker(getDMVFullName(), getSSFullName(), "DMV_SS_Name_Match");

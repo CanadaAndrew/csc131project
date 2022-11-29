@@ -58,10 +58,12 @@ function Results() {
   const [testingVar2, updatingTestingVar2] = useState("Loading...");
   SSNNum = sessionStorage.getItem("SSN");
   thisPerson = new Person(SSNNum);
+  sessionStorage.setItem("start", "false");
+  
 
   setTimeout(() => {
     if(sessionStorage.getItem("SSLoad") === "true" && sessionStorage.getItem("SDLoad") === "true" && sessionStorage.getItem("DMVLoad") === "true"){
-      if(sessionStorage.getItem("errorSS") || sessionStorage.getItem("errorDMV") || sessionStorage.getItem("errorSD")){
+      if(sessionStorage.getItem("error") === "true"){
         updatingTestingVar2(warningMessage());
         updatingTestingVar(true);
       }
