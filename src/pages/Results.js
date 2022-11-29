@@ -14,18 +14,19 @@ import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 
 const mainTheme = createTheme({
-    typography: {
-      fontFamily: ["Segoe UI Symbol"].join(","),
-      fontSize: 24,
+  typography: {
+    fontFamily: ["Arial"].join(","),
+    fontSize: 24,
+    
+
+  },
+  palette: {
+    primary: { main: "#124a37" }, // this changes the textbox to green
+    background: {
+      default: "#d7d0b8", //changes whole page background to pale
     },
-    palette: {
-      primary: { main: "#ffffff" }, // this changes the textbox to white
-  
-      background: {
-        default: "#d7d0b8", //changes whole page background to dark blue 
-      },
-    },
-  });
+  },
+});
 
 var SSNNum;
 var thisPerson;

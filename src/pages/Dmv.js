@@ -5,20 +5,23 @@ import Grid from '@mui/material/Grid';
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import Box from '@mui/material/Box';
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
 
 const mainTheme = createTheme({
-    typography: {
-      fontFamily: ["Segoe UI Symbol"].join(","),
-      fontSize: 24,
+  typography: {
+    fontFamily: ["Arial"].join(","),
+    fontSize: 24,
+    
+
+  },
+  palette: {
+    primary: { main: "#124a37" }, // this changes the textbox to green
+    background: {
+      default: "#d7d0b8", //changes whole page background to pale
     },
-    palette: {
-      primary: { main: "#ffffff" }, // this changes the textbox to white
-  
-      background: {
-        default: "#c49e06", //changes whole page background to dark blue 
-      },
-    },
-  });
+  },
+});
   
 const styles = {
     "&:hover":{
@@ -73,30 +76,49 @@ function Dmv() {
         <div>
         <CssBaseline /> {/*CssBaseline enables changing background color*/}
 
-       
-
-            <h1><center>DMV Results</center></h1>
-            <center>{<img src={Picture}/>}</center>
-            <br />
-            <Box sx={{
-             
+        <AppBar position="static" enableColorOnDark="true"  sx={{ bgcolor: "#124a37" }}>
+        <Toolbar variant="dense">
+        <h0>TravelX.</h0>
+        </Toolbar>
+        </AppBar>
+          <br />
+          <br />
+          <Box sx={{
             //secondary background color
-            borderRadius: '16px',
-            height: 300,
+            height: 700, 
+            margin: 'auto', //centers the box and text
             width: 500,
-            margin: 'auto',
-            backgroundColor: '#05540a', 
-
+            border: 2,
+            borderColor: 'black',
+            backgroundColor: 'white',
           }}>
-              <br />
-            <center>Name: {fullName}</center>
+            <center>{<img src={Picture}/>}</center>
+            <Box sx={{backgroundColor: "#124a37",
+            height: 65, 
+            width: 350,
+            margin: 'auto',
+            display: 'flex',
+          
+          }}> <Grid  item
+          container
+         alignItems="center" justifyContent="center"> <h0 style={{ color: 'white' }}>{fullName} </h0></Grid></Box>
+            
+          
             <br />
-            <center>Date of birth: {DOB}</center>
+            <center>
+            <h0 style={{ color: "#124a37",fontWeight: 'bold' }}> DOB </h0>
             <br />
-            <center>Driver's license number: {DL}</center>
+              {DOB}
+            <br /><br />
+            <h0 style={{ color: "#124a37",fontWeight: 'bold' }}> DL# </h0>
+           <br />
+           {DL}
+           </center>
             <br />
             <br />
           </Box>
+            
+           
           <br />
          <Grid container spacing={0} justifyContent = "center">
 

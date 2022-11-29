@@ -17,9 +17,11 @@ const mainTheme = createTheme({
   typography: {
     fontFamily: ["Arial"].join(","),
     fontSize: 24,
+    
+
   },
   palette: {
-    primary: { main: "#124a37" }, // this changes the textbox to white
+    primary: { main: "#124a37" }, // this changes the textbox to green
     background: {
       default: "#d7d0b8", //changes whole page background to pale
     },

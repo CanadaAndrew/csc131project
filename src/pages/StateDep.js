@@ -5,20 +5,23 @@ import Grid from '@mui/material/Grid';
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import Box from '@mui/material/Box';
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
 
 const mainTheme = createTheme({
-    typography: {
-      fontFamily: ["Segoe UI Symbol"].join(","),
-      fontSize: 24,
+  typography: {
+    fontFamily: ["Arial"].join(","),
+    fontSize: 24,
+    
+
+  },
+  palette: {
+    primary: { main: "#124a37" }, // this changes the textbox to green
+    background: {
+      default: "#d7d0b8", //changes whole page background to pale
     },
-    palette: {
-      primary: { main: "#ffffff" }, // this changes the textbox to white
-  
-      background: {
-        default: "#c49e06", //changes whole page background to dark blue 
-      },
-    },
-  });
+  },
+});
 
 const styles = {
     "&:hover":{
@@ -69,27 +72,46 @@ function StateDep(){
         <ThemeProvider theme={mainTheme} >
          <CssBaseline /> {/*CssBaseline enables changing background color*/}
         <div>
-            <h1><center>State Department Results</center></h1>
+
+        <AppBar position="static" enableColorOnDark="true"  sx={{ bgcolor: "#124a37" }}>
+        <Toolbar variant="dense">
+        <h0>TravelX.</h0>
+        </Toolbar>
+        </AppBar>
+          <br />
+          <br />
+          <Box sx={{
+            //secondary background color
+            height: 700, 
+            margin: 'auto', //centers the box and text
+            width: 500,
+            border: 2,
+            borderColor: 'black',
+            backgroundColor: 'white',
+          }}>
             <center>{<img src={Picture}/>}</center>
+            <Box sx={{backgroundColor: "#124a37",
+            height: 65, 
+            width: 350,
+            margin: 'auto',
+            display: 'flex',
+          
+          }}> <Grid  item
+          container
+         alignItems="center" justifyContent="center"> <h0 style={{ color: 'white' }}>{fullName} </h0></Grid></Box> 
+         
+         
             <br />
-            <Box sx={{
-             //secondary background color
-             borderRadius: '16px',
-             height: 300,
-             width: 500,
-             margin: 'auto',
-             backgroundColor: '#05540a', 
-           }}>
-            <center>Name: {fullName}</center>
+            <center><h0 style={{ color: "#124a37",fontWeight: 'bold' }}>DOB</h0> <br /> {DOB}
             <br />
-            <center>Date of birth: {DOB}</center>
+            <h0 style={{ color: "#124a37",fontWeight: 'bold' }}>Passport #</h0> <br />{PassportNum} 
             <br />
-            <center>Passport number: {PassportNum} </center>
+            <h0 style={{ color: "#124a37",fontWeight: 'bold' }}>Passport Expires On </h0>  <br />{PassportExpiration} </center>
+         
+         </Box>
+           
             <br />
-            <center>Passport expires on: {PassportExpiration} </center>
-            <br />
-            <br />
-            </Box>
+           
             <br />
 
          <Grid container spacing={0} justifyContent = "center">
