@@ -25,15 +25,26 @@ const mainTheme = createTheme({
     background: {
       default: "#d7d0b8", //changes whole page background to pale
     },
+<<<<<<< HEAD
   },
 });
+=======
+    palette: {
+      primary: { main: "#ffffff" }, // this changes the textbox to white
+  
+      background: {
+        default: "#d7d0b8", //changes whole page background to pale
+      },
+    },
+  });
+>>>>>>> 881d5b99fafbf0e9e27084c1be0ceea3db1e2cc8
 
 var SSNNum;
 var thisPerson;
 const styles = {
     "&:hover":{
         background: "green",
-        border: "1px solid black",
+        //border: "1px solid black",
         color: "White"
     },
     width: 150,
@@ -66,19 +77,19 @@ function Results() {
         <h0>TravelX.</h0>
          <Grid container spacing={0} justifyContent = "right">
           <Grid item xs = {2}>
-            <Button sx={styles} size="large" variant="outlined" href="Dmv" disabled = {!testingVar}>
+            <Button sx={styles} size="large" href="Dmv" disabled = {!testingVar}>
               Dmv
             </Button>
           </Grid>
 
           <Grid item xs = {2}>
-            <Button sx={styles} size="large" variant="outlined" href="StateDep" disabled = {!testingVar}>
+            <Button sx={styles} size="large" href="StateDep" disabled = {!testingVar}>
               StateDep
             </Button>
           </Grid>
 
           <Grid item xs = {2}>
-            <Button sx={styles} size="large" variant="outlined" href="Ssn" disabled = {!testingVar}>
+            <Button sx={styles} size="large" href="Ssn" disabled = {!testingVar}>
               SS
             </Button>
           </Grid>
