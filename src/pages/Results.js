@@ -25,19 +25,9 @@ const mainTheme = createTheme({
     background: {
       default: "#d7d0b8", //changes whole page background to pale
     },
-<<<<<<< HEAD
-  },
+   
+  }
 });
-=======
-    palette: {
-      primary: { main: "#ffffff" }, // this changes the textbox to white
-  
-      background: {
-        default: "#d7d0b8", //changes whole page background to pale
-      },
-    },
-  });
->>>>>>> 881d5b99fafbf0e9e27084c1be0ceea3db1e2cc8
 
 var SSNNum;
 var thisPerson;

@@ -9,25 +9,10 @@ import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 
 const mainTheme = createTheme({
-<<<<<<< HEAD
   typography: {
     fontFamily: ["Arial"].join(","),
     fontSize: 24,
     
-=======
-    typography: {
-      fontFamily: ["Segoe UI Symbol"].join(","),
-      fontSize: 24,
-    },
-    palette: {
-      primary: { main: "#ffffff" }, // this changes the textbox to white
-  
-      background: {
-        default: "#d7d0b8", //changes whole page background to pale
-      },
-    },
-  });
->>>>>>> 881d5b99fafbf0e9e27084c1be0ceea3db1e2cc8
 
   },
   palette: {
@@ -88,7 +73,6 @@ function Ssn(){
         <AppBar position="static" enableColorOnDark="true"  sx={{ bgcolor: "#124a37" }}>
         <Toolbar variant="dense">
         <h0>TravelX.</h0>
-<<<<<<< HEAD
         </Toolbar>
         </AppBar>
           <br />
@@ -114,61 +98,22 @@ function Ssn(){
             <Grid item xs = {2}>
                <Button sx={styles} size="large" variant="outlined" href="Mastpage">
                    Return to searchbar
-=======
-        <Grid container spacing={0} justifyContent = "right">  
-            <Grid item xs = {2}>
-               <Button sx={styles} size="large" href="Mastpage">
-                   Return
->>>>>>> 881d5b99fafbf0e9e27084c1be0ceea3db1e2cc8
                </Button>
             </Grid>
             
             <Grid item xs = {2}>
-<<<<<<< HEAD
                <Button sx={styles} size="large" variant="outlined" href="Dmv">
-=======
-               <Button sx={styles} size="large" href="Dmv">
->>>>>>> 881d5b99fafbf0e9e27084c1be0ceea3db1e2cc8
                    Dmv
                </Button>
             </Grid>
             
             <Grid item xs = {2}>
-<<<<<<< HEAD
                <Button sx={styles} size="large" variant="outlined" href="StateDep">
                    StateDep
                </Button>
             </Grid>
 
          </Grid>
-=======
-               <Button sx={styles} size="large" href="StateDep">
-                   StateDep
-               </Button>
-            </Grid>
-         </Grid>
-        </Toolbar>
-        </AppBar>
-        <br />
-            <h1><center>Social Security Results</center></h1>
-            <Box sx={{
-             
-             //secondary background color
-             borderRadius: '16px',
-             height: 300,
-             width: 500,
-             margin: 'auto',
-             backgroundColor: '#05540a', 
- 
-           }}>
-            <br />
-            <center>Name: {fullName}</center>
-            <br />
-            <center>Date of birth: {DOB}</center>
-            <br />
-            </Box>
-            <br />
->>>>>>> 881d5b99fafbf0e9e27084c1be0ceea3db1e2cc8
         </div>
         <pre><center>{comparisonTest()}</center></pre>
         </ThemeProvider>  

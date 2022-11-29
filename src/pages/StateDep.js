@@ -20,19 +20,8 @@ const mainTheme = createTheme({
     background: {
       default: "#d7d0b8", //changes whole page background to pale
     },
-<<<<<<< HEAD
   },
 });
-=======
-    palette: {
-      primary: { main: "#ffffff" }, // this changes the textbox to white
-  
-      background: {
-        default: "#d7d0b8", //changes whole page background to pale 
-      },
-    },
-  });
->>>>>>> 881d5b99fafbf0e9e27084c1be0ceea3db1e2cc8
 
 const styles = {
     "&:hover":{
@@ -83,7 +72,6 @@ function StateDep(){
         <ThemeProvider theme={mainTheme} >
          <CssBaseline /> {/*CssBaseline enables changing background color*/}
         <div>
-<<<<<<< HEAD
 
         <AppBar position="static" enableColorOnDark="true"  sx={{ bgcolor: "#124a37" }}>
         <Toolbar variant="dense">
@@ -101,34 +89,6 @@ function StateDep(){
             borderColor: 'black',
             backgroundColor: 'white',
           }}>
-=======
-        <AppBar position="static" enableColorOnDark="true"  sx={{ bgcolor: "#124a37" }}>
-        <Toolbar variant="dense">
-        <h0>TravelX.</h0>
-        <Grid container spacing={0} justifyContent = "right">
-            <Grid item xs = {2}>
-               <Button sx={styles} size="large" href="Mastpage">
-                    Return
-               </Button>
-            </Grid>
-           
-            <Grid item xs = {2}>
-               <Button sx={styles} size="large" href="Dmv">
-                   Dmv
-               </Button>
-            </Grid>
-            
-            <Grid item xs = {2}>
-               <Button sx={styles} size="large" href="Ssn">
-                   SSN
-               </Button>
-            </Grid>
-         </Grid> 
-        </Toolbar>
-        </AppBar>
-          <br />
-            <h1><center>State Department Results</center></h1>
->>>>>>> 881d5b99fafbf0e9e27084c1be0ceea3db1e2cc8
             <center>{<img src={Picture}/>}</center>
             <Box sx={{backgroundColor: "#124a37",
             height: 65, 
@@ -151,7 +111,6 @@ function StateDep(){
          </Box>
            
             <br />
-<<<<<<< HEAD
            
             <br />
 
@@ -176,13 +135,6 @@ function StateDep(){
             </Grid>
 
          </Grid>   
-=======
-            <center>Passport expires on: {PassportExpiration} </center>
-            <br />
-            <br />
-            </Box>
-            <br />  
->>>>>>> 881d5b99fafbf0e9e27084c1be0ceea3db1e2cc8
         </div>
         <pre><center>{comparisonTest()}</center></pre>
         </ThemeProvider>  
