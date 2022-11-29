@@ -133,8 +133,6 @@ function StateDepartment(SSN) {
                 setAttribute(setExpirationYear, person.PassportExpirationYear);
                 setAttribute(setPassportNumber, person.PassportNumber);
             }catch(e){
-                sessionStorage.setItem("errorSD", "true");
-                sessionStorage.setItem("error", "true");
                 setAttribute(setFName, null);
                 console.log("Name");
                 setAttribute(setMName, null);
@@ -155,6 +153,8 @@ function StateDepartment(SSN) {
                 console.log("Expir");
                 setAttribute(setPassportNumber, null);
                 console.log("Pass");
+                sessionStorage.setItem("errorSD", "true");
+                sessionStorage.setItem("error", "true");
             }
 
         })
