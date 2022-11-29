@@ -25,11 +25,12 @@ const mainTheme = createTheme({
 const styles = {
     "&:hover":{
         background: "Green",
-        //border: "1px solid black",
+        border: "1px solid black",
         color: "White"
     },
     width: 150,
     fontSize: 20,
+    color: "white",
 }
 
 function comparisonTest() {
@@ -73,6 +74,25 @@ function Ssn(){
         <AppBar position="static" enableColorOnDark="true"  sx={{ bgcolor: "#124a37" }}>
         <Toolbar variant="dense">
         <h0>TravelX.</h0>
+        <Grid container spacing={0} justifyContent = "right"> 
+            <Grid item xs = {2}>
+               <Button sx={styles} size="large" href="Mastpage">
+                   Return
+               </Button>
+            </Grid>
+            
+            <Grid item xs = {2}>
+               <Button sx={styles} size="large" href="Dmv">
+                   Dmv
+               </Button>
+            </Grid>
+            
+            <Grid item xs = {2}>
+               <Button sx={styles} size="large" href="StateDep">
+                   StateDep
+               </Button>
+            </Grid>
+         </Grid>
         </Toolbar>
         </AppBar>
           <br />
@@ -93,27 +113,6 @@ function Ssn(){
 <h0 style={{ color: "#124a37",fontWeight: 'bold' }}>DOB</h0><br />   {DOB}</center>
 </Box> 
 <br />   
-         <Grid container spacing={0} justifyContent = "center">
-              
-            <Grid item xs = {2}>
-               <Button sx={styles} size="large" variant="outlined" href="Mastpage">
-                   Return to searchbar
-               </Button>
-            </Grid>
-            
-            <Grid item xs = {2}>
-               <Button sx={styles} size="large" variant="outlined" href="Dmv">
-                   Dmv
-               </Button>
-            </Grid>
-            
-            <Grid item xs = {2}>
-               <Button sx={styles} size="large" variant="outlined" href="StateDep">
-                   StateDep
-               </Button>
-            </Grid>
-
-         </Grid>
         </div>
         <pre><center>{comparisonTest()}</center></pre>
         </ThemeProvider>  

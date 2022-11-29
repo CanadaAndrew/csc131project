@@ -39,6 +39,7 @@ const styles = {
     },
     width: 150,
   fontSize: 20,
+  color: "white"
 }
 
 //const tester = true; // primitive true false boolean to control icons 
