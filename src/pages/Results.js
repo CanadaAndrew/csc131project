@@ -80,19 +80,19 @@ function Results() {
         <h0>TravelX.</h0>
          <Grid container spacing={0} justifyContent = "right">
           <Grid item xs = {2}>
-            <Button sx={styles} size="large" variant="outlined" href="Dmv" disabled = {!testingVar}>
+            <Button sx={styles} size="large" href="Dmv" disabled = {!testingVar}>
               Dmv
             </Button>
           </Grid>
 
           <Grid item xs = {2}>
-            <Button sx={styles} size="large" variant="outlined" href="StateDep" disabled = {!testingVar}>
+            <Button sx={styles} size="large" href="StateDep" disabled = {!testingVar}>
               StateDep
             </Button>
           </Grid>
 
           <Grid item xs = {2}>
-            <Button sx={styles} size="large" variant="outlined" href="Ssn" disabled = {!testingVar}>
+            <Button sx={styles} size="large" href="Ssn" disabled = {!testingVar}>
               SS
             </Button>
           </Grid>
