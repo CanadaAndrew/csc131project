@@ -5,6 +5,8 @@ import Grid from '@mui/material/Grid';
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import Box from '@mui/material/Box';
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
 
 const mainTheme = createTheme({
     typography: {
@@ -15,7 +17,7 @@ const mainTheme = createTheme({
       primary: { main: "#ffffff" }, // this changes the textbox to white
   
       background: {
-        default: "#c49e06", //changes whole page background to dark blue 
+        default: "#d7d0b8", //changes whole page background to pale
       },
     },
   });
@@ -23,7 +25,7 @@ const mainTheme = createTheme({
 const styles = {
     "&:hover":{
         background: "Green",
-        border: "1px solid black",
+        //border: "1px solid black",
         color: "White"
     },
     width: 150,
@@ -68,6 +70,31 @@ function Ssn(){
         <ThemeProvider theme={mainTheme} >
          <CssBaseline /> {/*CssBaseline enables changing background color*/}
         <div>
+        <AppBar position="static" enableColorOnDark="true"  sx={{ bgcolor: "#124a37" }}>
+        <Toolbar variant="dense">
+        <h0>TravelX.</h0>
+        <Grid container spacing={0} justifyContent = "right">  
+            <Grid item xs = {2}>
+               <Button sx={styles} size="large" href="Mastpage">
+                   Return
+               </Button>
+            </Grid>
+            
+            <Grid item xs = {2}>
+               <Button sx={styles} size="large" href="Dmv">
+                   Dmv
+               </Button>
+            </Grid>
+            
+            <Grid item xs = {2}>
+               <Button sx={styles} size="large" href="StateDep">
+                   StateDep
+               </Button>
+            </Grid>
+         </Grid>
+        </Toolbar>
+        </AppBar>
+        <br />
             <h1><center>Social Security Results</center></h1>
             <Box sx={{
              
@@ -86,27 +113,6 @@ function Ssn(){
             <br />
             </Box>
             <br />
-         <Grid container spacing={0} justifyContent = "center">
-              
-            <Grid item xs = {2}>
-               <Button sx={styles} size="large" variant="outlined" href="Mastpage">
-                   Return to searchbar
-               </Button>
-            </Grid>
-            
-            <Grid item xs = {2}>
-               <Button sx={styles} size="large" variant="outlined" href="Dmv">
-                   Dmv
-               </Button>
-            </Grid>
-            
-            <Grid item xs = {2}>
-               <Button sx={styles} size="large" variant="outlined" href="StateDep">
-                   StateDep
-               </Button>
-            </Grid>
-
-         </Grid>
         </div>
         <pre><center>{comparisonTest()}</center></pre>
         </ThemeProvider>  
