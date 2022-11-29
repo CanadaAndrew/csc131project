@@ -3,7 +3,7 @@ import {getDMVPerson, getDMVPicture, getFullName as getDMVFullName, getDOB as ge
 import {getSDPerson, getSDPicture, getFullName as getSDFullName, getDOB as getSDDOB} from './SDVendia';
 import {useEffect, useState} from 'react';
 
-function DMV(SSN) {
+function DMV(SSN){
     const [FName, setFName] = useState(" ");
     const [MName, setMName] = useState(" ");
     const [LName, setLName] = useState(" ");
@@ -16,19 +16,36 @@ function DMV(SSN) {
 
     if(FinishedLoading === 0){
         getDMVPerson(SSN).then((person) => {
-            setAttribute(setFName, person.Fname);
-            setAttribute(setMName, person.MName);
-            setAttribute(setLName, person.LName);
-            setAttribute(setBirthDay, person.BirthDay);
-            setAttribute(setBirthMonth, person.BirthMonth);
-            setAttribute(setBirthYear, person.BirthYear);
-            setAttribute(setDLNum, person.LicenseNumber);
+            try{
+                setAttribute(setFName, person.Fname);
+                setAttribute(setMName, person.MName);
+                setAttribute(setLName, person.LName);
+                setAttribute(setBirthDay, person.BirthDay);
+                setAttribute(setBirthMonth, person.BirthMonth);
+                setAttribute(setBirthYear, person.BirthYear);
+                setAttribute(setDLNum, person.LicenseNumber);
+            }catch(e){
+                setAttribute(setFName, null);
+                setAttribute(setMName, null);
+                setAttribute(setLName, null);
+                setAttribute(setBirthDay, null);
+                setAttribute(setBirthMonth, null);
+                setAttribute(setBirthYear, null);
+                setAttribute(setDLNum, null);
+                sessionStorage.setItem("errorDMV", "true");
+            }
         })
         getDMVPicture(SSN).then((picture) => {
-            setPhoto(picture);
+            try{
+                setPhoto(picture);
+            }catch(e){
+                setPhoto(null);
+                sessionStorage.setItem("errorDMV", "true");
+            }
         })
     }
     useEffect(() => {
+        console.log("DMV"+FinishedLoading);
         updateFinishedLoading(FinishedLoading + 1);
         if(FinishedLoading === 8){
             sessionStorage.setItem("DMVFName", FName);
@@ -53,16 +70,27 @@ function SocialSecurity(SSN){
     const [FinishedLoading, updateFinishedLoading] = useState(0);
     if (FinishedLoading === 0){
         getSSPerson(SSN).then((person) => {
-            setAttribute(setFName, person.Fname);
-            setAttribute(setMName, person.MName);
-            setAttribute(setLName, person.LName);
-            setAttribute(setBirthDay, person.BirthDay);
-            setAttribute(setBirthMonth, person.BirthMonth);
-            setAttribute(setBirthYear, person.BirthYear);
+            try{
+                setAttribute(setFName, person.Fname);
+                setAttribute(setMName, person.MName);
+                setAttribute(setLName, person.LName);
+                setAttribute(setBirthDay, person.BirthDay);
+                setAttribute(setBirthMonth, person.BirthMonth);
+                setAttribute(setBirthYear, person.BirthYear);
+            }catch(e){
+                setAttribute(setFName, null);
+                setAttribute(setMName, null);
+                setAttribute(setLName, null);
+                setAttribute(setBirthDay, null);
+                setAttribute(setBirthMonth, null);
+                setAttribute(setBirthYear, null);
+                sessionStorage.setItem("errorSS", "true");
+            }
         })
     }
     useEffect(() => {
         updateFinishedLoading(FinishedLoading + 1);
+        console.log("SS"+FinishedLoading);
         if(FinishedLoading === 6){
             sessionStorage.setItem("SSFName", FName);
             sessionStorage.setItem("SSMName", MName);
@@ -91,24 +119,49 @@ function StateDepartment(SSN) {
 
     if(FinishedLoading === 0){
         getSDPerson(SSN).then((person) => {
-            setAttribute(setFName, person.Fname);
-            setAttribute(setMName, person.MName);
-            setAttribute(setLName, person.LName);
-            setAttribute(setBirthDay, person.BirthDay);
-            setAttribute(setBirthMonth, person.BirthMonth);
-            setAttribute(setBirthYear, person.BirthYear);
-            setAttribute(setExpirationDay, person.PassportExpirationDay);
-            setAttribute(setExpirationMonth, person.PassportExpirationMonth);
-            setAttribute(setExpirationYear, person.PassportExpirationYear);
-            setAttribute(setPassportNumber, person.PassportNumber);
+            try{
+                setAttribute(setFName, person.Fname);
+                setAttribute(setMName, person.MName);
+                setAttribute(setLName, person.LName);
+                setAttribute(setBirthDay, person.BirthDay);
+                setAttribute(setBirthMonth, person.BirthMonth);
+                setAttribute(setBirthYear, person.BirthYear);
+                setAttribute(setExpirationDay, person.PassportExpirationDay);
+                setAttribute(setExpirationMonth, person.PassportExpirationMonth);
+                setAttribute(setExpirationYear, person.PassportExpirationYear);
+                setAttribute(setPassportNumber, person.PassportNumber);
+            }catch(e){
+                setAttribute(setFName, null);
+                setAttribute(setMName, null);
+                setAttribute(setLName, null);
+                setAttribute(setBirthDay, null);
+                setAttribute(setBirthMonth, null);
+                setAttribute(setBirthYear, null);
+                setAttribute(setExpirationDay, null);
+                setAttribute(setExpirationMonth, null);
+                setAttribute(setExpirationYear, null);
+                setAttribute(setPassportNumber, null);
+                sessionStorage.setItem("errorSD", "true");
+            }
+
         })
         getSDPicture(SSN).then((picture) => {
-            setPhoto(picture);
+            console.log("in picture method SD");
+            try{
+                console.log("in try");
+                setPhoto(picture);
+            }catch(e){
+                console.log("in catch");
+                setPhoto(null);
+                sessionStorage.setItem("errorSD", "true");
+            }
+            
         })
     }
     useEffect(() => {
         updateFinishedLoading(FinishedLoading + 1);
-        if(FinishedLoading === 11){
+        console.log("SD"+FinishedLoading);
+        if(FinishedLoading === 10){
             sessionStorage.setItem("SDFName", FName);
             sessionStorage.setItem("SDMName", MName);
             sessionStorage.setItem("SDLName", LName);
@@ -129,6 +182,9 @@ export function Person(ssn){
     SocialSecurity(ssn);
     StateDepartment(ssn);
     DMV(ssn);
+    sessionStorage.setItem("errorDMV", "false");
+    sessionStorage.setItem("errorSD", "false");
+    sessionStorage.setItem("errorSS", "false");
     sessionStorage.setItem("allMatch", "true");
     this.dataCheck = () => {
         this.checker(getDMVFullName(), getSDFullName(), "DMV_SD_Name_Match");
@@ -149,10 +205,9 @@ export function Person(ssn){
 }
 
 function setAttribute(setMethod, attribute){
-    if(attribute != null){
-        setMethod(attribute);
-    }else{
-        setMethod("");
-    }
-    
+        if(attribute != null){
+            setMethod(attribute);
+        }else{
+            setMethod("");
+        }
 }

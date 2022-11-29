@@ -1,8 +1,5 @@
 import React from 'react'; //placeHolder for results page
 import Button from '@mui/material/Button';
-import {getFullName as getSSFullName, getDOB as getSSDOB} from '../Backend/SSVendia'
-import {getFullName as getSDFullName, getDOB as getSDDOB} from '../Backend/SDVendia'
-import {getFullName as getDMVFullName, getDOB as getDMVDOB} from '../Backend/DMVVendia'
 import Grid from '@mui/material/Grid';
 import {useState} from 'react';
 import { createTheme, ThemeProvider } from "@mui/material/styles";
@@ -34,7 +31,7 @@ var thisPerson;
 const styles = {
     "&:hover":{
         background: "green",
-        //border: "1px solid black",
+        border: "1px solid black",
         color: "White"
     },
     width: 150,
@@ -43,16 +40,31 @@ const styles = {
 }
 
 //const tester = true; // primitive true false boolean to control icons 
-
+function warningMessage(){
+  var x = "Warning the following databases have missing information: "
+  if(sessionStorage.getItem("errorSS")){
+    x += "Social Security, ";
+  }
+  if(sessionStorage.getItem("errorDMV")){
+    x += "DMV, ";
+  }
+  if(sessionStorage.getItem("errorSD")){
+    x += "State Department,";
+  }
+  return x;
+}
 function Results() {
   const [testingVar, updatingTestingVar] = useState();
   const [testingVar2, updatingTestingVar2] = useState("Loading...");
   SSNNum = sessionStorage.getItem("SSN");
   thisPerson = new Person(SSNNum);
-  var btnDisabled = testingVar;
 
   setTimeout(() => {
     if(sessionStorage.getItem("SSLoad") === "true" && sessionStorage.getItem("SDLoad") === "true" && sessionStorage.getItem("DMVLoad") === "true"){
+      if(sessionStorage.getItem("errorSS") || sessionStorage.getItem("errorDMV") || sessionStorage.getItem("errorSD")){
+        updatingTestingVar2(warningMessage());
+        updatingTestingVar(true);
+      }
       updatingTestingVar(true);
       updatingTestingVar2("Done!");
       thisPerson.dataCheck();
@@ -68,19 +80,19 @@ function Results() {
         <h0>TravelX.</h0>
          <Grid container spacing={0} justifyContent = "right">
           <Grid item xs = {2}>
-            <Button sx={styles} size="large" href="Dmv" disabled = {!testingVar}>
+            <Button sx={styles} size="large" variant="outlined" href="Dmv" disabled = {!testingVar}>
               Dmv
             </Button>
           </Grid>
 
           <Grid item xs = {2}>
-            <Button sx={styles} size="large" href="StateDep" disabled = {!testingVar}>
+            <Button sx={styles} size="large" variant="outlined" href="StateDep" disabled = {!testingVar}>
               StateDep
             </Button>
           </Grid>
 
           <Grid item xs = {2}>
-            <Button sx={styles} size="large" href="Ssn" disabled = {!testingVar}>
+            <Button sx={styles} size="large" variant="outlined" href="Ssn" disabled = {!testingVar}>
               SS
             </Button>
           </Grid>

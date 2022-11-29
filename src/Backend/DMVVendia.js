@@ -52,7 +52,11 @@ async function getDMVPicture(targetSSN){
             },
         }
     })
-    return getFile.items[0].temporaryUrl;
+    try{
+        return getFile.items[0].temporaryUrl;
+    }catch(e){
+        return null;
+    }
 }
 
 function getURL(){
