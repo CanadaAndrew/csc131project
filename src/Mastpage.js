@@ -12,6 +12,8 @@ import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import {Person} from './Backend/Person'
 import Switch from '@mui/material/Switch';
+import logo from './logo.png';
+
 
 
 var SSNNum = 0;
@@ -100,7 +102,7 @@ const Mastpage = () => {
 
         <AppBar position="static" enableColorOnDark="true">
         <Toolbar variant="dense">
-        <h0>TravelX.</h0>
+        <h0><img style={{ width:200, height: 60 }} src={logo} alt="TravelX logo" /></h0>
         </Toolbar>
         </AppBar>
 
