@@ -11,9 +11,12 @@ import { PatternFormat } from 'react-number-format';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import {Person} from './Backend/Person'
+import Switch from '@mui/material/Switch';
+
+
 var SSNNum = 0;
 //the main bg color and font
-const mainTheme = createTheme({
+const lightTheme = createTheme({
   typography: {
     fontFamily: ["Arial"].join(","),
     fontSize: 24,
@@ -27,6 +30,23 @@ const mainTheme = createTheme({
     },
   },
 });
+
+const darkTheme = createTheme({
+  typography: {
+    fontFamily: ["Arial"].join(","),
+    fontSize: 24,
+    
+
+  },
+  palette: {
+    primary: { main: "#212121" }, // this changes the textbox to green
+    background: {
+      default: "#282a3a", //changes whole page background to pale
+    },
+
+  },
+});
+
 
 //changes properties of buttons
 const buttonStyle =
@@ -65,9 +85,10 @@ function NumberFormatCustom(props) {
 const Mastpage = () => {
   const [value, setValue] = useState("");
   var btnDisabled = useState(true)
-
+  const [mode, setMode] = useState("light");
+  const selectedTheme = mode === "light" ?  lightTheme : darkTheme;
   return (
-    <ThemeProvider theme={mainTheme}>
+    <ThemeProvider theme={selectedTheme}>
       {/* ThemeProvider enables mainTheme*/}
       
       <div>
@@ -77,11 +98,13 @@ const Mastpage = () => {
           {/*Typography formats text*/}
 
 
-        <AppBar position="static" enableColorOnDark="true"  sx={{ bgcolor: "#124a37" }}>
+        <AppBar position="static" enableColorOnDark="true">
         <Toolbar variant="dense">
         <h0>TravelX.</h0>
         </Toolbar>
         </AppBar>
+
+        <AppBar position="static" style={{ background: 'linear-gradient(45deg, #de880d, 65%, #124a37 )'}} sx={{ height: '5px' }} ></AppBar>
           <br />
           <br />
           <Box sx={{
@@ -142,6 +165,7 @@ const Mastpage = () => {
               <Grid item xs={4}>
                 <Button href="StateDep" onClick = {() => {sessionStorage.setItem("SSN", SSNNum)}} size="large" sx={buttonStyle} disabled={btnDisabled} variant="outlined">State</Button>
               </Grid>
+              
 
               <Grid item xs ={4}>
                 <Button
@@ -152,10 +176,11 @@ const Mastpage = () => {
               </Grid>
 
             </Grid>
-
+            <br />
+              <Switch onChange={() => setMode(mode === "light" ?  "dark" : "light")} />
             <h6>Note: Alphabetical and Special Characters are not allowed. Ex. A-Z !@#$%</h6>
 
-
+            
           </Box>
 
 

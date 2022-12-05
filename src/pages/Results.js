@@ -10,8 +10,9 @@ import CheckIcon from '@mui/icons-material/Check';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import logo from '../logo.png';
+import Switch from '@mui/material/Switch';
 
-const mainTheme = createTheme({
+const lightTheme = createTheme({
   typography: {
     fontFamily: ["Arial"].join(","),
     fontSize: 24,
@@ -23,9 +24,26 @@ const mainTheme = createTheme({
     background: {
       default: "#d7d0b8", //changes whole page background to pale
     },
-   
-  }
+  },
 });
+
+const darkTheme = createTheme({
+  typography: {
+    fontFamily: ["Arial"].join(","),
+    fontSize: 24,
+    
+
+  },
+  palette: {
+    primary: { main: "#212121" }, // this changes the textbox to dark black
+    background: {
+      default: "#282a3a", //changes whole page background to a lighter black
+    },
+
+  },
+});
+
+
 
 var SSNNum;
 var thisPerson;
@@ -37,7 +55,7 @@ const styles = {
     },
     width: 150,
   fontSize: 20,
-  color: "white"
+  color:  "#ffd966",
 }
 
 //const tester = true; // primitive true false boolean to control icons 
@@ -55,6 +73,8 @@ function warningMessage(){
   return x;
 }
 function Results() {
+  const [mode, setMode] = useState("light");
+  const selectedTheme = mode === "light" ?  lightTheme : darkTheme;
   const [testingVar, updatingTestingVar] = useState();
   const [testingVar2, updatingTestingVar2] = useState("Loading...");
   SSNNum = sessionStorage.getItem("SSN");
@@ -74,14 +94,18 @@ function Results() {
     }
   }, 1000)
     return(
-      <ThemeProvider theme={mainTheme} >
+      <ThemeProvider theme={selectedTheme}>
         
          <CssBaseline /> {/*CssBaseline enables changing background color*/}
         <div>
-        <AppBar position="static" enableColorOnDark="true"  sx={{ bgcolor: "#124a37" }}>
+        <AppBar position="static" enableColorOnDark="true" >
         <Toolbar variant="dense">
         <h0><img style={{ width:200, height: 60 }} src={logo} alt="TravelX logo" /></h0>
          <Grid container spacing={0} justifyContent = "right">
+
+          <Grid item xs = {1}>
+          <Switch onChange={() => setMode(mode === "light" ?  "dark" : "light")} />
+          </Grid>
           <Grid item xs = {2}>
             <Button sx={styles} size="large" href="Dmv" disabled = {!testingVar}>
               Dmv
@@ -99,9 +123,12 @@ function Results() {
               SS
             </Button>
           </Grid>
+
          </Grid>
         </Toolbar>
         </AppBar>
+
+        <AppBar position="static" style={{ background: 'linear-gradient(45deg, #de880d, 65%, #124a37 )'}} sx={{ height: '5px' }} ></AppBar>
           <br />
             <h1><center>{testingVar2}</center></h1>
             <br/>
@@ -111,7 +138,7 @@ function Results() {
         </div>
 
        <div><center>{}</center></div>
-
+      
        </ThemeProvider>  
     )
 }

@@ -8,8 +8,10 @@ import Box from '@mui/material/Box';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import logo from '../logo.png';
+import Switch from '@mui/material/Switch';
+import { useState } from "react";
 
-const mainTheme = createTheme({
+const lightTheme = createTheme({
   typography: {
     fontFamily: ["Arial"].join(","),
     fontSize: 24,
@@ -23,6 +25,23 @@ const mainTheme = createTheme({
     },
   },
 });
+
+const darkTheme = createTheme({
+  typography: {
+    fontFamily: ["Arial"].join(","),
+    fontSize: 24,
+    
+
+  },
+  palette: {
+    primary: { main: "#212121" }, // this changes the textbox to dark black
+    background: {
+      default: "#282a3a", //changes whole page background to a lighter black
+    },
+
+  },
+});
+
   
 const styles = {
     "&:hover":{
@@ -68,19 +87,26 @@ function comparisonTest() {
 }
 
 function Dmv() {
+  const [mode, setMode] = useState("light");
+  const selectedTheme = mode === "light" ?  lightTheme : darkTheme;
     const fullName = getFullName();
     const DOB = getDOB();
     const DL = getLicenseNumber();
     const Picture = getURL();
     return(
-        <ThemeProvider theme={mainTheme} >
+        <ThemeProvider theme={selectedTheme} >
         <div>
         <CssBaseline /> {/*CssBaseline enables changing background color*/}
 
-        <AppBar position="static" enableColorOnDark="true"  sx={{ bgcolor: "#124a37" }}>
+        <AppBar position="static" enableColorOnDark="true" >
         <Toolbar variant="dense">
         <h0><img style={{ width:200, height: 60 }} src={logo} alt="TravelX logo" /></h0>
         <Grid container spacing={0} justifyContent = "right">
+
+        <Grid item xs = {1}>
+<Switch onChange={() => setMode(mode === "light" ?  "dark" : "light")} color={'success'} />
+ </Grid>
+
             <Grid item xs = {2}>
                <Button sx={styles} size="large" href="Mastpage">
                     Return
@@ -101,6 +127,9 @@ function Dmv() {
          </Grid>
         </Toolbar>
         </AppBar>
+        <AppBar position="static" style={{ background: 'linear-gradient(45deg, #de880d, 65%, #124a37 )'}} sx={{ height: '5px' }} ></AppBar>
+
+
           <br />
           <br />
           <Box sx={{
