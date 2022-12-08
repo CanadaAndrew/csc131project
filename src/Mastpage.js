@@ -171,7 +171,7 @@ const Mastpage = () => {
 
               <Grid item xs ={4}>
                 <Button
-                   onClick = {() => {sessionStorage.setItem("SSN", SSNNum); sessionStorage.setItem("SSLoad", "false"); sessionStorage.setItem("SDLoad", "false"); sessionStorage.setItem("DMVLoad", "false"); sessionStorage.setItem("start", "true");}}
+                   onClick = {() => {sessionStorage.setItem("SSN", SSNNum); sessionStorage.setItem("SSLoad", "false"); sessionStorage.setItem("error", "false"); sessionStorage.setItem("errorDMV", "false"); sessionStorage.setItem("errorSD", "false"); sessionStorage.setItem("errorSS", "false");}}
                    href="Results" size="large" sx={buttonStyle} disabled={btnDisabled} variant="contained">
                     Search
                 </Button>

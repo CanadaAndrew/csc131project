@@ -79,18 +79,17 @@ function Results() {
   const [testingVar2, updatingTestingVar2] = useState("Loading...");
   SSNNum = sessionStorage.getItem("SSN");
   thisPerson = new Person(SSNNum);
-  sessionStorage.setItem("start", "false");
-  
 
   setTimeout(() => {
     if(sessionStorage.getItem("SSLoad") === "true" && sessionStorage.getItem("SDLoad") === "true" && sessionStorage.getItem("DMVLoad") === "true"){
       if(sessionStorage.getItem("error") === "true"){
         updatingTestingVar2(warningMessage());
         updatingTestingVar(true);
+      }else{
+        updatingTestingVar(true);
+        updatingTestingVar2("Done!");
+        thisPerson.dataCheck();
       }
-      updatingTestingVar(true);
-      updatingTestingVar2("Done!");
-      thisPerson.dataCheck();
     }
   }, 1000)
     return(

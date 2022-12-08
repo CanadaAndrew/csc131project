@@ -46,7 +46,6 @@ function DMV(SSN){
         })
     }
     useEffect(() => {
-        console.log("DMV"+FinishedLoading);
         updateFinishedLoading(FinishedLoading + 1);
         if(FinishedLoading === 8){
             sessionStorage.setItem("DMVFName", FName);
@@ -92,7 +91,6 @@ function SocialSecurity(SSN){
     }
     useEffect(() => {
         updateFinishedLoading(FinishedLoading + 1);
-        console.log("SS"+FinishedLoading);
         if(FinishedLoading === 6){
             sessionStorage.setItem("SSFName", FName);
             sessionStorage.setItem("SSMName", MName);
@@ -134,25 +132,15 @@ function StateDepartment(SSN) {
                 setAttribute(setPassportNumber, person.PassportNumber);
             }catch(e){
                 setAttribute(setFName, null);
-                console.log("Name");
                 setAttribute(setMName, null);
-                console.log("Name");
                 setAttribute(setLName, null);
-                console.log("Name");
                 setAttribute(setBirthDay, null);
-                console.log("Birth");
                 setAttribute(setBirthMonth, null);
-                console.log("Birth");
                 setAttribute(setBirthYear, null);
-                console.log("Birth");
                 setAttribute(setExpirationDay, null);
-                console.log("Expir");
                 setAttribute(setExpirationMonth, null);
-                console.log("Expir");
                 setAttribute(setExpirationYear, null);
-                console.log("Expir");
                 setAttribute(setPassportNumber, null);
-                console.log("Pass");
                 sessionStorage.setItem("errorSD", "true");
                 sessionStorage.setItem("error", "true");
             }
@@ -161,10 +149,8 @@ function StateDepartment(SSN) {
         getSDPicture(SSN).then((picture) => {
             console.log("in picture method SD");
             try{
-                console.log("in try");
                 setPhoto(picture);
             }catch(e){
-                console.log("in catch");
                 setPhoto(null);
                 sessionStorage.setItem("errorSD", "true");
             }
@@ -173,8 +159,6 @@ function StateDepartment(SSN) {
     }
     useEffect(() => {
         updateFinishedLoading(FinishedLoading + 1);
-        console.log("SD"+FinishedLoading);
-        console.log(sessionStorage.getItem("errorSD"));
         if(FinishedLoading === 11){
             sessionStorage.setItem("SDFName", FName);
             sessionStorage.setItem("SDMName", MName);
@@ -199,10 +183,6 @@ export function Person(ssn){
         SocialSecurity(ssn);
         StateDepartment(ssn);
         DMV(ssn);
-        sessionStorage.setItem("errorDMV", "false");
-        sessionStorage.setItem("errorSD", "false");
-        sessionStorage.setItem("errorSS", "false");
-        sessionStorage.setItem("error", "false");
         sessionStorage.setItem("allMatch", "true");
     this.dataCheck = () => {
         this.checker(getDMVFullName(), getSDFullName(), "DMV_SD_Name_Match");
