@@ -10,7 +10,6 @@ import Grid from '@mui/material/Grid';
 import { PatternFormat } from 'react-number-format';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
-import {Person} from './Backend/Person'
 import Switch from '@mui/material/Switch';
 import logo from './logo.png';
 
@@ -155,20 +154,6 @@ const Mastpage = () => {
 
               {/*aligns the buttons to be on the same row*/}
             <Grid container spacing={0} justifyContent="center" >
-
-              <Grid item xs={4}>{/*TODO: figure out how to change width in buttonStyle*/}
-                <Button href="Ssn" onClick = {() => {sessionStorage.setItem("SSN", SSNNum)}} sx={buttonStyle} variant="outlined" disabled={btnDisabled} size="large">SS</Button> {/*button size warped, fix later*/}
-              </Grid>
-
-              <Grid item xs={0}>
-                <Button href="Dmv" onClick = {() => {sessionStorage.setItem("SSN", SSNNum)}} size="large" sx={buttonStyle} disabled={btnDisabled} variant="outlined">DMV</Button>
-              </Grid>
-
-              <Grid item xs={4}>
-                <Button href="StateDep" onClick = {() => {sessionStorage.setItem("SSN", SSNNum)}} size="large" sx={buttonStyle} disabled={btnDisabled} variant="outlined">State</Button>
-              </Grid>
-              
-
               <Grid item xs ={4}>
                 <Button
                    onClick = {() => {sessionStorage.setItem("SSN", SSNNum); sessionStorage.setItem("SSLoad", "false"); sessionStorage.setItem("error", "false"); sessionStorage.setItem("errorDMV", "false"); sessionStorage.setItem("errorSD", "false"); sessionStorage.setItem("errorSS", "false");}}
@@ -179,7 +164,7 @@ const Mastpage = () => {
 
             </Grid>
             <br />
-              <Switch onChange={() => setMode(mode === "light" ?  "dark" : "light")} />
+              <Switch onChange={() => {setMode(mode === "light" ?  "dark" : "light");}} />
             <h6>Note: Alphabetical and Special Characters are not allowed. Ex. A-Z !@#$%</h6>
 
             
