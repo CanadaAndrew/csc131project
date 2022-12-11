@@ -7,6 +7,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import {Person} from './../Backend/Person'
 import { CircularProgress } from '@mui/material';
 import CheckIcon from '@mui/icons-material/Check';
+import CloseIcon from '@mui/icons-material/Close';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import logo from '../logo.png';
@@ -133,7 +134,9 @@ function Results() {
             <br/>
             {testingVar2 === "Loading..." 
                ? <center><CircularProgress color='success'/></center> 
-               : <center><CheckIcon color='success'/></center>} {/*loading Icon and check Icon loads based on testingVar2 so should be in sync*/}
+               : testingVar2 === "Done!"
+               ? <center><CheckIcon color='success'/></center>
+               : <center><CloseIcon color='success'/></center>} {/*loading Icon and check Icon loads based on testingVar2 so should be in sync*/}
         </div>
 
        <div><center>{}</center></div>
