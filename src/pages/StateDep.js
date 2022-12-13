@@ -104,7 +104,7 @@ function StateDep(){
         <h0><img style={{ width:200, height: 60 }} src={logo} alt="TravelX logo" /></h0>
         <Grid container spacing={0} justifyContent = "right">
         <Grid item xs = {1}>
-<Switch onChange={() => setMode(mode === "light" ?  "dark" : "light")} color={'success'} />
+<Switch checked = {mode === "light" ? false : true} onChange={() => setMode(mode === "light" ?  "dark" : "light")} color={'success'} />
         </Grid>
 
             <Grid item xs = {2}>

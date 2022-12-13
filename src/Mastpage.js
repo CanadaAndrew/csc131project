@@ -170,7 +170,7 @@ const Mastpage = () => {
 
             </Grid>
             <br />
-              <Switch onChange={() => {setMode(mode === "light" ?  "dark" : "light")}} />
+              <Switch checked = {mode === "light" ? false : true} onChange={() => {setMode(mode === "light" ?  "dark" : "light")}} />
             <h6>Note: Alphabetical and Special Characters are not allowed. Ex. A-Z !@#$%</h6>
 
             
