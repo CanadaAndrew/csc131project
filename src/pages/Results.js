@@ -62,13 +62,13 @@ const styles = {
 //const tester = true; // primitive true false boolean to control icons 
 function warningMessage(){
   var x = "Warning, the following databases have missing information: "
-  if(sessionStorage.getItem("errorSS")){
+  if(sessionStorage.getItem("errorSS") === "true"){
     x += "Social Security, ";
   }
-  if(sessionStorage.getItem("errorDMV")){
+  if(sessionStorage.getItem("errorDMV") === "true"){
     x += "DMV, ";
   }
-  if(sessionStorage.getItem("errorSD")){
+  if(sessionStorage.getItem("errorSD") === "true"){
     x += "State Department,";
   }
   x = x.substring(0, x.length - 1) + ".";
@@ -90,6 +90,7 @@ function Results() {
       if(sessionStorage.getItem("error") === "true"){
         updatingTestingVar2(warningMessage());
         updatingTestingVar(true);
+        thisPerson.dataCheck();
         sessionStorage.setItem("allMatch", "false");
       }else{
         updatingTestingVar(true);

@@ -71,8 +71,7 @@ function comparisonTest() {
       x += "The name and date of birth does not match with the DMV database.\n"
     }else if(sessionStorage.getItem("DMV_SD_Name_Match") === "false"){
       x += "The name does not match with the DMV database.\n";
-    }
-    else if(sessionStorage.getItem("DMV_SD_DOB_Match") === "false"){
+    }else if(sessionStorage.getItem("DMV_SD_DOB_Match") === "false"){
       x += "The date of birth does not match with the DMV database.\n";
     }
 

@@ -154,7 +154,6 @@ function StateDepartment(SSN) {
                 setPhoto(null);
                 sessionStorage.setItem("errorSD", "true");
             }
-            
         })
     }
     useEffect(() => {
