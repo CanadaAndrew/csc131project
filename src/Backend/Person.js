@@ -113,8 +113,8 @@ function StateDepartment(SSN) {
     const [ExpirationDay, setExpirationDay] = useState(0);
     const [ExpirationMonth, setExpirationMonth] = useState(0);
     const [ExpirationYear, setExpirationYear] = useState(0);
-    const [PassportNumber, setPassportNumber] = useState("");
-    const [Photo, setPhoto] = useState();
+    const [PassportNumber, setPassportNumber] = useState(" ");
+    const [Photo, setPhoto] = useState(" ");
     const [FinishedLoading, updateFinishedLoading] = useState(0);
 
     if(FinishedLoading === 0){
@@ -203,7 +203,7 @@ export function Person(ssn){
 }
 
 function setAttribute(setMethod, attribute){
-        if(attribute != null){
+        if(attribute !== null){
             setMethod(attribute);
         }else{
             setMethod("");

@@ -3,7 +3,7 @@ import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
@@ -86,7 +86,13 @@ function NumberFormatCustom(props) {
 const Mastpage = () => {
   const [value, setValue] = useState("");
   var btnDisabled = useState(true)
-  const [mode, setMode] = useState("light");
+  if(sessionStorage.getItem("light") === null){
+    sessionStorage.setItem("light", "light");
+  }
+  const [mode, setMode] = useState(sessionStorage.getItem("light"));
+  useEffect(() => {
+    sessionStorage.setItem("light", mode);
+  },[mode]);
   const selectedTheme = mode === "light" ?  lightTheme : darkTheme;
   return (
     <ThemeProvider theme={selectedTheme}>
@@ -164,7 +170,7 @@ const Mastpage = () => {
 
             </Grid>
             <br />
-              <Switch onChange={() => {setMode(mode === "light" ?  "dark" : "light");}} />
+              <Switch onChange={() => {setMode(mode === "light" ?  "dark" : "light")}} />
             <h6>Note: Alphabetical and Special Characters are not allowed. Ex. A-Z !@#$%</h6>
 
             

@@ -1,7 +1,7 @@
 import React from 'react'; //placeHolder for results page
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import {Person} from './../Backend/Person'
@@ -61,7 +61,7 @@ const styles = {
 
 //const tester = true; // primitive true false boolean to control icons 
 function warningMessage(){
-  var x = "Warning the following databases have missing information: "
+  var x = "Warning, the following databases have missing information: "
   if(sessionStorage.getItem("errorSS")){
     x += "Social Security, ";
   }
@@ -71,10 +71,14 @@ function warningMessage(){
   if(sessionStorage.getItem("errorSD")){
     x += "State Department,";
   }
+  x = x.substring(0, x.length - 1) + ".";
   return x;
 }
 function Results() {
-  const [mode, setMode] = useState("light");
+  const [mode, setMode] = useState(sessionStorage.getItem("light"));
+  useEffect(() => {
+    sessionStorage.setItem("light", mode);
+  },[mode]);
   const selectedTheme = mode === "light" ?  lightTheme : darkTheme;
   const [testingVar, updatingTestingVar] = useState();
   const [testingVar2, updatingTestingVar2] = useState("Loading...");
@@ -86,6 +90,7 @@ function Results() {
       if(sessionStorage.getItem("error") === "true"){
         updatingTestingVar2(warningMessage());
         updatingTestingVar(true);
+        thisPerson.dataCheck();
       }else{
         updatingTestingVar(true);
         updatingTestingVar2("Done!");

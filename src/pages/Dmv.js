@@ -9,7 +9,7 @@ import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import logo from '../logo.png';
 import Switch from '@mui/material/Switch';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const lightTheme = createTheme({
   typography: {
@@ -87,7 +87,10 @@ function comparisonTest() {
 }
 
 function Dmv() {
-  const [mode, setMode] = useState("light");
+  const [mode, setMode] = useState(sessionStorage.getItem("light"));
+  useEffect(() => {
+    sessionStorage.setItem("light", mode);
+  },[mode]);
   const selectedTheme = mode === "light" ?  lightTheme : darkTheme;
     const fullName = getFullName();
     const DOB = getDOB();
