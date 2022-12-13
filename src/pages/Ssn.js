@@ -66,7 +66,10 @@ function comparisonTest() {
     x = "This information is consistent with results from other databases."
   }else {
     x += "Warning:\n"
-    if(sessionStorage.getItem("DMV_SS_Name_Match") === "false" && sessionStorage.getItem("DMV_SS_DOB_Match") === "false"){
+
+    if(sessionStorage.getItem("errorDMV") === "true"){
+      x += "There was an error in the DMV database, cannot compare.\n"
+    }else if(sessionStorage.getItem("DMV_SS_Name_Match") === "false" && sessionStorage.getItem("DMV_SS_DOB_Match") === "false"){
       x += "The name and date of birth does not match with the DMV database.\n"
     }else if(sessionStorage.getItem("DMV_SS_Name_Match") === "false"){
       x += "The name does not match with the DMV database.\n";
@@ -74,7 +77,9 @@ function comparisonTest() {
       x += "The date of birth does not match with the DMV database.\n";
     }
 
-    if(sessionStorage.getItem("SS_SD_Name_Match") === "false" && sessionStorage.getItem("SS_SD_DOB_Match") === "false"){
+    if(sessionStorage.getItem("errorSD") === "true"){
+      x += "There was an error in the State Department database, cannot compare.\n"
+    }else if(sessionStorage.getItem("SS_SD_Name_Match") === "false" && sessionStorage.getItem("SS_SD_DOB_Match") === "false"){
       x += "The name and date of birth does not match with the State Department database.\n"
     }else if(sessionStorage.getItem("SS_SD_Name_Match") === "false"){
       x += "The name does not match with the State Department database.\n";

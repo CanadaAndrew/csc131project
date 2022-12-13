@@ -90,7 +90,7 @@ function Results() {
       if(sessionStorage.getItem("error") === "true"){
         updatingTestingVar2(warningMessage());
         updatingTestingVar(true);
-        thisPerson.dataCheck();
+        sessionStorage.setItem("allMatch", "false");
       }else{
         updatingTestingVar(true);
         updatingTestingVar2("Done!");
