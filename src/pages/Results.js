@@ -110,7 +110,7 @@ function Results() {
          <Grid container spacing={0} justifyContent = "right">
 
           <Grid item xs = {1}>
-          <Switch checked = {mode === "light" ? false : true} onChange={() => setMode(mode === "light" ?  "dark" : "light")} />
+          <Switch checked = {mode === "light" ? false : true} onChange={() => setMode(mode === "light" ?  "dark" : "light")} color={'success'} />
           </Grid>
           <Grid item xs = {2}>
             <Button sx={styles} size="large" href="Dmv" disabled = {!testingVar}>
