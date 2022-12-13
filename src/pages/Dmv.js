@@ -129,7 +129,7 @@ function Dmv() {
             
             <Grid item xs = {2}>
                <Button sx={styles} size="large" href="Ssn">
-                   SSN
+                   SS
                </Button>
             </Grid>
          </Grid>
