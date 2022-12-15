@@ -2,7 +2,12 @@ import {getSSPerson, getFullName as getSSFullName, getDOB as getSSDOB} from './S
 import {getDMVPerson, getDMVPicture, getFullName as getDMVFullName, getDOB as getDMVDOB} from './DMVVendia';
 import {getSDPerson, getSDPicture, getFullName as getSDFullName, getDOB as getSDDOB} from './SDVendia';
 import {useEffect, useState} from 'react';
-
+/**
+ * Given SSN, gets the person from the Vendia class and updates information using it.
+ * If null, sets everything to null and flags an error.
+ * Tells when it is finished loading
+ * @param {*} SSN 
+ */
 function DMV(SSN){
     const [FName, setFName] = useState(" ");
     const [MName, setMName] = useState(" ");
@@ -60,6 +65,13 @@ function DMV(SSN){
         }
     }, [FName, MName, LName, BirthDay, BirthMonth, BirthYear, DLNum, Photo]);
 }
+
+/**
+ * Given SSN, gets the person from the Vendia class and updates information using it.
+ * If null, sets everything to null and flags an error.
+ * Tells when it is finished loading
+ * @param {*} SSN 
+ */
 function SocialSecurity(SSN){
     const [FName, setFName] = useState(" ");
     const [MName, setMName] = useState(" ");
@@ -103,6 +115,12 @@ function SocialSecurity(SSN){
     }, [FName, MName, LName, BirthDay, BirthMonth, BirthYear]);
 }
 
+/**
+ * Given SSN, gets the person from the Vendia class and updates information using it.
+ * If null, sets everything to null and flags an error.
+ * Tells when it is finished loading
+ * @param {*} SSN 
+ */
 function StateDepartment(SSN) {
     const [FName, setFName] = useState(" ");
     const [MName, setMName] = useState(" ");
@@ -178,6 +196,10 @@ function StateDepartment(SSN) {
     }, [FName, MName, LName, BirthDay, BirthMonth, BirthYear, ExpirationDay, ExpirationMonth, ExpirationYear, PassportNumber, Photo]);
 }
 
+/**
+ * Person created, calls method to start creating the information, also has it's own checkers to check data when done.
+ * @param {*} ssn 
+ */
 export function Person(ssn){
         SocialSecurity(ssn);
         StateDepartment(ssn);
@@ -201,6 +223,11 @@ export function Person(ssn){
     }
 }
 
+/**
+ * Helper method, takes the update method of a state method and the attribute and sets it. If it's null it sets it to blank.
+ * @param {} setMethod 
+ * @param {*} attribute 
+ */
 function setAttribute(setMethod, attribute){
         if(attribute !== null){
             setMethod(attribute);
